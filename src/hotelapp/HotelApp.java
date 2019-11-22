@@ -5,6 +5,12 @@
  */
 package hotelapp;
 
+import javax.swing.ImageIcon;
+
+
+
+
+
 /**
  *
  * @author robert
@@ -15,8 +21,14 @@ public class HotelApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        HotelAppGUI hotelAppGUI = new HotelAppGUI();
+        
+        SearchGUI hotelAppGUI = new SearchGUI();
+        ImageIcon img = new ImageIcon("img/logo.png");
+        hotelAppGUI.setIconImage(img.getImage());
+        
         hotelAppGUI.setVisible(true);
+        
+
     }
     
 }
