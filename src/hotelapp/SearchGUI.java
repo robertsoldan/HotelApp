@@ -5,7 +5,15 @@
  */
 package hotelapp;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 
 
@@ -33,6 +41,7 @@ public class SearchGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         backgroundPanel = new javax.swing.JPanel();
         heaherPanel = new javax.swing.JPanel();
         manageRoomBtn = new javax.swing.JLabel();
@@ -41,7 +50,11 @@ public class SearchGUI extends javax.swing.JFrame {
         splitter2 = new javax.swing.JLabel();
         searchBtn = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        searchTf = new javax.swing.JTextField();
+        searchLbl = new javax.swing.JLabel();
+        searchTfBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        searchPanel = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -54,8 +67,20 @@ public class SearchGUI extends javax.swing.JFrame {
             .addGap(0, 504, Short.MAX_VALUE)
         );
 
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setPreferredSize(new java.awt.Dimension(1100, 750));
 
         backgroundPanel.setBackground(new java.awt.Color(255, 255, 204));
 
@@ -112,7 +137,7 @@ public class SearchGUI extends javax.swing.JFrame {
                     .addGroup(heaherPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(splitter2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bookingsBtn)
@@ -139,8 +164,41 @@ public class SearchGUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel2.setText("Placeholder for SEARCH, please delete me");
+        searchTf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchTfActionPerformed(evt);
+            }
+        });
+
+        searchLbl.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
+        searchLbl.setForeground(new java.awt.Color(19, 19, 19));
+        searchLbl.setText("Search by hotel name or city");
+        searchLbl.setPreferredSize(new java.awt.Dimension(158, 17));
+
+        searchTfBtn.setText("Search");
+        searchTfBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchTfBtnActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setBorder(null);
+
+        searchPanel.setBackground(new java.awt.Color(255, 255, 204));
+        searchPanel.setPreferredSize(new java.awt.Dimension(600, 400));
+
+        javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
+        searchPanel.setLayout(searchPanelLayout);
+        searchPanelLayout.setHorizontalGroup(
+            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1093, Short.MAX_VALUE)
+        );
+        searchPanelLayout.setVerticalGroup(
+            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 566, Short.MAX_VALUE)
+        );
+
+        jScrollPane1.setViewportView(searchPanel);
 
         javax.swing.GroupLayout backgroundPanelLayout = new javax.swing.GroupLayout(backgroundPanel);
         backgroundPanel.setLayout(backgroundPanelLayout);
@@ -148,17 +206,30 @@ public class SearchGUI extends javax.swing.JFrame {
             backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(heaherPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(backgroundPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(backgroundPanelLayout.createSequentialGroup()
+                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(searchLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(backgroundPanelLayout.createSequentialGroup()
+                                .addComponent(searchTf, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(searchTfBtn)))
+                        .addContainerGap(392, Short.MAX_VALUE))))
         );
         backgroundPanelLayout.setVerticalGroup(
             backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgroundPanelLayout.createSequentialGroup()
                 .addComponent(heaherPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(0, 460, Short.MAX_VALUE))
+                .addComponent(searchLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchTf, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchTfBtn))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -232,6 +303,61 @@ public class SearchGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_bookingsBtnMouseClicked
 
+    private void searchTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchTfActionPerformed
+
+    private void searchTfBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTfBtnActionPerformed
+       
+        String searchTerm = searchTf.getText();
+        
+        int yLoc; // Will the Y position of each generated panel
+        int searchPanelYSize; // Will dynamically adjust the total height of the main search panel to accomodate for all the elements
+        int resultPanelHeight = 100;
+        int resultPanelMargin = 20;
+        int backgroundPanelWidth = backgroundPanel.getSize().width;
+        
+        searchPanel.removeAll();
+        searchPanel.revalidate();
+        searchPanel.repaint();
+        
+        for (int i=0;i<40; i++){
+
+            yLoc = i * (resultPanelHeight + resultPanelMargin); // 70 pixels distance between each point - each panel is 50 pixels tall, so that will leave 20 pixels between panels
+            searchPanelYSize = yLoc + 70; // Total height will make sure to leave 20 pixels margin between the last element and the bottom edge of the window
+            
+            // Setup the result panel
+            JPanel resultPanel = new JPanel();
+            resultPanel.setBounds(50, yLoc , backgroundPanelWidth / 2, resultPanelHeight);
+            resultPanel.setLayout(null); // Set resultPanel to null to allow the labels to be placed with relative positioning.
+            
+            resultPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR)); // Set the cursor on mouse over
+            resultPanel.setBackground(new Color(153,0,51)); // Search panel result background
+            
+            // Next block will make the result panels clickable, with a variable passed to them
+            final int resultNo = i; // In order to pass a variable to a class, it has to be first converted to a final
+            
+            // Adding the mouse event listener to the generated panel
+            resultPanel.addMouseListener(new MouseAdapter() {
+                public void mousePressed(MouseEvent e) {
+                   System.out.println("This is entry " + searchTerm + " " + resultNo);
+                }
+            });
+            
+            // Setup the result label
+            JLabel resultLabel = new JLabel(Integer.toString(i));
+            resultLabel.setForeground(new Color(255,255,204)); // Result Label font color
+            resultLabel.setBounds(20, 15, 200, 20); // Position and width of the text within the resultPanel
+            
+            // Add result label to the result panel, add the result panel to the search panel
+            resultPanel.add(resultLabel);
+            searchPanel.add(resultPanel);
+            
+            searchPanel.setPreferredSize(new Dimension(600, searchPanelYSize + resultPanelHeight));
+            searchPanel.revalidate(); 
+        }
+    }//GEN-LAST:event_searchTfBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -253,10 +379,15 @@ public class SearchGUI extends javax.swing.JFrame {
     private javax.swing.JLabel bookingsBtn;
     private javax.swing.JPanel heaherPanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel manageRoomBtn;
     private javax.swing.JLabel searchBtn;
+    private javax.swing.JLabel searchLbl;
+    private javax.swing.JPanel searchPanel;
+    private javax.swing.JTextField searchTf;
+    private javax.swing.JButton searchTfBtn;
     private javax.swing.JLabel splitter1;
     private javax.swing.JLabel splitter2;
     // End of variables declaration//GEN-END:variables
