@@ -27,8 +27,6 @@ public class HotelApp {
         searchAppGUI.setIconImage(img.getImage());
         
         searchAppGUI.setVisible(true);
-        
-
     }
     
 }
