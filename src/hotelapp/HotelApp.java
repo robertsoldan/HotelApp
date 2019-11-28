@@ -22,13 +22,11 @@ public class HotelApp {
      */
     public static void main(String[] args) {
         
-        SearchGUI hotelAppGUI = new SearchGUI();
+        SearchGUI searchAppGUI = new SearchGUI();
         ImageIcon img = new ImageIcon("img/logo.png");
-        hotelAppGUI.setIconImage(img.getImage());
+        searchAppGUI.setIconImage(img.getImage());
         
-        hotelAppGUI.setVisible(true);
-        
-
+        searchAppGUI.setVisible(true);
     }
     
 }
