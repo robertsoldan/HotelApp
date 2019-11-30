@@ -14,8 +14,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import org.jdatepicker.impl.JDatePanelImpl;
-import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
+
 
 
 // comment2
@@ -26,27 +26,22 @@ import org.jdatepicker.impl.UtilDateModel;
  */
 public class SearchGUI extends javax.swing.JFrame {
     private UtilDateModel model;
-    /**
-     * Creates new form SearchGUI
-     */
+    private DatePicker checkInDatePicker;
+    private String checkInDate;
     public SearchGUI() {
         initComponents();
+        checkInDate = "";
+        checkInDatePicker = new DatePicker();
         model = new UtilDateModel();
         Properties p = new Properties();
         p.put("text.today", "Today");
         p.put("text.month", "Month");
         p.put("text.year", "Year");
         JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
-        datePanel.setBounds(800, 120, 200, 200);
         backgroundPanel.add(datePanel);
         backgroundPanel.revalidate();
     }
     
-
-    
-
-
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,6 +67,9 @@ public class SearchGUI extends javax.swing.JFrame {
         searchPanel = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
+        checkIn = new javax.swing.JButton();
+        show = new javax.swing.JButton();
+        checkInDateLbl = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -202,7 +200,7 @@ public class SearchGUI extends javax.swing.JFrame {
         searchPanel.setLayout(searchPanelLayout);
         searchPanelLayout.setHorizontalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 734, Short.MAX_VALUE)
+            .addGap(0, 713, Short.MAX_VALUE)
         );
         searchPanelLayout.setVerticalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,6 +212,22 @@ public class SearchGUI extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        checkIn.setText("...");
+        checkIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkInActionPerformed(evt);
+            }
+        });
+
+        show.setText("show");
+        show.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showActionPerformed(evt);
+            }
+        });
+
+        checkInDateLbl.setText("Check in date");
 
         javax.swing.GroupLayout backgroundPanelLayout = new javax.swing.GroupLayout(backgroundPanel);
         backgroundPanel.setLayout(backgroundPanelLayout);
@@ -228,10 +242,16 @@ public class SearchGUI extends javax.swing.JFrame {
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(515, 515, 515)
+                        .addGap(170, 170, 170)
+                        .addComponent(checkInDateLbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(checkIn)
+                        .addGap(58, 58, 58)
+                        .addComponent(show)
+                        .addGap(113, 113, 113)
                         .addComponent(searchTfBtn))
                     .addComponent(jScrollPane1))
-                .addContainerGap(329, Short.MAX_VALUE))
+                .addContainerGap(350, Short.MAX_VALUE))
         );
         backgroundPanelLayout.setVerticalGroup(
             backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,7 +264,10 @@ public class SearchGUI extends javax.swing.JFrame {
                     .addComponent(searchTfBtn)
                     .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(checkIn)
+                        .addComponent(show)
+                        .addComponent(checkInDateLbl)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE))
         );
@@ -321,21 +344,7 @@ public class SearchGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bookingsBtnMouseClicked
 
     private void searchTfBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTfBtnActionPerformed
-       
-        String checkIn;
-        String checkOut;
-        
-        int month = model.getMonth() + 1;
-        
-        checkIn = model.getDay() + "-" + month + "-" + model.getYear();
-        
-        
-        
-        System.out.println(checkIn);
-
-
-   
-        
+      
         String searchTerm = " ";
         
         int yLoc; // Will the Y position of each generated panel
@@ -385,6 +394,28 @@ public class SearchGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_searchTfBtnActionPerformed
 
+    private void checkInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkInActionPerformed
+        // TODO add your handling code here:
+        
+        checkInDatePicker.setVisible(true);
+        checkInDatePicker.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+            checkInDateLbl.setText(checkInDatePicker.getSelectedDate());
+            checkInDateLbl.revalidate();
+        }
+    });
+        
+        
+        
+    }//GEN-LAST:event_checkInActionPerformed
+
+    private void showActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showActionPerformed
+        // TODO add your handling code here:
+        System.out.println(checkInDate);
+        
+    }//GEN-LAST:event_showActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -404,6 +435,8 @@ public class SearchGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundPanel;
     private javax.swing.JLabel bookingsBtn;
+    private javax.swing.JButton checkIn;
+    private javax.swing.JLabel checkInDateLbl;
     private javax.swing.JPanel heaherPanel;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
@@ -416,6 +449,7 @@ public class SearchGUI extends javax.swing.JFrame {
     private javax.swing.JLabel searchLbl;
     private javax.swing.JPanel searchPanel;
     private javax.swing.JButton searchTfBtn;
+    private javax.swing.JButton show;
     private javax.swing.JLabel splitter1;
     private javax.swing.JLabel splitter2;
     // End of variables declaration//GEN-END:variables
