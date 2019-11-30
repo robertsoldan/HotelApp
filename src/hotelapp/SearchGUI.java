@@ -306,7 +306,7 @@ public class SearchGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_searchTfActionPerformed
 
     private void searchTfBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTfBtnActionPerformed
-       
+//hfgfg       
         String searchTerm = searchTf.getText();
         
         int yLoc; // Will the Y position of each generated panel
