@@ -9,7 +9,7 @@ package hotelapp;
  *
  * @author robert
  */
-public class ManageRoom {
+public class Room {
 
     private String roomID;
     private String roomType;
@@ -18,11 +18,11 @@ public class ManageRoom {
     private double roomPricePerNight;
     private int maxNumberGuests;
     private boolean hasBreakfastIncl;
-    private int hasParkingSpace;
+    private boolean hasParkingSpace;
     private int kmFromCityCentre;
 
-    public ManageRoom(String roomID, String roomType, String roomAddress, String roomCity, double roomPricePerNight, int maxNumberGuests, 
-            boolean hasBreakfastIncl, int hasParkingSpace, int kmFromCityCentre) {
+    public Room(String roomID, String roomType, String roomAddress, String roomCity, double roomPricePerNight, int maxNumberGuests, 
+            boolean hasBreakfastIncl, boolean hasParkingSpace, int kmFromCityCentre) {
         this.roomID = roomID;
         this.roomType = roomType;
         this.roomAddress = roomAddress;
@@ -62,7 +62,7 @@ public class ManageRoom {
         this.hasBreakfastIncl = hasBreakfastIncl;
     }
 
-    public void setHasParkingSpace(int hasParkingSpace) {
+    public void setHasParkingSpace(boolean hasParkingSpace) {
         this.hasParkingSpace = hasParkingSpace;
     }
 
@@ -70,5 +70,16 @@ public class ManageRoom {
         this.kmFromCityCentre = kmFromCityCentre;
     }
 
-    
+    public String getDetails() {
+        return "Type: " + this.roomType + 
+        "\nID: " + this.roomID + 
+        "\nAddress: " + this.roomAddress + 
+        "\nCity: " + this.roomCity + 
+        "\nPrice Per Night: " + this.roomPricePerNight + "€" + 
+        "\nMax Number of Guests: " + this.maxNumberGuests + 
+        "\nBreakfast Included: " + (this.hasBreakfastIncl ? "Yes" : "No")+ 
+        "\nParking Available: " + (this.hasParkingSpace ? "Yes" : "No") + 
+        "\nDistance from City Centre: " + this.kmFromCityCentre + "km";           
+    }
+
 }
