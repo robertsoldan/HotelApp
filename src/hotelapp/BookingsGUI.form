@@ -46,12 +46,18 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="backgroundPanel" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <Component id="backgroundPanel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="38" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="backgroundPanel" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="backgroundPanel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="15" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -67,10 +73,80 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="heaherPanel" alignment="0" max="32767" attributes="0"/>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="ManageBookingLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="hotelNameLbl" alignment="0" pref="86" max="32767" attributes="0"/>
+                                          <Component id="lNameLbl" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="fNameLbl" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="peopleNoLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="nightsLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="checkInDateLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="checkOutDateLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="totalPriceLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="fNameTf" pref="169" max="32767" attributes="0"/>
+                                      <Component id="lNameTf" max="32767" attributes="0"/>
+                                      <Component id="hotelNameTf" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="peopleNoTf" max="32767" attributes="0"/>
+                                      <Component id="nightsTf" max="32767" attributes="0"/>
+                                      <Component id="checkInDateTf" max="32767" attributes="0"/>
+                                      <Component id="checkOutDateTf" max="32767" attributes="0"/>
+                                      <Component id="totalPriceTf" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
+                          <Component id="BookBtn" min="-2" pref="105" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="retrieveLbl" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="bookingIDLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkLastNameLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="fName2Lbl" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkOutDate2Lbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="hotelNameLbl2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="peopleNo2Lbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="nights2Lbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkInDate2Lbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="totalPrice2Lbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="bookingIDTf" pref="170" max="32767" attributes="0"/>
+                              <Component id="checkLastNameTf" max="32767" attributes="0"/>
+                              <Component id="fName2Tf" max="32767" attributes="0"/>
+                              <Component id="checkOutDate2Tf" max="32767" attributes="0"/>
+                              <Component id="hotelName2Tf" max="32767" attributes="0"/>
+                              <Component id="peopleNo2Tf" max="32767" attributes="0"/>
+                              <Component id="nights2Tf" max="32767" attributes="0"/>
+                              <Component id="checkInDate2Tf" max="32767" attributes="0"/>
+                              <Component id="totalPrice2Lbl2" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="getBookingBtn" pref="111" max="32767" attributes="0"/>
+                              <Component id="amendBookingBtn" max="32767" attributes="0"/>
+                              <Component id="delBookingBtn" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="32" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -78,9 +154,100 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="heaherPanel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="ManageBookingLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="retrieveLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="460" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="fNameLbl" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="fNameTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="bookingIDLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="bookingIDTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lNameLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lNameTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkLastNameLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkLastNameTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="hotelNameLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="hotelNameTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="fName2Tf" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="fName2Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                          <Component id="getBookingBtn" min="-2" pref="55" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="peopleNoLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="peopleNoTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="hotelNameLbl2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="hotelName2Tf" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="nightsLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="nightsTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="peopleNo2Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="peopleNo2Tf" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="amendBookingBtn" min="-2" pref="55" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="checkInDateLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkInDateTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="nights2Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="nights2Tf" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="checkOutDateLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkOutDateTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkInDate2Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkInDate2Tf" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="delBookingBtn" min="-2" pref="55" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="totalPriceLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="checkOutDate2Tf" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="checkOutDate2Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="totalPriceTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="30" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="BookBtn" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="totalPrice2Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="totalPrice2Lbl2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -109,7 +276,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="120" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="splitter2" min="-2" max="-2" attributes="0"/>
@@ -228,13 +395,194 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="ManageBookingLbl">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Placeholder for BOOKINGS, please delete me"/>
+            <Property name="text" type="java.lang.String" value="Fill in your first and last name and review your booking"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="fNameLbl">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="First name:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lNameLbl">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Last name:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="hotelNameLbl">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Accomodation:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="peopleNoLbl">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Number of people:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="nightsLbl">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Number of nights:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="checkInDateLbl">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Check in date:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="checkOutDateLbl">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Check out date:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="totalPriceLbl">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Price:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="BookBtn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Book"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                <CompoundBorder>
+                  <Border PropertyName="inside" info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                    <CompoundBorder>
+                      <Border PropertyName="inside" info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                        <CompoundBorder/>
+                      </Border>
+                    </CompoundBorder>
+                  </Border>
+                </CompoundBorder>
+              </Border>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BookBtnActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="fNameTf">
+        </Component>
+        <Component class="javax.swing.JTextField" name="lNameTf">
+        </Component>
+        <Component class="javax.swing.JTextField" name="hotelNameTf">
+        </Component>
+        <Component class="javax.swing.JTextField" name="peopleNoTf">
+        </Component>
+        <Component class="javax.swing.JTextField" name="nightsTf">
+        </Component>
+        <Component class="javax.swing.JTextField" name="checkInDateTf">
+        </Component>
+        <Component class="javax.swing.JTextField" name="checkOutDateTf">
+        </Component>
+        <Component class="javax.swing.JLabel" name="retrieveLbl">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Retrieve your booking"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="bookingIDLbl">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Booking ID:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="bookingIDTf">
+        </Component>
+        <Component class="javax.swing.JLabel" name="checkLastNameLbl">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Last name:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="checkLastNameTf">
+        </Component>
+        <Component class="javax.swing.JTextField" name="fName2Tf">
+        </Component>
+        <Component class="javax.swing.JLabel" name="fName2Lbl">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="First Name:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="hotelNameLbl2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Accomodation:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="peopleNo2Lbl">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Number of People:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="nights2Lbl">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Number of nights:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="checkInDate2Lbl">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Check in date:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="checkOutDate2Tf">
+        </Component>
+        <Component class="javax.swing.JLabel" name="checkOutDate2Lbl">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Check out date:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="totalPrice2Lbl">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Price: "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="hotelName2Tf">
+        </Component>
+        <Component class="javax.swing.JTextField" name="peopleNo2Tf">
+        </Component>
+        <Component class="javax.swing.JTextField" name="nights2Tf">
+        </Component>
+        <Component class="javax.swing.JTextField" name="checkInDate2Tf">
+        </Component>
+        <Component class="javax.swing.JButton" name="getBookingBtn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Get booking info"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                <CompoundBorder/>
+              </Border>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getBookingBtnActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="totalPrice2Lbl2">
+        </Component>
+        <Component class="javax.swing.JButton" name="amendBookingBtn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Amend booking"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                <CompoundBorder/>
+              </Border>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="delBookingBtn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Delete booking"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                <CompoundBorder/>
+              </Border>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="totalPriceTf">
         </Component>
       </SubComponents>
     </Container>
