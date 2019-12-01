@@ -189,6 +189,11 @@ public class RoomGUI extends javax.swing.JFrame {
         roomType_Lbl.setText("Room Type:");
 
         roomType_Combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hotel Room", "Hostel Room", "Bed & Breakfast" }));
+        roomType_Combo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                roomType_ComboActionPerformed(evt);
+            }
+        });
 
         roomID_Tf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,12 +241,12 @@ public class RoomGUI extends javax.swing.JFrame {
 
         facilitiesHeader_Lbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         facilitiesHeader_Lbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        facilitiesHeader_Lbl.setText("Hotel Facilities");
+        facilitiesHeader_Lbl.setText("Options - Hotel");
 
         euroSymbol_Lbl.setText("€");
 
         facility1_Check.setBackground(new java.awt.Color(255, 255, 204));
-        facility1_Check.setText("24H Reception");
+        facility1_Check.setText("24/7 Reception");
         facility1_Check.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 facility1_CheckActionPerformed(evt);
@@ -269,7 +274,7 @@ public class RoomGUI extends javax.swing.JFrame {
         facility8_Check.setText("Gym");
 
         facility7_Check.setBackground(new java.awt.Color(255, 255, 204));
-        facility7_Check.setText("Pool");
+        facility7_Check.setText("Swimming Pool");
         facility7_Check.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 facility7_CheckActionPerformed(evt);
@@ -380,29 +385,29 @@ public class RoomGUI extends javax.swing.JFrame {
                             .addGroup(backgroundPanelLayout.createSequentialGroup()
                                 .addGap(90, 90, 90)
                                 .addComponent(facilityOption_Lbl)
-                                .addGap(46, 46, 46)
+                                .addGap(60, 60, 60)
                                 .addComponent(facilityOption1_Rb))
                             .addGroup(backgroundPanelLayout.createSequentialGroup()
                                 .addGap(36, 36, 36)
                                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(facility2_Check)
                                     .addComponent(facility1_Check))
-                                .addGap(46, 46, 46)
+                                .addGap(60, 60, 60)
                                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(facility4_Check)
                                     .addComponent(facility3_Check))))
-                        .addGap(87, 87, 87)
+                        .addGap(60, 60, 60)
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(facilityOption2_Rb)
                             .addComponent(facility5_Check)
                             .addComponent(facility6_Check))
-                        .addGap(66, 66, 66)
+                        .addGap(60, 60, 60)
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(facility8_Check)
                             .addComponent(facility7_Check)
                             .addComponent(facilityOption3_Rb)))
                     .addComponent(mngRoomHeader_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
                         .addComponent(deleteID_Lbl)
@@ -415,7 +420,7 @@ public class RoomGUI extends javax.swing.JFrame {
                     .addComponent(viewHotel_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(viewBB_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(deleteType_Tf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(150, 150, 150))
+                .addGap(100, 100, 100))
         );
         backgroundPanelLayout.setVerticalGroup(
             backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -530,7 +535,7 @@ public class RoomGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_facility5_CheckActionPerformed
 
     private void facility1_CheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facility1_CheckActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_facility1_CheckActionPerformed
 
     private void kmCityCentre_TfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kmCityCentre_TfActionPerformed
@@ -605,6 +610,52 @@ public class RoomGUI extends javax.swing.JFrame {
     private void viewBB_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBB_BtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_viewBB_BtnActionPerformed
+
+    private void roomType_ComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomType_ComboActionPerformed
+        if (roomType_Combo.getSelectedItem().equals("Hotel Room")) {
+            facilitiesHeader_Lbl.setText("Options - Hotel");
+            facility1_Check.setText("24/7 Reception");
+            facility2_Check.setText("Room Service");
+            facility3_Check.setText("Balcony");
+            facility4_Check.setText("Minibar");
+            facility5_Check.setText("Bathtub");
+            facility6_Check.setText("Restaurant");
+            facility7_Check.setText("Swimming pool");
+            facility8_Check.setText("Gym");
+            facilityOption_Lbl.setText("Bed Type:");
+            facilityOption1_Rb.setText("Simple");
+            facilityOption2_Rb.setText("Double");
+            facilityOption3_Rb.setText("King Size");
+        } else if (roomType_Combo.getSelectedItem().equals("Hostel Room")){
+            facilitiesHeader_Lbl.setText("Options - Hostel");
+            facility1_Check.setText("24/7 Reception");
+            facility2_Check.setText("Private Room Option");
+            facility3_Check.setText("Lockers");
+            facility4_Check.setText("Bar");
+            facility5_Check.setText("Private Bathroom");
+            facility6_Check.setText("Shared Kitchen");
+            facility7_Check.setText("Washing Machine");
+            facility8_Check.setText("Long Stay Option");
+            facilityOption_Lbl.setText("Dormitory Type:");
+            facilityOption1_Rb.setText("Female");
+            facilityOption2_Rb.setText("Male");
+            facilityOption3_Rb.setText("Mixed");
+        } else {
+            facilitiesHeader_Lbl.setText("Options - Bed & Breakfast");
+            facility1_Check.setText("Owner Occupied");
+            facility2_Check.setText("Pet Friendly");
+            facility3_Check.setText("Kitchen Area");
+            facility4_Check.setText("Cleaning Option");
+            facility5_Check.setText("Towels Provided");
+            facility6_Check.setText("Linen Provided");
+            facility7_Check.setText("Washing Machine");
+            facility8_Check.setText("Linen Provided");
+            facilityOption_Lbl.setText("Number of Bedrooms:");
+            facilityOption1_Rb.setText("1");
+            facilityOption2_Rb.setText("2");
+            facilityOption3_Rb.setText("3");
+        }
+    }//GEN-LAST:event_roomType_ComboActionPerformed
 
     /**
      * @param args the command line arguments

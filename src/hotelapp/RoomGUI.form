@@ -140,7 +140,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
                                   <Component id="facilityOption_Lbl" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                                   <Component id="facilityOption1_Rb" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -149,20 +149,20 @@
                                       <Component id="facility2_Check" min="-2" max="-2" attributes="0"/>
                                       <Component id="facility1_Check" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="facility4_Check" min="-2" max="-2" attributes="0"/>
                                       <Component id="facility3_Check" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="facilityOption2_Rb" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="facility5_Check" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="facility6_Check" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="facility8_Check" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="facility7_Check" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -171,7 +171,7 @@
                       </Group>
                       <Component id="mngRoomHeader_Lbl" alignment="0" min="-2" pref="600" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="200" max="32767" attributes="0"/>
+                  <EmptySpace pref="210" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="deleteID_Lbl" min="-2" max="-2" attributes="0"/>
@@ -186,7 +186,7 @@
                       <Component id="viewBB_Btn" alignment="0" pref="200" max="32767" attributes="0"/>
                       <Component id="deleteType_Tf" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -471,6 +471,9 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="roomType_ComboActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -563,7 +566,7 @@
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Hotel Facilities"/>
+            <Property name="text" type="java.lang.String" value="Options - Hotel"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="euroSymbol_Lbl">
@@ -576,7 +579,7 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="24H Reception"/>
+            <Property name="text" type="java.lang.String" value="24/7 Reception"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="facility1_CheckActionPerformed"/>
@@ -630,7 +633,7 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Pool"/>
+            <Property name="text" type="java.lang.String" value="Swimming Pool"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="facility7_CheckActionPerformed"/>
