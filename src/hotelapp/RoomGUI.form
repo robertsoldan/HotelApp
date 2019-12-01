@@ -17,6 +17,8 @@
         </DimensionLayout>
       </Layout>
     </Container>
+    <Component class="javax.swing.ButtonGroup" name="optionRadio">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -136,16 +138,16 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="facilityOption_Lbl" min="-2" pref="140" max="-2" attributes="0"/>
+                                          <Component id="optionRadio_Lbl" min="-2" pref="140" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                                          <Component id="facilityOption1_Rb" min="-2" pref="140" max="-2" attributes="0"/>
+                                          <Component id="optionRadio1_Rb" min="-2" pref="140" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" attributes="0">
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="facility2_Check" min="-2" pref="140" max="-2" attributes="0"/>
-                                                      <Component id="facility1_Check" min="-2" pref="140" max="-2" attributes="0"/>
+                                                      <Component id="option2_Check" min="-2" pref="140" max="-2" attributes="0"/>
+                                                      <Component id="option1_Check" min="-2" pref="140" max="-2" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                               </Group>
@@ -153,8 +155,8 @@
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="facility4_Check" alignment="1" pref="140" max="32767" attributes="0"/>
-                                              <Component id="facility3_Check" alignment="1" pref="140" max="32767" attributes="0"/>
+                                              <Component id="option4_Check" alignment="1" pref="140" max="32767" attributes="0"/>
+                                              <Component id="option3_Check" alignment="1" pref="140" max="32767" attributes="0"/>
                                               <Group type="102" alignment="1" attributes="0">
                                                   <Component id="deleteID_Lbl" max="32767" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -165,16 +167,16 @@
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="facilityOption2_Rb" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
-                                      <Component id="facility5_Check" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
-                                      <Component id="facility6_Check" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="optionRadio2_Rb" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="option5_Check" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="option6_Check" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
                                       <Component id="deleteRoomType_Combo" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="facility8_Check" alignment="0" pref="140" max="32767" attributes="0"/>
-                                      <Component id="facility7_Check" alignment="0" pref="140" max="32767" attributes="0"/>
-                                      <Component id="facilityOption3_Rb" pref="140" max="32767" attributes="0"/>
+                                      <Component id="option8_Check" alignment="0" pref="140" max="32767" attributes="0"/>
+                                      <Component id="option7_Check" alignment="0" pref="140" max="32767" attributes="0"/>
+                                      <Component id="optionRadio3_Rb" pref="140" max="32767" attributes="0"/>
                                       <Component id="delete_Btn" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -263,32 +265,32 @@
                       </Group>
                       <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="facilityOption1_Rb" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="facilityOption2_Rb" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="facilityOption3_Rb" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="facilityOption_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="optionRadio1_Rb" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="optionRadio2_Rb" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="optionRadio3_Rb" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="optionRadio_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="facility1_Check" min="-2" max="-2" attributes="0"/>
+                          <Component id="option1_Check" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="facility2_Check" min="-2" max="-2" attributes="0"/>
+                          <Component id="option2_Check" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="facility3_Check" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="facility5_Check" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="facility7_Check" alignment="3" max="32767" attributes="0"/>
+                              <Component id="option3_Check" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="option5_Check" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="option7_Check" alignment="3" max="32767" attributes="0"/>
                               <Component id="clear_Btn" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="facility4_Check" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="facility6_Check" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="facility8_Check" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="option4_Check" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="option6_Check" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="option8_Check" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="add_Btn" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -588,7 +590,7 @@
             <Property name="text" type="java.lang.String" value="&#x20ac;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="facility1_Check">
+        <Component class="javax.swing.JCheckBox" name="option1_Check">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="ff" red="ff" type="rgb"/>
@@ -599,10 +601,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="facility1_CheckActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="option1_CheckActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="facility4_Check">
+        <Component class="javax.swing.JCheckBox" name="option4_Check">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="ff" red="ff" type="rgb"/>
@@ -613,7 +615,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="facility3_Check">
+        <Component class="javax.swing.JCheckBox" name="option3_Check">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="ff" red="ff" type="rgb"/>
@@ -624,7 +626,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="facility2_Check">
+        <Component class="javax.swing.JCheckBox" name="option2_Check">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="ff" red="ff" type="rgb"/>
@@ -635,7 +637,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="facility5_Check">
+        <Component class="javax.swing.JCheckBox" name="option5_Check">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="ff" red="ff" type="rgb"/>
@@ -646,10 +648,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="facility5_CheckActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="option5_CheckActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="facility8_Check">
+        <Component class="javax.swing.JCheckBox" name="option8_Check">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="ff" red="ff" type="rgb"/>
@@ -660,7 +662,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="facility7_Check">
+        <Component class="javax.swing.JCheckBox" name="option7_Check">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="ff" red="ff" type="rgb"/>
@@ -671,10 +673,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="facility7_CheckActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="option7_CheckActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="facility6_Check">
+        <Component class="javax.swing.JCheckBox" name="option6_Check">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="ff" red="ff" type="rgb"/>
@@ -685,32 +687,41 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="facilityOption_Lbl">
+        <Component class="javax.swing.JLabel" name="optionRadio_Lbl">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="4"/>
             <Property name="text" type="java.lang.String" value="Bed Type:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="facilityOption1_Rb">
+        <Component class="javax.swing.JRadioButton" name="optionRadio1_Rb">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="optionRadio"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Simple"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="facilityOption2_Rb">
+        <Component class="javax.swing.JRadioButton" name="optionRadio2_Rb">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="optionRadio"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Double"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="facilityOption3_Rb">
+        <Component class="javax.swing.JRadioButton" name="optionRadio3_Rb">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="optionRadio"/>
             </Property>
             <Property name="text" type="java.lang.String" value="King Size"/>
           </Properties>
@@ -727,6 +738,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Clear Form"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clear_BtnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="viewAll_Btn">
           <Properties>

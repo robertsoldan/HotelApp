@@ -19,6 +19,26 @@ public class RoomGUI extends javax.swing.JFrame {
     public RoomGUI() {
         initComponents();
     }
+    
+    private void clearForm() {
+        roomID_Tf.setText("");
+        address_Tf.setText("");
+        city_Tf.setText("");
+        price_Tf.setText("");
+        maxGuests_Tf.setText("");
+        kmCityCentre_Tf.setText("");
+        breakfast_Check.setSelected(false);
+        parking_Check.setSelected(false);
+        optionRadio.clearSelection();
+        option1_Check.setSelected(false);
+        option2_Check.setSelected(false);
+        option3_Check.setSelected(false);
+        option4_Check.setSelected(false);
+        option5_Check.setSelected(false);
+        option6_Check.setSelected(false);
+        option7_Check.setSelected(false);
+        option8_Check.setSelected(false);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,6 +50,7 @@ public class RoomGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
+        optionRadio = new javax.swing.ButtonGroup();
         backgroundPanel = new javax.swing.JPanel();
         headerPanel = new javax.swing.JPanel();
         manageRoomBtn = new javax.swing.JLabel();
@@ -59,18 +80,18 @@ public class RoomGUI extends javax.swing.JFrame {
         kmCityCentre_Tf = new javax.swing.JTextField();
         facilitiesHeader_Lbl = new javax.swing.JLabel();
         euroSymbol_Lbl = new javax.swing.JLabel();
-        facility1_Check = new javax.swing.JCheckBox();
-        facility4_Check = new javax.swing.JCheckBox();
-        facility3_Check = new javax.swing.JCheckBox();
-        facility2_Check = new javax.swing.JCheckBox();
-        facility5_Check = new javax.swing.JCheckBox();
-        facility8_Check = new javax.swing.JCheckBox();
-        facility7_Check = new javax.swing.JCheckBox();
-        facility6_Check = new javax.swing.JCheckBox();
-        facilityOption_Lbl = new javax.swing.JLabel();
-        facilityOption1_Rb = new javax.swing.JRadioButton();
-        facilityOption2_Rb = new javax.swing.JRadioButton();
-        facilityOption3_Rb = new javax.swing.JRadioButton();
+        option1_Check = new javax.swing.JCheckBox();
+        option4_Check = new javax.swing.JCheckBox();
+        option3_Check = new javax.swing.JCheckBox();
+        option2_Check = new javax.swing.JCheckBox();
+        option5_Check = new javax.swing.JCheckBox();
+        option8_Check = new javax.swing.JCheckBox();
+        option7_Check = new javax.swing.JCheckBox();
+        option6_Check = new javax.swing.JCheckBox();
+        optionRadio_Lbl = new javax.swing.JLabel();
+        optionRadio1_Rb = new javax.swing.JRadioButton();
+        optionRadio2_Rb = new javax.swing.JRadioButton();
+        optionRadio3_Rb = new javax.swing.JRadioButton();
         add_Btn = new javax.swing.JButton();
         clear_Btn = new javax.swing.JButton();
         viewAll_Btn = new javax.swing.JButton();
@@ -252,69 +273,77 @@ public class RoomGUI extends javax.swing.JFrame {
 
         euroSymbol_Lbl.setText("€");
 
-        facility1_Check.setBackground(new java.awt.Color(255, 255, 204));
-        facility1_Check.setText("24/7 Reception");
-        facility1_Check.setMaximumSize(new java.awt.Dimension(50, 50));
-        facility1_Check.addActionListener(new java.awt.event.ActionListener() {
+        option1_Check.setBackground(new java.awt.Color(255, 255, 204));
+        option1_Check.setText("24/7 Reception");
+        option1_Check.setMaximumSize(new java.awt.Dimension(50, 50));
+        option1_Check.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                facility1_CheckActionPerformed(evt);
+                option1_CheckActionPerformed(evt);
             }
         });
 
-        facility4_Check.setBackground(new java.awt.Color(255, 255, 204));
-        facility4_Check.setText("Minibar");
-        facility4_Check.setMaximumSize(new java.awt.Dimension(50, 50));
+        option4_Check.setBackground(new java.awt.Color(255, 255, 204));
+        option4_Check.setText("Minibar");
+        option4_Check.setMaximumSize(new java.awt.Dimension(50, 50));
 
-        facility3_Check.setBackground(new java.awt.Color(255, 255, 204));
-        facility3_Check.setText("Balcony");
-        facility3_Check.setMaximumSize(new java.awt.Dimension(50, 50));
+        option3_Check.setBackground(new java.awt.Color(255, 255, 204));
+        option3_Check.setText("Balcony");
+        option3_Check.setMaximumSize(new java.awt.Dimension(50, 50));
 
-        facility2_Check.setBackground(new java.awt.Color(255, 255, 204));
-        facility2_Check.setText("Room Service");
-        facility2_Check.setMaximumSize(new java.awt.Dimension(50, 50));
+        option2_Check.setBackground(new java.awt.Color(255, 255, 204));
+        option2_Check.setText("Room Service");
+        option2_Check.setMaximumSize(new java.awt.Dimension(50, 50));
 
-        facility5_Check.setBackground(new java.awt.Color(255, 255, 204));
-        facility5_Check.setText("Bathtub");
-        facility5_Check.setMaximumSize(new java.awt.Dimension(50, 50));
-        facility5_Check.addActionListener(new java.awt.event.ActionListener() {
+        option5_Check.setBackground(new java.awt.Color(255, 255, 204));
+        option5_Check.setText("Bathtub");
+        option5_Check.setMaximumSize(new java.awt.Dimension(50, 50));
+        option5_Check.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                facility5_CheckActionPerformed(evt);
+                option5_CheckActionPerformed(evt);
             }
         });
 
-        facility8_Check.setBackground(new java.awt.Color(255, 255, 204));
-        facility8_Check.setText("Gym");
-        facility8_Check.setMaximumSize(new java.awt.Dimension(50, 50));
+        option8_Check.setBackground(new java.awt.Color(255, 255, 204));
+        option8_Check.setText("Gym");
+        option8_Check.setMaximumSize(new java.awt.Dimension(50, 50));
 
-        facility7_Check.setBackground(new java.awt.Color(255, 255, 204));
-        facility7_Check.setText("Swimming Pool");
-        facility7_Check.setMaximumSize(new java.awt.Dimension(50, 50));
-        facility7_Check.addActionListener(new java.awt.event.ActionListener() {
+        option7_Check.setBackground(new java.awt.Color(255, 255, 204));
+        option7_Check.setText("Swimming Pool");
+        option7_Check.setMaximumSize(new java.awt.Dimension(50, 50));
+        option7_Check.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                facility7_CheckActionPerformed(evt);
+                option7_CheckActionPerformed(evt);
             }
         });
 
-        facility6_Check.setBackground(new java.awt.Color(255, 255, 204));
-        facility6_Check.setText("Restaurant");
-        facility6_Check.setMaximumSize(new java.awt.Dimension(50, 50));
+        option6_Check.setBackground(new java.awt.Color(255, 255, 204));
+        option6_Check.setText("Restaurant");
+        option6_Check.setMaximumSize(new java.awt.Dimension(50, 50));
 
-        facilityOption_Lbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        facilityOption_Lbl.setText("Bed Type:");
+        optionRadio_Lbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        optionRadio_Lbl.setText("Bed Type:");
 
-        facilityOption1_Rb.setBackground(new java.awt.Color(255, 255, 204));
-        facilityOption1_Rb.setText("Simple");
+        optionRadio1_Rb.setBackground(new java.awt.Color(255, 255, 204));
+        optionRadio.add(optionRadio1_Rb);
+        optionRadio1_Rb.setText("Simple");
 
-        facilityOption2_Rb.setBackground(new java.awt.Color(255, 255, 204));
-        facilityOption2_Rb.setText("Double");
+        optionRadio2_Rb.setBackground(new java.awt.Color(255, 255, 204));
+        optionRadio.add(optionRadio2_Rb);
+        optionRadio2_Rb.setText("Double");
 
-        facilityOption3_Rb.setBackground(new java.awt.Color(255, 255, 204));
-        facilityOption3_Rb.setText("King Size");
+        optionRadio3_Rb.setBackground(new java.awt.Color(255, 255, 204));
+        optionRadio.add(optionRadio3_Rb);
+        optionRadio3_Rb.setText("King Size");
 
         add_Btn.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         add_Btn.setText("Add Room");
 
         clear_Btn.setText("Clear Form");
+        clear_Btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clear_BtnActionPerformed(evt);
+            }
+        });
 
         viewAll_Btn.setText("View All");
 
@@ -426,36 +455,36 @@ public class RoomGUI extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, backgroundPanelLayout.createSequentialGroup()
                                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(backgroundPanelLayout.createSequentialGroup()
-                                        .addComponent(facilityOption_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(optionRadio_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(48, 48, 48)
-                                        .addComponent(facilityOption1_Rb, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(optionRadio1_Rb, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(backgroundPanelLayout.createSequentialGroup()
                                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(backgroundPanelLayout.createSequentialGroup()
                                                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(facility2_Check, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(facility1_Check, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(option2_Check, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(option1_Check, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(0, 0, Short.MAX_VALUE))
                                             .addComponent(removeHeader_Lbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGap(18, 18, 18)
                                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(facility4_Check, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                                            .addComponent(facility3_Check, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                            .addComponent(option4_Check, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                            .addComponent(option3_Check, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundPanelLayout.createSequentialGroup()
                                                 .addComponent(deleteID_Lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(deleteID_Tf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addGap(18, 18, 18)
                                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(facilityOption2_Rb, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(facility5_Check, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(facility6_Check, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(optionRadio2_Rb, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(option5_Check, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(option6_Check, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(deleteRoomType_Combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(facility8_Check, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                                    .addComponent(facility7_Check, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                                    .addComponent(facilityOption3_Rb, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                    .addComponent(option8_Check, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                    .addComponent(option7_Check, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                    .addComponent(optionRadio3_Rb, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                                     .addComponent(delete_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -524,29 +553,29 @@ public class RoomGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(facilitiesHeader_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(facilityOption1_Rb)
-                    .addComponent(facilityOption2_Rb)
-                    .addComponent(facilityOption3_Rb)
-                    .addComponent(facilityOption_Lbl))
+                    .addComponent(optionRadio1_Rb)
+                    .addComponent(optionRadio2_Rb)
+                    .addComponent(optionRadio3_Rb)
+                    .addComponent(optionRadio_Lbl))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
-                        .addComponent(facility1_Check, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(option1_Check, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(facility2_Check, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(option2_Check, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(facility3_Check, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(facility5_Check, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(facility7_Check, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(option3_Check, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(option5_Check, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(option7_Check, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(clear_Btn))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(facility4_Check, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(facility6_Check, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(facility8_Check, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(option4_Check, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(option6_Check, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(option8_Check, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(add_Btn))))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -587,17 +616,17 @@ public class RoomGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_viewBB_BtnActionPerformed
 
-    private void facility7_CheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facility7_CheckActionPerformed
+    private void option7_CheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option7_CheckActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_facility7_CheckActionPerformed
+    }//GEN-LAST:event_option7_CheckActionPerformed
 
-    private void facility5_CheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facility5_CheckActionPerformed
+    private void option5_CheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option5_CheckActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_facility5_CheckActionPerformed
+    }//GEN-LAST:event_option5_CheckActionPerformed
 
-    private void facility1_CheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facility1_CheckActionPerformed
+    private void option1_CheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option1_CheckActionPerformed
 
-    }//GEN-LAST:event_facility1_CheckActionPerformed
+    }//GEN-LAST:event_option1_CheckActionPerformed
 
     private void kmCityCentre_TfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kmCityCentre_TfActionPerformed
         // TODO add your handling code here:
@@ -614,46 +643,46 @@ public class RoomGUI extends javax.swing.JFrame {
     private void roomType_ComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomType_ComboActionPerformed
         if (roomType_Combo.getSelectedItem().equals("Hotel Room")) {
             facilitiesHeader_Lbl.setText("Options - Hotel");
-            facility1_Check.setText("24/7 Reception");
-            facility2_Check.setText("Room Service");
-            facility3_Check.setText("Balcony");
-            facility4_Check.setText("Minibar");
-            facility5_Check.setText("Bathtub");
-            facility6_Check.setText("Restaurant");
-            facility7_Check.setText("Swimming pool");
-            facility8_Check.setText("Gym");
-            facilityOption_Lbl.setText("Bed Type:");
-            facilityOption1_Rb.setText("Simple");
-            facilityOption2_Rb.setText("Double");
-            facilityOption3_Rb.setText("King Size");
+            option1_Check.setText("24/7 Reception");
+            option2_Check.setText("Room Service");
+            option3_Check.setText("Balcony");
+            option4_Check.setText("Minibar");
+            option5_Check.setText("Bathtub");
+            option6_Check.setText("Restaurant");
+            option7_Check.setText("Swimming pool");
+            option8_Check.setText("Gym");
+            optionRadio_Lbl.setText("Bed Type:");
+            optionRadio1_Rb.setText("Simple");
+            optionRadio2_Rb.setText("Double");
+            optionRadio3_Rb.setText("King Size");
         } else if (roomType_Combo.getSelectedItem().equals("Hostel Room")){
             facilitiesHeader_Lbl.setText("Options - Hostel");
-            facility1_Check.setText("24/7 Reception");
-            facility2_Check.setText("Private Rooms");
-            facility3_Check.setText("Lockers");
-            facility4_Check.setText("Bar");
-            facility5_Check.setText("Private Bathroom");
-            facility6_Check.setText("Shared Kitchen");
-            facility7_Check.setText("Washing Machine");
-            facility8_Check.setText("Long Stay Option");
-            facilityOption_Lbl.setText("Dormitory Type:");
-            facilityOption1_Rb.setText("Female");
-            facilityOption2_Rb.setText("Male");
-            facilityOption3_Rb.setText("Mixed");
+            option1_Check.setText("24/7 Reception");
+            option2_Check.setText("Private Rooms");
+            option3_Check.setText("Lockers");
+            option4_Check.setText("Bar");
+            option5_Check.setText("Private Bathroom");
+            option6_Check.setText("Shared Kitchen");
+            option7_Check.setText("Washing Machine");
+            option8_Check.setText("Long Stay Option");
+            optionRadio_Lbl.setText("Dormitory Type:");
+            optionRadio1_Rb.setText("Female");
+            optionRadio2_Rb.setText("Male");
+            optionRadio3_Rb.setText("Mixed");
         } else {
             facilitiesHeader_Lbl.setText("Options - Bed & Breakfast");
-            facility1_Check.setText("Owner Occupied");
-            facility2_Check.setText("Pet Friendly");
-            facility3_Check.setText("Kitchen Area");
-            facility4_Check.setText("Cleaning Option");
-            facility5_Check.setText("Towels Provided");
-            facility6_Check.setText("Linen Provided");
-            facility7_Check.setText("Washing Machine");
-            facility8_Check.setText("Linen Provided");
-            facilityOption_Lbl.setText("Bedrooms:");
-            facilityOption1_Rb.setText("1");
-            facilityOption2_Rb.setText("2");
-            facilityOption3_Rb.setText("3");
+            option1_Check.setText("Owner Occupied");
+            option2_Check.setText("Pet Friendly");
+            option3_Check.setText("Kitchen Area");
+            option4_Check.setText("Cleaning Option");
+            option5_Check.setText("Towels Provided");
+            option6_Check.setText("Linen Provided");
+            option7_Check.setText("Washing Machine");
+            option8_Check.setText("Linen Provided");
+            optionRadio_Lbl.setText("Bedrooms:");
+            optionRadio1_Rb.setText("1");
+            optionRadio2_Rb.setText("2");
+            optionRadio3_Rb.setText("3");
         }
     }//GEN-LAST:event_roomType_ComboActionPerformed
 
@@ -713,6 +742,10 @@ public class RoomGUI extends javax.swing.JFrame {
         b.setVisible(true);
     }//GEN-LAST:event_bookingsBtnMouseClicked
 
+    private void clear_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clear_BtnActionPerformed
+        clearForm();
+    }//GEN-LAST:event_clear_BtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -768,18 +801,6 @@ public class RoomGUI extends javax.swing.JFrame {
     private javax.swing.JButton delete_Btn;
     private javax.swing.JLabel euroSymbol_Lbl;
     private javax.swing.JLabel facilitiesHeader_Lbl;
-    private javax.swing.JCheckBox facility1_Check;
-    private javax.swing.JCheckBox facility2_Check;
-    private javax.swing.JCheckBox facility3_Check;
-    private javax.swing.JCheckBox facility4_Check;
-    private javax.swing.JCheckBox facility5_Check;
-    private javax.swing.JCheckBox facility6_Check;
-    private javax.swing.JCheckBox facility7_Check;
-    private javax.swing.JCheckBox facility8_Check;
-    private javax.swing.JRadioButton facilityOption1_Rb;
-    private javax.swing.JRadioButton facilityOption2_Rb;
-    private javax.swing.JRadioButton facilityOption3_Rb;
-    private javax.swing.JLabel facilityOption_Lbl;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
@@ -791,6 +812,19 @@ public class RoomGUI extends javax.swing.JFrame {
     private javax.swing.JLabel maxGuests_Lbl;
     private javax.swing.JTextField maxGuests_Tf;
     private javax.swing.JLabel mngRoomHeader_Lbl;
+    private javax.swing.JCheckBox option1_Check;
+    private javax.swing.JCheckBox option2_Check;
+    private javax.swing.JCheckBox option3_Check;
+    private javax.swing.JCheckBox option4_Check;
+    private javax.swing.JCheckBox option5_Check;
+    private javax.swing.JCheckBox option6_Check;
+    private javax.swing.JCheckBox option7_Check;
+    private javax.swing.JCheckBox option8_Check;
+    private javax.swing.ButtonGroup optionRadio;
+    private javax.swing.JRadioButton optionRadio1_Rb;
+    private javax.swing.JRadioButton optionRadio2_Rb;
+    private javax.swing.JRadioButton optionRadio3_Rb;
+    private javax.swing.JLabel optionRadio_Lbl;
     private javax.swing.JCheckBox parking_Check;
     private javax.swing.JLabel parking_Lbl;
     private javax.swing.JLabel price_Lbl;
