@@ -5,11 +5,13 @@
  */
 package hotelapp;
 
+import java.io.Serializable;
+
 /**
  *
  * @author robert
  */
-public class Room {
+public class Room implements Serializable {
 
     private String roomID;
     private String roomType;

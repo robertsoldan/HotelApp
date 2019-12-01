@@ -5,11 +5,13 @@
  */
 package hotelapp;
 
+import java.io.Serializable;
+
 /**
  *
  * @author robert
  */
-public class BedAndBreakfast extends Room{
+public class BedAndBreakfast extends Room implements Serializable {
     
     private int numberBedrooms;
     private boolean isOwnerOccupied;

@@ -5,11 +5,13 @@
  */
 package hotelapp;
 
+import java.io.Serializable;
+
 /**
  *
  * @author robert
  */
-public class Hotel extends Room{
+public class Hotel extends Room implements Serializable {
      
     private String bedType;
     private boolean has24HReception;

@@ -5,6 +5,12 @@
  */
 package hotelapp;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -15,7 +21,9 @@ import javax.swing.JOptionPane;
  */
 public class RoomGUI extends javax.swing.JFrame {
 
-    private ArrayList<Room> roomList = new ArrayList<>();
+    private ArrayList<Hotel> hotelList = new ArrayList<>();
+    private ArrayList<Hostel> hostelList = new ArrayList<>();
+    private ArrayList<BedAndBreakfast> bbList = new ArrayList<>();
     
     public RoomGUI() {
         initComponents();
@@ -95,7 +103,6 @@ public class RoomGUI extends javax.swing.JFrame {
         optionRadio3_Rb = new javax.swing.JRadioButton();
         add_Btn = new javax.swing.JButton();
         clear_Btn = new javax.swing.JButton();
-        viewAll_Btn = new javax.swing.JButton();
         viewHotel_Btn = new javax.swing.JButton();
         viewHostel_Btn = new javax.swing.JButton();
         viewBB_Btn = new javax.swing.JButton();
@@ -351,11 +358,19 @@ public class RoomGUI extends javax.swing.JFrame {
             }
         });
 
-        viewAll_Btn.setText("View All");
-
         viewHotel_Btn.setText("Hotel Rooms");
+        viewHotel_Btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewHotel_BtnActionPerformed(evt);
+            }
+        });
 
         viewHostel_Btn.setText("Hostel Rooms");
+        viewHostel_Btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewHostel_BtnActionPerformed(evt);
+            }
+        });
 
         viewBB_Btn.setText("Bed & Breakfasts");
         viewBB_Btn.addActionListener(new java.awt.event.ActionListener() {
@@ -365,6 +380,11 @@ public class RoomGUI extends javax.swing.JFrame {
         });
 
         delete_Btn.setText("Delete");
+        delete_Btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete_BtnActionPerformed(evt);
+            }
+        });
 
         removeHeader_Lbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         removeHeader_Lbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -497,7 +517,6 @@ public class RoomGUI extends javax.swing.JFrame {
                             .addComponent(viewBB_Btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(viewHostel_Btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(viewHotel_Btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(viewAll_Btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(save_Btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(clear_Btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(add_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -508,57 +527,57 @@ public class RoomGUI extends javax.swing.JFrame {
         backgroundPanelLayout.setVerticalGroup(
             backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgroundPanelLayout.createSequentialGroup()
+                .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(mngRoomHeader_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(createHeader_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(catalogueHeader_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
-                        .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(mngRoomHeader_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(createHeader_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(catalogueHeader_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundPanelLayout.createSequentialGroup()
-                                .addComponent(viewAll_Btn)
-                                .addGap(18, 18, 18)
-                                .addComponent(viewHotel_Btn)
-                                .addGap(18, 18, 18)
-                                .addComponent(viewHostel_Btn)
-                                .addGap(18, 18, 18)
-                                .addComponent(viewBB_Btn))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundPanelLayout.createSequentialGroup()
-                                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(roomType_Lbl)
-                                    .addComponent(roomID_Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(roomType_Combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(roomID_Lbl)
-                                    .addComponent(maxGuests_Lbl)
-                                    .addComponent(maxGuests_Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(address_Lbl)
-                                    .addComponent(address_Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(breakfast_Lbl)
-                                    .addComponent(breakfast_Check))
-                                .addGap(22, 22, 22)
-                                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(city_Lbl)
-                                    .addComponent(city_Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(parking_Lbl)
-                                    .addComponent(parking_Check))
-                                .addGap(18, 18, 18)
-                                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(price_Lbl)
-                                        .addComponent(price_Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(euroSymbol_Lbl))
-                                    .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(kmCityCentre_Lbl)
-                                        .addComponent(kmCityCentre_Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(20, 20, 20)
+                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(roomType_Lbl)
+                            .addComponent(roomID_Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(roomType_Combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(roomID_Lbl)
+                            .addComponent(maxGuests_Lbl)
+                            .addComponent(maxGuests_Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(facilitiesHeader_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(viewHotel_Btn)))
+                .addGap(18, 18, 18)
+                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(address_Lbl)
+                        .addComponent(address_Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(breakfast_Lbl)
+                        .addComponent(breakfast_Check))
+                    .addComponent(viewHostel_Btn))
+                .addGap(18, 18, 18)
+                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(backgroundPanelLayout.createSequentialGroup()
+                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(city_Lbl)
+                            .addComponent(city_Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(parking_Lbl)
+                            .addComponent(parking_Check))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundPanelLayout.createSequentialGroup()
+                        .addComponent(viewBB_Btn)
+                        .addGap(18, 18, 18)))
+                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(price_Lbl)
+                        .addComponent(price_Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(euroSymbol_Lbl))
+                    .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(kmCityCentre_Lbl)
+                        .addComponent(kmCityCentre_Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(facilitiesHeader_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(optionRadio1_Rb)
@@ -612,11 +631,67 @@ public class RoomGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteRoomType_ComboActionPerformed
 
     private void save_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_BtnActionPerformed
-        // TODO add your handling code here:
+        if (hotelList.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No hotel room found.");
+        } else {
+            try {
+                File outFile = new File("hotels.data");
+                FileOutputStream fStream = new FileOutputStream(outFile);
+                ObjectOutputStream oStream = new ObjectOutputStream(fStream);
+                oStream.writeObject(hotelList);
+                oStream.close();
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+            JOptionPane.showMessageDialog(null, "Hotel rooms saved successfully.");
+        }
+
+        if (hostelList.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "No hostel room found.");
+            } else {
+                try {
+                    File outFile = new File("hostels.data");
+                    FileOutputStream fStream = new FileOutputStream(outFile);
+                    ObjectOutputStream oStream = new ObjectOutputStream(fStream);
+                    oStream.writeObject(hostelList);
+                    oStream.close();
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+                JOptionPane.showMessageDialog(null, "Hostel rooms saved successfully.");
+        }
+        
+        if (bbList.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "No Bed & Breakfast room found.");
+            } else {
+                try {
+                    File outFile = new File("bedandbreakfasts.data");
+                    FileOutputStream fStream = new FileOutputStream(outFile);
+                    ObjectOutputStream oStream = new ObjectOutputStream(fStream);
+                    oStream.writeObject(bbList);
+                    oStream.close();
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+                JOptionPane.showMessageDialog(null, "Bed & Breakfast rooms saved successfully.");
+        }
     }//GEN-LAST:event_save_BtnActionPerformed
 
     private void viewBB_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBB_BtnActionPerformed
-        // TODO add your handling code here:
+        try {
+            File inFile = new File("bedandbreakfasts.data");
+            FileInputStream fStream = new FileInputStream(inFile);
+            ObjectInputStream oStream = new ObjectInputStream(fStream);
+            ArrayList<BedAndBreakfast> bbList = (ArrayList<BedAndBreakfast>)oStream.readObject();
+            for (BedAndBreakfast bb : bbList) {
+                JOptionPane.showMessageDialog(null, bb.getDetails());
+            }
+            oStream.close();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "IOException: " + e);
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "ClassNotFoundException: " +e);
+        }      
     }//GEN-LAST:event_viewBB_BtnActionPerformed
 
     private void option7_CheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option7_CheckActionPerformed
@@ -756,34 +831,72 @@ public class RoomGUI extends javax.swing.JFrame {
             optionRadio1_Rb.setActionCommand("Single");
             optionRadio2_Rb.setActionCommand("Double");
             optionRadio3_Rb.setActionCommand("King Size");
-            Room hotel = new Hotel(optionRadio.getSelection().getActionCommand(), option1_Check.isSelected(), option2_Check.isSelected(), option3_Check.isSelected(),
+            Hotel hotel = new Hotel(optionRadio.getSelection().getActionCommand(), option1_Check.isSelected(), option2_Check.isSelected(), option3_Check.isSelected(),
                 option4_Check.isSelected(), option5_Check.isSelected(), option6_Check.isSelected(), option7_Check.isSelected(), option8_Check.isSelected(), roomID_Tf.getText(),
                 roomType_Combo.getSelectedItem().toString(), address_Tf.getText(), city_Tf.getText(), Double.parseDouble(price_Tf.getText()), Integer.parseInt(maxGuests_Tf.getText()),
                 breakfast_Check.isSelected(), parking_Check.isSelected(), Integer.parseInt(kmCityCentre_Tf.getText()));
             JOptionPane.showMessageDialog(null, "***NEW HOTEL ROOM ADDED***\n" + hotel.getDetails());
-            roomList.add(hotel);
+            hotelList.add(hotel);
         } else if (roomType_Combo.getSelectedItem().toString().equals("Hostel Room")) {
             optionRadio1_Rb.setActionCommand("Female");
             optionRadio2_Rb.setActionCommand("Male");
             optionRadio3_Rb.setActionCommand("Mixed");
-            Room hostel = new Hostel(optionRadio.getSelection().getActionCommand(), option1_Check.isSelected(), option2_Check.isSelected(), option3_Check.isSelected(),
+            Hostel hostel = new Hostel(optionRadio.getSelection().getActionCommand(), option1_Check.isSelected(), option2_Check.isSelected(), option3_Check.isSelected(),
                 option4_Check.isSelected(), option5_Check.isSelected(), option6_Check.isSelected(), option7_Check.isSelected(), option8_Check.isSelected(), roomID_Tf.getText(),
                 roomType_Combo.getSelectedItem().toString(), address_Tf.getText(), city_Tf.getText(), Double.parseDouble(price_Tf.getText()), Integer.parseInt(maxGuests_Tf.getText()),
                 breakfast_Check.isSelected(), parking_Check.isSelected(), Integer.parseInt(kmCityCentre_Tf.getText()));
             JOptionPane.showMessageDialog(null, "***NEW HOSTEL ROOM ADDED***\n" + hostel.getDetails());
-            roomList.add(hostel);
+            hostelList.add(hostel);
         } else {
             optionRadio1_Rb.setActionCommand("1");
             optionRadio2_Rb.setActionCommand("2");
             optionRadio3_Rb.setActionCommand("3");
-            Room bedAndB = new BedAndBreakfast(Integer.parseInt(optionRadio.getSelection().getActionCommand().toString()), option1_Check.isSelected(), option2_Check.isSelected(), option3_Check.isSelected(),
+            BedAndBreakfast bb = new BedAndBreakfast(Integer.parseInt(optionRadio.getSelection().getActionCommand().toString()), option1_Check.isSelected(), option2_Check.isSelected(), option3_Check.isSelected(),
                 option4_Check.isSelected(), option5_Check.isSelected(), option6_Check.isSelected(), option7_Check.isSelected(), option8_Check.isSelected(), roomID_Tf.getText(),
                 roomType_Combo.getSelectedItem().toString(), address_Tf.getText(), city_Tf.getText(), Double.parseDouble(price_Tf.getText()), Integer.parseInt(maxGuests_Tf.getText()),
                 breakfast_Check.isSelected(), parking_Check.isSelected(), Integer.parseInt(kmCityCentre_Tf.getText()));
-            JOptionPane.showMessageDialog(null, "***NEW BED AND BREAKFAST ADDED***\n" + bedAndB.getDetails());
-            roomList.add(bedAndB);
+            JOptionPane.showMessageDialog(null, "***NEW BED AND BREAKFAST ADDED***\n" + bb.getDetails());
+            bbList.add(bb);
         }
     }//GEN-LAST:event_add_BtnActionPerformed
+
+    private void delete_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_BtnActionPerformed
+
+    }//GEN-LAST:event_delete_BtnActionPerformed
+
+    private void viewHotel_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewHotel_BtnActionPerformed
+        try {
+            File inFile = new File("hotels.data");
+            FileInputStream fStream = new FileInputStream(inFile);
+            ObjectInputStream oStream = new ObjectInputStream(fStream);
+            ArrayList<Hotel> hotelList = (ArrayList<Hotel>)oStream.readObject();
+            for (Hotel h : hotelList) {
+                JOptionPane.showMessageDialog(null, h.getDetails());
+            }
+            oStream.close();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "IOException: " + e);
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "ClassNotFoundException: " +e);
+        }       
+    }//GEN-LAST:event_viewHotel_BtnActionPerformed
+
+    private void viewHostel_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewHostel_BtnActionPerformed
+        try {
+            File inFile = new File("hostels.data");
+            FileInputStream fStream = new FileInputStream(inFile);
+            ObjectInputStream oStream = new ObjectInputStream(fStream);
+            ArrayList<Hostel> hostelList = (ArrayList<Hostel>)oStream.readObject();
+            for (Hostel h : hostelList) {
+                JOptionPane.showMessageDialog(null, h.getDetails());
+            }
+            oStream.close();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "IOException: " + e);
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "ClassNotFoundException: " +e);
+        }       
+    }//GEN-LAST:event_viewHostel_BtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -877,7 +990,6 @@ public class RoomGUI extends javax.swing.JFrame {
     private javax.swing.JLabel searchBtn;
     private javax.swing.JLabel splitter1;
     private javax.swing.JLabel splitter2;
-    private javax.swing.JButton viewAll_Btn;
     private javax.swing.JButton viewBB_Btn;
     private javax.swing.JButton viewHostel_Btn;
     private javax.swing.JButton viewHotel_Btn;

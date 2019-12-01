@@ -186,7 +186,6 @@
                               <Component id="viewBB_Btn" alignment="0" pref="200" max="32767" attributes="0"/>
                               <Component id="viewHostel_Btn" alignment="0" max="32767" attributes="0"/>
                               <Component id="viewHotel_Btn" alignment="0" max="32767" attributes="0"/>
-                              <Component id="viewAll_Btn" alignment="0" max="32767" attributes="0"/>
                               <Component id="save_Btn" alignment="0" max="32767" attributes="0"/>
                               <Component id="clear_Btn" alignment="0" max="32767" attributes="0"/>
                               <Component id="add_Btn" max="32767" attributes="0"/>
@@ -202,69 +201,71 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+                  <Component id="headerPanel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="mngRoomHeader_Lbl" min="-2" pref="50" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="createHeader_Lbl" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="catalogueHeader_Lbl" min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="headerPanel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="mngRoomHeader_Lbl" min="-2" pref="50" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="createHeader_Lbl" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="catalogueHeader_Lbl" min="-2" pref="30" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="roomType_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="roomID_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="roomType_Combo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="roomID_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="maxGuests_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="maxGuests_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="viewHotel_Btn" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="address_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="address_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="breakfast_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="breakfast_Check" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="viewHostel_Btn" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="city_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="city_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="parking_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="parking_Check" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="viewAll_Btn" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="viewHotel_Btn" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="viewHostel_Btn" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="viewBB_Btn" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="roomType_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="roomID_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="roomType_Combo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="roomID_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="maxGuests_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="maxGuests_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="address_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="address_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="breakfast_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="breakfast_Check" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="city_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="city_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="parking_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="parking_Check" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="price_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="price_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="euroSymbol_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                          <Component id="kmCityCentre_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="kmCityCentre_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="facilitiesHeader_Lbl" min="-2" pref="25" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="viewBB_Btn" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="price_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="price_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="euroSymbol_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="kmCityCentre_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="kmCityCentre_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="facilitiesHeader_Lbl" min="-2" pref="25" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="optionRadio1_Rb" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -740,20 +741,21 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clear_BtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="viewAll_Btn">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="View All"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="viewHotel_Btn">
           <Properties>
             <Property name="text" type="java.lang.String" value="Hotel Rooms"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewHotel_BtnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="viewHostel_Btn">
           <Properties>
             <Property name="text" type="java.lang.String" value="Hostel Rooms"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewHostel_BtnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="viewBB_Btn">
           <Properties>
@@ -767,6 +769,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Delete"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delete_BtnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="removeHeader_Lbl">
           <Properties>
