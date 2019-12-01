@@ -271,29 +271,24 @@
                       <Component id="optionRadio2_Rb" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="optionRadio3_Rb" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="optionRadio_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="clear_Btn" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="option1_Check" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="option2_Check" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="option3_Check" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="option5_Check" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="option7_Check" alignment="3" max="32767" attributes="0"/>
+                      <Component id="option1_Check" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="option4_Check" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="option6_Check" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="option8_Check" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="add_Btn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="option3_Check" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="option5_Check" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="option7_Check" alignment="3" max="32767" attributes="0"/>
-                              <Component id="clear_Btn" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="option4_Check" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="option6_Check" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="option8_Check" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="add_Btn" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="option2_Check" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
@@ -733,6 +728,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Add Room"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="add_BtnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="clear_Btn">
           <Properties>
