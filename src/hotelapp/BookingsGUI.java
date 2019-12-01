@@ -79,7 +79,6 @@ public class BookingsGUI extends javax.swing.JFrame {
         nightsTf = new javax.swing.JTextField();
         checkInDateTf = new javax.swing.JTextField();
         checkOutDateTf = new javax.swing.JTextField();
-        totalPriceLbl2 = new javax.swing.JLabel();
         retrieveLbl = new javax.swing.JLabel();
         bookingIDLbl = new javax.swing.JLabel();
         bookingIDTf = new javax.swing.JTextField();
@@ -102,6 +101,7 @@ public class BookingsGUI extends javax.swing.JFrame {
         totalPrice2Lbl2 = new javax.swing.JLabel();
         amendBookingBtn = new javax.swing.JButton();
         delBookingBtn = new javax.swing.JButton();
+        totalPriceTf = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -293,7 +293,7 @@ public class BookingsGUI extends javax.swing.JFrame {
                                     .addComponent(nightsTf)
                                     .addComponent(checkInDateTf)
                                     .addComponent(checkOutDateTf)
-                                    .addComponent(totalPriceLbl2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                    .addComponent(totalPriceTf)))))
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
                         .addGap(164, 164, 164)
                         .addComponent(BookBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -397,9 +397,9 @@ public class BookingsGUI extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(totalPriceLbl)
-                    .addComponent(totalPriceLbl2)
                     .addComponent(checkOutDate2Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkOutDate2Lbl))
+                    .addComponent(checkOutDate2Lbl)
+                    .addComponent(totalPriceTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BookBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -494,7 +494,7 @@ public class BookingsGUI extends javax.swing.JFrame {
         hotelName = hotelNameTf.getText();
         peopleNo = Integer.parseInt(peopleNoTf.getText());
         nights = Integer.parseInt(nightsTf.getText());
-        totalPrice = Double.parseDouble(totalPriceLbl.getText());
+        totalPrice = Double.parseDouble(totalPriceTf.getText());
         roomID = Integer.toString((int) (Math.random() * 1000000));
 
         ManageBooking mb = new ManageBooking();
@@ -673,6 +673,6 @@ public class BookingsGUI extends javax.swing.JFrame {
     private javax.swing.JLabel totalPrice2Lbl;
     private javax.swing.JLabel totalPrice2Lbl2;
     private javax.swing.JLabel totalPriceLbl;
-    private javax.swing.JLabel totalPriceLbl2;
+    private javax.swing.JTextField totalPriceTf;
     // End of variables declaration//GEN-END:variables
 }

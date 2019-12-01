@@ -101,7 +101,7 @@
                                       <Component id="nightsTf" max="32767" attributes="0"/>
                                       <Component id="checkInDateTf" max="32767" attributes="0"/>
                                       <Component id="checkOutDateTf" max="32767" attributes="0"/>
-                                      <Component id="totalPriceLbl2" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="totalPriceTf" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -235,9 +235,9 @@
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="totalPriceLbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="totalPriceLbl2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="checkOutDate2Tf" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="checkOutDate2Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="totalPriceTf" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="30" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -478,8 +478,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="checkOutDateTf">
         </Component>
-        <Component class="javax.swing.JLabel" name="totalPriceLbl2">
-        </Component>
         <Component class="javax.swing.JLabel" name="retrieveLbl">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -583,6 +581,8 @@
               </Border>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="totalPriceTf">
         </Component>
       </SubComponents>
     </Container>
