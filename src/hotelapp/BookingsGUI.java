@@ -102,6 +102,8 @@ public class BookingsGUI extends javax.swing.JFrame {
         amendBookingBtn = new javax.swing.JButton();
         delBookingBtn = new javax.swing.JButton();
         totalPriceTf = new javax.swing.JTextField();
+        euro1Lbl = new javax.swing.JLabel();
+        euro2Lbl = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -258,9 +260,23 @@ public class BookingsGUI extends javax.swing.JFrame {
 
         amendBookingBtn.setText("Amend booking");
         amendBookingBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        amendBookingBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                amendBookingBtnActionPerformed(evt);
+            }
+        });
 
         delBookingBtn.setText("Delete booking");
         delBookingBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        delBookingBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delBookingBtnActionPerformed(evt);
+            }
+        });
+
+        euro1Lbl.setText("€");
+
+        euro2Lbl.setText("€");
 
         javax.swing.GroupLayout backgroundPanelLayout = new javax.swing.GroupLayout(backgroundPanel);
         backgroundPanel.setLayout(backgroundPanelLayout);
@@ -293,7 +309,10 @@ public class BookingsGUI extends javax.swing.JFrame {
                                     .addComponent(nightsTf)
                                     .addComponent(checkInDateTf)
                                     .addComponent(checkOutDateTf)
-                                    .addComponent(totalPriceTf)))))
+                                    .addGroup(backgroundPanelLayout.createSequentialGroup()
+                                        .addComponent(totalPriceTf, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(euro1Lbl))))))
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
                         .addGap(164, 164, 164)
                         .addComponent(BookBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -313,7 +332,7 @@ public class BookingsGUI extends javax.swing.JFrame {
                             .addComponent(totalPrice2Lbl))
                         .addGap(63, 63, 63)
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(bookingIDTf, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(bookingIDTf)
                             .addComponent(checkLastNameTf)
                             .addComponent(fName2Tf)
                             .addComponent(checkOutDate2Tf)
@@ -321,13 +340,17 @@ public class BookingsGUI extends javax.swing.JFrame {
                             .addComponent(peopleNo2Tf)
                             .addComponent(nights2Tf)
                             .addComponent(checkInDate2Tf)
-                            .addComponent(totalPrice2Lbl2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(backgroundPanelLayout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(euro2Lbl)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(totalPrice2Lbl2, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(getBookingBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                            .addComponent(amendBookingBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(delBookingBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(32, Short.MAX_VALUE))
+                            .addComponent(getBookingBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(amendBookingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(delBookingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
         backgroundPanelLayout.setVerticalGroup(
             backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,14 +391,14 @@ public class BookingsGUI extends javax.swing.JFrame {
                             .addComponent(peopleNoTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(hotelNameLbl2)
                             .addComponent(hotelName2Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
+                        .addGap(17, 17, 17)
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nightsLbl)
                             .addComponent(nightsTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(peopleNo2Lbl)
                             .addComponent(peopleNo2Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
+                        .addGap(33, 33, 33)
                         .addComponent(amendBookingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
@@ -392,20 +415,22 @@ public class BookingsGUI extends javax.swing.JFrame {
                             .addComponent(checkInDate2Lbl)
                             .addComponent(checkInDate2Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
+                        .addGap(36, 36, 36)
                         .addComponent(delBookingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(totalPriceLbl)
                     .addComponent(checkOutDate2Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(checkOutDate2Lbl)
-                    .addComponent(totalPriceTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                    .addComponent(totalPriceTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(euro1Lbl))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BookBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(totalPrice2Lbl)
-                        .addComponent(totalPrice2Lbl2)))
+                        .addComponent(totalPrice2Lbl2)
+                        .addComponent(euro2Lbl)))
                 .addGap(46, 46, 46))
         );
 
@@ -413,15 +438,11 @@ public class BookingsGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(backgroundPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 38, Short.MAX_VALUE))
+            .addComponent(backgroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(backgroundPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 15, Short.MAX_VALUE))
+            .addComponent(backgroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -486,56 +507,118 @@ public class BookingsGUI extends javax.swing.JFrame {
 
     private void BookBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookBtnActionPerformed
 
-        bookingID = Integer.toString((int) (Math.random() * 1000000));
-        fName = fNameTf.getText();
-        lName = lNameTf.getText();
-        checkInDate = checkInDateTf.getText();
-        checkOutDate = checkOutDateTf.getText();
-        hotelName = hotelNameTf.getText();
-        peopleNo = Integer.parseInt(peopleNoTf.getText());
-        nights = Integer.parseInt(nightsTf.getText());
-        totalPrice = Double.parseDouble(totalPriceTf.getText());
-        roomID = Integer.toString((int) (Math.random() * 1000000));
+        if (fNameTf.getText().equals("") || lNameTf.getText().equals("") || checkInDateTf.getText().equals("") || checkOutDateTf.getText().equals("")
+                || hotelNameTf.getText().equals("") || peopleNoTf.getText().equals("") || nightsTf.getText().equals("") || totalPriceTf.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "You need to enter all the details in order to confrim booking");
+        } else {
+            bookingID = Integer.toString((int) (Math.random() * 1000000));
+            fName = fNameTf.getText();
+            lName = lNameTf.getText();
+            checkInDate = checkInDateTf.getText();
+            checkOutDate = checkOutDateTf.getText();
+            hotelName = hotelNameTf.getText();
+            peopleNo = Integer.parseInt(peopleNoTf.getText());
+            nights = Integer.parseInt(nightsTf.getText());
+            totalPrice = Double.parseDouble(totalPriceTf.getText());
+            roomID = Integer.toString((int) (Math.random() * 1000000));
 
-        ManageBooking mb = new ManageBooking();
+            ManageBooking mb = new ManageBooking();
 
-        mb.setBookingID(bookingID);
-        mb.setfName(fName);
-        mb.setlName(lName);
-        mb.setCheckInDate(checkInDate);
-        mb.setCheckOutDate(checkOutDate);
-        mb.setHotelName(hotelName);
-        mb.setPeopleNo(peopleNo);
-        mb.setNights(nights);
-        mb.setTotalPrice(totalPrice);
-        mb.setRoomID(roomID);
+            mb.setBookingID(bookingID);
+            mb.setfName(fName);
+            mb.setlName(lName);
+            mb.setCheckInDate(checkInDate);
+            mb.setCheckOutDate(checkOutDate);
+            mb.setHotelName(hotelName);
+            mb.setPeopleNo(peopleNo);
+            mb.setNights(nights);
+            mb.setTotalPrice(totalPrice);
+            mb.setRoomID(roomID);
 
-        File outFile;
-        FileOutputStream fStream;
-        ObjectOutputStream oStream;
-        aList.add(mb);
-        count++;
-        
-        try {
+            File outFile;
+            FileOutputStream fStream;
+            ObjectOutputStream oStream;
+            aList.add(mb);
+            count++;
 
-            outFile = new File("booking.data");
-            fStream = new FileOutputStream(outFile);
-            oStream = new ObjectOutputStream(fStream);
+            try {
 
-            oStream.writeObject(aList); 
+                outFile = new File("booking.data");
+                fStream = new FileOutputStream(outFile);
+                oStream = new ObjectOutputStream(fStream);
 
-            JOptionPane.showMessageDialog(null, "Yout booking ID is " + mb.getBookingID());
+                oStream.writeObject(aList);
 
-            oStream.close();
+                JOptionPane.showMessageDialog(null, "Yout booking ID is " + mb.getBookingID());
 
-        } catch (IOException e) {
-            System.out.println("Error while booking" + e);
-        }
-        
+                oStream.close();
+
+            } catch (IOException e) {
+                System.out.println("Error while booking" + e);
+            }
+
     }//GEN-LAST:event_BookBtnActionPerformed
-
+    }
     private void getBookingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getBookingBtnActionPerformed
-        
+
+        if (bookingIDTf.getText().equals("") || checkLastNameTf.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "You need to enter booking ID and last name to get the result");
+        } else {
+
+            String checkBookingID = bookingIDTf.getText();
+            String checkLastName = checkLastNameTf.getText();
+
+            File inFile;
+            FileInputStream fStream;
+            ObjectInputStream oStream;
+
+            try {
+                inFile = new File("booking.data");
+                fStream = new FileInputStream(inFile);
+                oStream = new ObjectInputStream(fStream);
+
+                ArrayList<ManageBooking> xList;
+
+                xList = (ArrayList<ManageBooking>) oStream.readObject();
+
+                boolean found = false;
+                // 
+                for (ManageBooking x : xList) {
+                    for (int i = 0; i < xList.size(); i++) {
+                        if (checkBookingID.equalsIgnoreCase(x.getBookingID()) && checkLastName.equalsIgnoreCase(x.getlName())) {
+
+                            found = true;
+
+                            fName2Tf.setText(x.getfName());
+                            checkInDate2Tf.setText(x.getCheckInDate());
+                            checkOutDate2Tf.setText(x.getCheckOutDate());
+                            hotelName2Tf.setText(x.getHotelName());
+                            peopleNo2Tf.setText(Integer.toString(x.getPeopleNo()));
+                            nights2Tf.setText(Integer.toString(x.getNights()));
+                            totalPrice2Lbl2.setText(Double.toString(x.getTotalPrice()));
+                            break;
+                        }
+                    }
+                }
+                if (!found) {
+
+                    JOptionPane.showMessageDialog(null, "Booking not found.");
+
+                }
+
+                oStream.close();
+
+            } catch (IOException e) {
+                System.out.println(e);
+            } catch (ClassNotFoundException x) {
+                System.out.println(x);
+            }
+
+        }
+    }//GEN-LAST:event_getBookingBtnActionPerformed
+
+    private void amendBookingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amendBookingBtnActionPerformed
+
         String checkBookingID = bookingIDTf.getText();
         String checkLastName = checkLastNameTf.getText();
 
@@ -552,41 +635,82 @@ public class BookingsGUI extends javax.swing.JFrame {
 
             xList = (ArrayList<ManageBooking>) oStream.readObject();
 
-            boolean found = false;
-            // 
+            boolean found1 = false;
+
             for (ManageBooking x : xList) {
+
                 for (int i = 0; i < xList.size(); i++) {
                     if (checkBookingID.equalsIgnoreCase(x.getBookingID()) && checkLastName.equalsIgnoreCase(x.getlName())) {
+                        found1 = true;
 
-                        found = true;
+                        bookingID = Integer.toString((int) (Math.random() * 1000000));
+                        fName = fName2Tf.getText();
+                        lName = checkLastNameTf.getText();
+                        checkInDate = checkInDate2Tf.getText();
+                        checkOutDate = checkOutDate2Tf.getText();
+                        hotelName = hotelName2Tf.getText();
+                        peopleNo = Integer.parseInt(peopleNo2Tf.getText());
+                        nights = Integer.parseInt(nights2Tf.getText());
+                        totalPrice = Double.parseDouble(totalPrice2Lbl2.getText());
+                        roomID = Integer.toString((int) (Math.random() * 1000000));
 
-                        fName2Tf.setText(x.getfName());
-                        checkInDate2Tf.setText(x.getCheckInDate());
-                        checkOutDate2Tf.setText(x.getCheckOutDate());
-                        hotelName2Tf.setText(x.getHotelName());
-                        peopleNo2Tf.setText(Integer.toString(x.getPeopleNo()));
-                        nights2Tf.setText(Integer.toString(x.getNights()));
-                        totalPrice2Lbl2.setText(Double.toString(x.getTotalPrice()));
-                        break;
+                        ManageBooking mb = new ManageBooking();
+                        mb.setBookingID(bookingID);
+                        mb.setfName(fName);
+                        mb.setlName(lName);
+                        mb.setCheckInDate(checkInDate);
+                        mb.setCheckOutDate(checkOutDate);
+                        mb.setHotelName(hotelName);
+                        mb.setPeopleNo(peopleNo);
+                        mb.setNights(nights);
+                        mb.setTotalPrice(totalPrice);
+                        mb.setRoomID(roomID);
+
+                        File outFile;
+                        FileOutputStream ffStream;
+                        ObjectOutputStream ooStream;
+                        aList.add(mb);
+
+                        try {
+
+                            outFile = new File("booking.data");
+                            ffStream = new FileOutputStream(outFile);
+                            ooStream = new ObjectOutputStream(ffStream);
+
+                            ooStream.writeObject(aList);
+
+                            ooStream.close();
+
+                        } catch (IOException e) {
+                            System.out.println("Error while amending booking" + e);
+                        }
                     }
+
                 }
+
             }
-            if (!found) {
+            oStream.close();
+
+            if (!found1) {
 
                 JOptionPane.showMessageDialog(null, "Booking not found.");
 
-            }
+            } else {
+                JOptionPane.showMessageDialog(null, "Yout booking had been amended. Your new booking ID is " + bookingID);
 
-            oStream.close();
+            }
 
         } catch (IOException e) {
             System.out.println(e);
         } catch (ClassNotFoundException x) {
             System.out.println(x);
         }
-        
-        
-    }//GEN-LAST:event_getBookingBtnActionPerformed
+    }//GEN-LAST:event_amendBookingBtnActionPerformed
+
+    private void delBookingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBookingBtnActionPerformed
+
+
+    }//GEN-LAST:event_delBookingBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -643,6 +767,8 @@ public class BookingsGUI extends javax.swing.JFrame {
     private javax.swing.JLabel checkOutDateLbl;
     private javax.swing.JTextField checkOutDateTf;
     private javax.swing.JButton delBookingBtn;
+    private javax.swing.JLabel euro1Lbl;
+    private javax.swing.JLabel euro2Lbl;
     private javax.swing.JLabel fName2Lbl;
     private javax.swing.JTextField fName2Tf;
     private javax.swing.JLabel fNameLbl;

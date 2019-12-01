@@ -46,18 +46,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <Component id="backgroundPanel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="38" max="32767" attributes="0"/>
-          </Group>
+          <Component id="backgroundPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="backgroundPanel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="15" max="32767" attributes="0"/>
-          </Group>
+          <Component id="backgroundPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -101,7 +95,11 @@
                                       <Component id="nightsTf" max="32767" attributes="0"/>
                                       <Component id="checkInDateTf" max="32767" attributes="0"/>
                                       <Component id="checkOutDateTf" max="32767" attributes="0"/>
-                                      <Component id="totalPriceTf" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="totalPriceTf" min="-2" pref="86" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="euro1Lbl" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
@@ -113,7 +111,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="retrieveLbl" min="-2" max="-2" attributes="0"/>
+                      <Component id="retrieveLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="bookingIDLbl" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -128,7 +126,7 @@
                           </Group>
                           <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="bookingIDTf" pref="170" max="32767" attributes="0"/>
+                              <Component id="bookingIDTf" max="32767" attributes="0"/>
                               <Component id="checkLastNameTf" max="32767" attributes="0"/>
                               <Component id="fName2Tf" max="32767" attributes="0"/>
                               <Component id="checkOutDate2Tf" max="32767" attributes="0"/>
@@ -136,17 +134,22 @@
                               <Component id="peopleNo2Tf" max="32767" attributes="0"/>
                               <Component id="nights2Tf" max="32767" attributes="0"/>
                               <Component id="checkInDate2Tf" max="32767" attributes="0"/>
-                              <Component id="totalPrice2Lbl2" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                                  <Component id="euro2Lbl" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="totalPrice2Lbl2" pref="122" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="getBookingBtn" pref="111" max="32767" attributes="0"/>
-                              <Component id="amendBookingBtn" max="32767" attributes="0"/>
-                              <Component id="delBookingBtn" max="32767" attributes="0"/>
+                              <Component id="getBookingBtn" max="32767" attributes="0"/>
+                              <Component id="amendBookingBtn" min="-2" pref="111" max="-2" attributes="0"/>
+                              <Component id="delBookingBtn" min="-2" pref="111" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="32" max="32767" attributes="0"/>
+                  <EmptySpace pref="107" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -197,7 +200,7 @@
                               <Component id="hotelNameLbl2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="hotelName2Tf" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="nightsLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="nightsTf" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -206,7 +209,7 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="amendBookingBtn" min="-2" pref="55" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -228,7 +231,7 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Component id="delBookingBtn" min="-2" pref="55" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -238,13 +241,15 @@
                       <Component id="checkOutDate2Tf" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="checkOutDate2Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="totalPriceTf" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="euro1Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="30" max="32767" attributes="0"/>
+                  <EmptySpace pref="89" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="BookBtn" min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="totalPrice2Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="totalPrice2Lbl2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="euro2Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
@@ -571,6 +576,9 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="amendBookingBtnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="delBookingBtn">
           <Properties>
@@ -581,8 +589,21 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delBookingBtnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="totalPriceTf">
+        </Component>
+        <Component class="javax.swing.JLabel" name="euro1Lbl">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x20ac;"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="euro2Lbl">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x20ac;"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
