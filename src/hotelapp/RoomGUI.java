@@ -108,11 +108,11 @@ public class RoomGUI extends javax.swing.JFrame {
         search_Btn = new javax.swing.JButton();
         createHeader_Lbl = new javax.swing.JLabel();
         save_Btn = new javax.swing.JButton();
-        catalogueHeader_Lbl = new javax.swing.JLabel();
-        add_Btn1 = new javax.swing.JButton();
-        add_Btn2 = new javax.swing.JButton();
-        removeHeader_Lbl1 = new javax.swing.JLabel();
-        save_Btn1 = new javax.swing.JButton();
+        viewHeader_Lbl = new javax.swing.JLabel();
+        remove_Btn = new javax.swing.JButton();
+        amend_Btn = new javax.swing.JButton();
+        manageHeader_Lbl = new javax.swing.JLabel();
+        clear_Btn = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -388,34 +388,34 @@ public class RoomGUI extends javax.swing.JFrame {
             }
         });
 
-        catalogueHeader_Lbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        catalogueHeader_Lbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        catalogueHeader_Lbl.setText("View");
-        catalogueHeader_Lbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 51)));
+        viewHeader_Lbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        viewHeader_Lbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viewHeader_Lbl.setText("View");
+        viewHeader_Lbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 51)));
 
-        add_Btn1.setText("Remove Room");
-        add_Btn1.addActionListener(new java.awt.event.ActionListener() {
+        remove_Btn.setText("Remove Room");
+        remove_Btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                add_Btn1ActionPerformed(evt);
+                remove_BtnActionPerformed(evt);
             }
         });
 
-        add_Btn2.setText("Amend Room");
-        add_Btn2.addActionListener(new java.awt.event.ActionListener() {
+        amend_Btn.setText("Amend Room");
+        amend_Btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                add_Btn2ActionPerformed(evt);
+                amend_BtnActionPerformed(evt);
             }
         });
 
-        removeHeader_Lbl1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        removeHeader_Lbl1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        removeHeader_Lbl1.setText("Manage");
-        removeHeader_Lbl1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 51)));
+        manageHeader_Lbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        manageHeader_Lbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        manageHeader_Lbl.setText("Manage");
+        manageHeader_Lbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 51)));
 
-        save_Btn1.setText("Clear");
-        save_Btn1.addActionListener(new java.awt.event.ActionListener() {
+        clear_Btn.setText("Clear");
+        clear_Btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                save_Btn1ActionPerformed(evt);
+                clear_BtnActionPerformed(evt);
             }
         });
 
@@ -477,7 +477,7 @@ public class RoomGUI extends javax.swing.JFrame {
                                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(backgroundPanelLayout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(save_Btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(clear_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(backgroundPanelLayout.createSequentialGroup()
                                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(option2_Check, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -504,19 +504,19 @@ public class RoomGUI extends javax.swing.JFrame {
                                             .addComponent(optionRadio3_Rb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addComponent(save_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(20, 20, 20)))
-                        .addGap(18, 69, Short.MAX_VALUE)
+                        .addGap(18, 53, Short.MAX_VALUE)
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(add_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(add_Btn1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(add_Btn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(removeHeader_Lbl1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(remove_Btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(amend_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(manageHeader_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(search_Btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(catalogueHeader_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(viewHeader_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(viewHotel_Btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(viewBB_Btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                             .addComponent(viewHostel_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(54, 54, 54))
+                .addGap(70, 70, 70))
         );
         backgroundPanelLayout.setVerticalGroup(
             backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -527,7 +527,7 @@ public class RoomGUI extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createHeader_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(removeHeader_Lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(manageHeader_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(roomType_Lbl)
@@ -551,7 +551,7 @@ public class RoomGUI extends javax.swing.JFrame {
                     .addComponent(city_Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(parking_Lbl)
                     .addComponent(parking_Check)
-                    .addComponent(add_Btn2))
+                    .addComponent(amend_Btn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
@@ -563,14 +563,14 @@ public class RoomGUI extends javax.swing.JFrame {
                             .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(kmCityCentre_Lbl)
                                 .addComponent(kmCityCentre_Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 25, Short.MAX_VALUE)
+                        .addGap(18, 23, Short.MAX_VALUE)
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(facilitiesHeader_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(catalogueHeader_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addComponent(viewHeader_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
-                        .addComponent(add_Btn1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)))
+                        .addComponent(remove_Btn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)))
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(optionRadio3_Rb)
                     .addComponent(optionRadio2_Rb)
@@ -592,9 +592,9 @@ public class RoomGUI extends javax.swing.JFrame {
                         .addComponent(option8_Check, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(viewBB_Btn))
                     .addComponent(option2_Check, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(save_Btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(clear_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(save_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30))
         );
@@ -613,13 +613,13 @@ public class RoomGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void add_Btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_Btn2ActionPerformed
+    private void amend_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amend_BtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_add_Btn2ActionPerformed
+    }//GEN-LAST:event_amend_BtnActionPerformed
 
-    private void add_Btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_Btn1ActionPerformed
+    private void remove_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remove_BtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_add_Btn1ActionPerformed
+    }//GEN-LAST:event_remove_BtnActionPerformed
 
     private void save_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_BtnActionPerformed
         if (hotelList.isEmpty()) {
@@ -995,9 +995,9 @@ public class RoomGUI extends javax.swing.JFrame {
         b.setVisible(true);
     }//GEN-LAST:event_bookingsBtnMouseClicked
 
-    private void save_Btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_Btn1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_save_Btn1ActionPerformed
+    private void clear_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clear_BtnActionPerformed
+        clearForm();
+    }//GEN-LAST:event_clear_BtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1037,17 +1037,16 @@ public class RoomGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add_Btn;
-    private javax.swing.JButton add_Btn1;
-    private javax.swing.JButton add_Btn2;
     private javax.swing.JLabel address_Lbl;
     private javax.swing.JTextField address_Tf;
+    private javax.swing.JButton amend_Btn;
     private javax.swing.JPanel backgroundPanel;
     private javax.swing.JLabel bookingsBtn;
     private javax.swing.JCheckBox breakfast_Check;
     private javax.swing.JLabel breakfast_Lbl;
-    private javax.swing.JLabel catalogueHeader_Lbl;
     private javax.swing.JLabel city_Lbl;
     private javax.swing.JTextField city_Tf;
+    private javax.swing.JButton clear_Btn;
     private javax.swing.JLabel createHeader_Lbl;
     private javax.swing.JLabel euroSymbol_Lbl;
     private javax.swing.JLabel facilitiesHeader_Lbl;
@@ -1056,6 +1055,7 @@ public class RoomGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel kmCityCentre_Lbl;
     private javax.swing.JTextField kmCityCentre_Tf;
+    private javax.swing.JLabel manageHeader_Lbl;
     private javax.swing.JLabel manageRoomBtn;
     private javax.swing.JLabel maxGuests_Lbl;
     private javax.swing.JTextField maxGuests_Tf;
@@ -1077,18 +1077,18 @@ public class RoomGUI extends javax.swing.JFrame {
     private javax.swing.JLabel parking_Lbl;
     private javax.swing.JLabel price_Lbl;
     private javax.swing.JTextField price_Tf;
-    private javax.swing.JLabel removeHeader_Lbl1;
+    private javax.swing.JButton remove_Btn;
     private javax.swing.JLabel roomID_Lbl;
     private javax.swing.JTextField roomID_Tf;
     private javax.swing.JComboBox<String> roomType_Combo;
     private javax.swing.JLabel roomType_Lbl;
     private javax.swing.JButton save_Btn;
-    private javax.swing.JButton save_Btn1;
     private javax.swing.JLabel searchBtn;
     private javax.swing.JButton search_Btn;
     private javax.swing.JLabel splitter1;
     private javax.swing.JLabel splitter2;
     private javax.swing.JButton viewBB_Btn;
+    private javax.swing.JLabel viewHeader_Lbl;
     private javax.swing.JButton viewHostel_Btn;
     private javax.swing.JButton viewHotel_Btn;
     // End of variables declaration//GEN-END:variables
