@@ -6,6 +6,8 @@
 package hotelapp;
 
 import java.util.Properties;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.UtilDateModel;
@@ -19,18 +21,18 @@ public class DatePicker extends javax.swing.JFrame {
     /**
      * Creates new form DatePicker
      */
-    
     private String selectedDate = "Check in date";
 
     public String getSelectedDate() {
         return selectedDate;
     }
-    
+
     private UtilDateModel model;
+
     public DatePicker() {
-        
+
         initComponents();
-         
+
         selectedDate = "";
         model = new UtilDateModel();
         Properties p = new Properties();
@@ -39,9 +41,16 @@ public class DatePicker extends javax.swing.JFrame {
         p.put("text.year", "Year");
         JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
         datePanel.setBounds(0, 0, 250, 180);
-        
+        model.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                int month = model.getMonth() + 1;
+                selectedDate = model.getDay() + "-" + month + "-" + model.getYear();
+
+            }
+        });
+
         backgroundPanel.add(datePanel);
-        
+
     }
 
     /**
@@ -54,33 +63,24 @@ public class DatePicker extends javax.swing.JFrame {
     private void initComponents() {
 
         backgroundPanel = new javax.swing.JPanel();
-        selectBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Pick date");
         setUndecorated(true);
         setResizable(false);
 
         backgroundPanel.setBackground(new java.awt.Color(255, 255, 255));
         backgroundPanel.setPreferredSize(new java.awt.Dimension(250, 200));
 
-        selectBtn.setText("SELECT");
-        selectBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectBtnActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout backgroundPanelLayout = new javax.swing.GroupLayout(backgroundPanel);
         backgroundPanel.setLayout(backgroundPanelLayout);
         backgroundPanelLayout.setHorizontalGroup(
             backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(selectBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addGap(0, 250, Short.MAX_VALUE)
         );
         backgroundPanelLayout.setVerticalGroup(
             backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundPanelLayout.createSequentialGroup()
-                .addGap(0, 185, Short.MAX_VALUE)
-                .addComponent(selectBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(0, 180, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -91,18 +91,11 @@ public class DatePicker extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(backgroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+            .addComponent(backgroundPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void selectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectBtnActionPerformed
-        
-        int month = model.getMonth() + 1;
-        selectedDate = model.getDay() + "-" + month + "-" + model.getYear();
-        this.dispose();
-    }//GEN-LAST:event_selectBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,6 +134,5 @@ public class DatePicker extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundPanel;
-    private javax.swing.JButton selectBtn;
     // End of variables declaration//GEN-END:variables
 }
