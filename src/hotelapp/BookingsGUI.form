@@ -101,6 +101,11 @@
                                           <Component id="euro1Lbl" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <EmptySpace pref="177" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="date1Btn" min="-2" max="-2" attributes="0"/>
+                                      <Component id="date2Btn" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
@@ -109,7 +114,7 @@
                           <Component id="BookBtn" min="-2" pref="105" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="retrieveLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
@@ -149,7 +154,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="107" max="32767" attributes="0"/>
+                  <EmptySpace pref="90" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -224,12 +229,13 @@
                               <Component id="nights2Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="nights2Tf" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="checkOutDateLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="checkOutDateTf" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="checkInDate2Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="checkInDate2Tf" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="date1Btn" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -237,15 +243,16 @@
                           <Component id="delBookingBtn" min="-2" pref="55" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="totalPriceLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="checkOutDate2Tf" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="checkOutDate2Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="totalPriceTf" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="euro1Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="date2Btn" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="89" max="32767" attributes="0"/>
+                  <EmptySpace pref="87" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="BookBtn" min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -606,6 +613,22 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x20ac;"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="date1Btn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Check in date"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="date1BtnActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="date2Btn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Checkout date"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="date2BtnActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

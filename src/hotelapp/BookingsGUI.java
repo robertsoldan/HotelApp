@@ -5,6 +5,8 @@
  */
 package hotelapp;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -12,8 +14,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Properties;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.UtilDateModel;
 
 /**
  *
@@ -26,7 +31,14 @@ public class BookingsGUI extends javax.swing.JFrame {
     private int peopleNo, nights;
     private double totalPrice;
     private int count;
-
+    private UtilDateModel model;
+    private DatePicker checkInDatePicker;
+    private DatePicker checkOutDatePicker;
+    private boolean checkInCalendarState;
+    private boolean checkOutCalendarState;
+    
+    
+    
     public BookingsGUI() {
         initComponents();
 
@@ -42,8 +54,28 @@ public class BookingsGUI extends javax.swing.JFrame {
         totalPrice = 0.0;
         roomID = new String();
         count = 0;
-    }
-
+        model = new UtilDateModel();
+        checkInDatePicker = new DatePicker();
+        checkOutDatePicker = new DatePicker();
+        checkInCalendarState = false;
+        checkOutCalendarState = false;
+        Properties p = new Properties();
+        p.put("text.today", "Today");
+        p.put("text.month", "Month");
+        p.put("text.year", "Year");
+        JDatePanelImpl datePanel = new JDatePanelImpl (model,p);
+        backgroundPanel.add(datePanel);
+        backgroundPanel.revalidate();
+        backgroundPanel.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                checkInCalendarState = false;
+                checkInDatePicker.dispose();
+                checkOutCalendarState = false;
+                checkOutDatePicker.dispose();
+            }
+        
+    });
+                }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -104,6 +136,8 @@ public class BookingsGUI extends javax.swing.JFrame {
         totalPriceTf = new javax.swing.JTextField();
         euro1Lbl = new javax.swing.JLabel();
         euro2Lbl = new javax.swing.JLabel();
+        date1Btn = new javax.swing.JButton();
+        date2Btn = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -278,6 +312,20 @@ public class BookingsGUI extends javax.swing.JFrame {
 
         euro2Lbl.setText("€");
 
+        date1Btn.setText("Check in date");
+        date1Btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                date1BtnActionPerformed(evt);
+            }
+        });
+
+        date2Btn.setText("Checkout date");
+        date2Btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                date2BtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout backgroundPanelLayout = new javax.swing.GroupLayout(backgroundPanel);
         backgroundPanel.setLayout(backgroundPanelLayout);
         backgroundPanelLayout.setHorizontalGroup(
@@ -312,11 +360,15 @@ public class BookingsGUI extends javax.swing.JFrame {
                                     .addGroup(backgroundPanelLayout.createSequentialGroup()
                                         .addComponent(totalPriceTf, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(euro1Lbl))))))
+                                        .addComponent(euro1Lbl)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(date1Btn)
+                                    .addComponent(date2Btn)))))
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
                         .addGap(164, 164, 164)
                         .addComponent(BookBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(169, 169, 169)
+                .addGap(32, 32, 32)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(retrieveLbl)
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
@@ -350,7 +402,7 @@ public class BookingsGUI extends javax.swing.JFrame {
                             .addComponent(getBookingBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(amendBookingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(delBookingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         backgroundPanelLayout.setVerticalGroup(
             backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -409,23 +461,25 @@ public class BookingsGUI extends javax.swing.JFrame {
                             .addComponent(checkInDateTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nights2Lbl)
                             .addComponent(nights2Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
+                        .addGap(28, 28, 28)
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(checkOutDateLbl)
                             .addComponent(checkOutDateTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(checkInDate2Lbl)
-                            .addComponent(checkInDate2Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(checkInDate2Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(date1Btn)))
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(delBookingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30)
+                .addGap(27, 27, 27)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(totalPriceLbl)
                     .addComponent(checkOutDate2Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(checkOutDate2Lbl)
                     .addComponent(totalPriceTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(euro1Lbl))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                    .addComponent(euro1Lbl)
+                    .addComponent(date2Btn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BookBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -713,6 +767,62 @@ public class BookingsGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_delBookingBtnActionPerformed
 
+    private void date1BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_date1BtnActionPerformed
+        
+        checkInDatePicker.dispose();
+        checkOutDatePicker.dispose();
+        if (!checkInCalendarState || checkOutCalendarState) {
+            checkInCalendarState = true;
+            checkOutCalendarState = false;
+            checkInDatePicker.setUndecorated(true);
+            checkInDatePicker.setLocation(date1Btn.getLocation().x + this.getLocation().x -250, date1Btn.getLocation().y + this.getLocation().y);
+            checkInDatePicker.setVisible(true);
+            checkInDatePicker.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                checkInDate2Tf.setText(checkInDatePicker.getSelectedDate());
+                checkInDate2Tf.revalidate();
+            }
+            
+        });
+        }
+        else {
+            checkInCalendarState = false;
+            checkInDatePicker.dispose();
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_date1BtnActionPerformed
+
+    private void date2BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_date2BtnActionPerformed
+       
+        checkOutDatePicker.dispose();
+        checkInDatePicker.dispose();
+        if (checkInCalendarState || !checkOutCalendarState) {
+            checkOutCalendarState = true;
+            checkInCalendarState = false;
+            checkOutDatePicker.setUndecorated(true);
+            checkOutDatePicker.setLocation(date2Btn.getLocation().x + this.getLocation().x -250, date2Btn.getLocation().y + this.getLocation().y);
+            checkOutDatePicker.setVisible(true);
+            checkOutDatePicker.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                checkOutDate2Tf.setText(checkOutDatePicker.getSelectedDate());
+                checkOutDate2Tf.revalidate();
+            }
+            
+        });
+        }
+        else {
+            checkOutCalendarState = false;
+            checkOutDatePicker.dispose();
+        }
+        
+        
+    }//GEN-LAST:event_date2BtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -767,6 +877,8 @@ public class BookingsGUI extends javax.swing.JFrame {
     private javax.swing.JTextField checkOutDate2Tf;
     private javax.swing.JLabel checkOutDateLbl;
     private javax.swing.JTextField checkOutDateTf;
+    private javax.swing.JButton date1Btn;
+    private javax.swing.JButton date2Btn;
     private javax.swing.JButton delBookingBtn;
     private javax.swing.JLabel euro1Lbl;
     private javax.swing.JLabel euro2Lbl;
