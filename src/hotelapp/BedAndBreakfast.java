@@ -72,7 +72,43 @@ public class BedAndBreakfast extends Room implements Serializable {
         this.hasGarden = hasGarden;
     }
 
-  
+    public int getNumberBedrooms() {
+        return numberBedrooms;
+    }
+
+    public boolean isOwnerOccupied() {
+        return isOwnerOccupied;
+    }
+
+    public boolean isPetFriendly() {
+        return isPetFriendly;
+    }
+
+    public boolean hasKitchen() {
+        return hasKitchen;
+    }
+
+    public boolean hasCleaningOption() {
+        return hasCleaningOption;
+    }
+
+    public boolean hasTowels() {
+        return hasTowels;
+    }
+
+    public boolean hasLinen() {
+        return hasLinen;
+    }
+
+    public boolean hasWashingMachine() {
+        return hasWashingMachine;
+    }
+
+    public boolean hasGarden() {
+        return hasGarden;
+    }
+
+    
 
     @Override
     public String getDetails() {

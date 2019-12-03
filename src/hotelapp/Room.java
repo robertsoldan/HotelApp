@@ -72,6 +72,44 @@ public class Room implements Serializable {
         this.kmFromCityCentre = kmFromCityCentre;
     }
 
+    public String getRoomID() {
+        return roomID;
+    }
+
+    public String getRoomType() {
+        return roomType;
+    }
+
+    public String getRoomAddress() {
+        return roomAddress;
+    }
+
+    public String getRoomCity() {
+        return roomCity;
+    }
+
+    public double getRoomPricePerNight() {
+        return roomPricePerNight;
+    }
+
+    public int getMaxNumberGuests() {
+        return maxNumberGuests;
+    }
+
+    public boolean hasBreakfastIncl() {
+        return hasBreakfastIncl;
+    }
+
+    public boolean hasParkingSpace() {
+        return hasParkingSpace;
+    }
+
+    public int getKmFromCityCentre() {
+        return kmFromCityCentre;
+    }
+
+    
+
     public String getDetails() {
         return "Type: " + this.roomType + 
         "\nID: " + this.roomID + 

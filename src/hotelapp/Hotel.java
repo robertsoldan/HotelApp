@@ -74,6 +74,41 @@ public class Hotel extends Room implements Serializable {
         this.hasGym = hasGym;
     }
 
+    public String getBedType() {
+        return bedType;
+    }
+
+    public boolean has24HReception() {
+        return has24HReception;
+    }
+
+    public boolean hasRoomService() {
+        return hasRoomService;
+    }
+
+    public boolean hasBalcony() {
+        return hasBalcony;
+    }
+
+    public boolean hasMinibar() {
+        return hasMinibar;
+    }
+
+    public boolean hasBathtub() {
+        return hasBathtub;
+    }
+
+    public boolean hasRestaurant() {
+        return hasRestaurant;
+    }
+
+    public boolean hasPool() {
+        return hasPool;
+    }
+
+    public boolean hasGym() {
+        return hasGym;
+    }
 
 
     @Override

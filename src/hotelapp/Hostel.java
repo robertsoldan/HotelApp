@@ -72,6 +72,42 @@ public class Hostel extends Room implements Serializable {
         this.hasLongStayOption = hasLongStayOption;
     }
 
+    public String getDormType() {
+        return dormType;
+    }
+
+    public boolean has24HReception() {
+        return has24HReception;
+    }
+
+    public boolean hasPrivateRooms() {
+        return hasPrivateRooms;
+    }
+
+    public boolean hasLockers() {
+        return hasLockers;
+    }
+
+    public boolean hasBar() {
+        return hasBar;
+    }
+
+    public boolean hasPrivateBathroom() {
+        return hasPrivateBathroom;
+    }
+
+    public boolean hasSharedKitchen() {
+        return hasSharedKitchen;
+    }
+
+    public boolean hasWashingMachine() {
+        return hasWashingMachine;
+    }
+
+    public boolean hasLongStayOption() {
+        return hasLongStayOption;
+    }
+
 
 
     @Override
