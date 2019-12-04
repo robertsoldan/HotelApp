@@ -25,9 +25,6 @@
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
       <Color id="Default Cursor"/>
     </Property>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1100, 750]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -261,7 +258,7 @@
                               <Component id="price_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="euroSymbol_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="delete_Btn" min="-2" max="-2" attributes="0"/>
@@ -270,9 +267,9 @@
                               <Component id="viewHeader_Lbl" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="facilitiesHeader_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="viewHotel_Btn" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="optionRadio3_Rb" alignment="3" min="-2" max="-2" attributes="0"/>
