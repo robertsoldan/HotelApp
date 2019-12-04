@@ -250,18 +250,18 @@
                                   <Component id="kmCityCentre_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="separate" pref="23" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="facilitiesHeader_Lbl" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="viewHeader_Lbl" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="remove_Btn" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="50" max="32767" attributes="0"/>
+                          <EmptySpace pref="17" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="viewHeader_Lbl" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="facilitiesHeader_Lbl" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="optionRadio3_Rb" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="optionRadio2_Rb" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -287,7 +287,7 @@
                       </Group>
                       <Component id="option2_Check" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="48" max="32767" attributes="0"/>
+                  <EmptySpace pref="51" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="clear_Btn" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="save_Btn" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>

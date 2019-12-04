@@ -563,14 +563,14 @@ public class RoomGUI extends javax.swing.JFrame {
                             .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(kmCityCentre_Lbl)
                                 .addComponent(kmCityCentre_Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 23, Short.MAX_VALUE)
-                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(facilitiesHeader_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(viewHeader_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
                         .addComponent(remove_Btn)
-                        .addGap(0, 50, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(viewHeader_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(facilitiesHeader_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)))
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(optionRadio3_Rb)
                     .addComponent(optionRadio2_Rb)
@@ -592,7 +592,7 @@ public class RoomGUI extends javax.swing.JFrame {
                         .addComponent(option8_Check, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(viewBB_Btn))
                     .addComponent(option2_Check, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(clear_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(save_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -792,9 +792,11 @@ public class RoomGUI extends javax.swing.JFrame {
             }
             oStream.close();
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "IOException: " + e);
+            System.out.println("IOException: " + e);
+            JOptionPane.showMessageDialog(null, "No Bed and Breakfast room found.");
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "ClassNotFoundException: " +e);
+            System.out.println("ClassNotFoundException: " + e);
+            JOptionPane.showMessageDialog(null, "No Bed and Breakfast room found.");
         }
     }//GEN-LAST:event_viewBB_BtnActionPerformed
 
@@ -809,9 +811,11 @@ public class RoomGUI extends javax.swing.JFrame {
             }
             oStream.close();
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "IOException: " + e);
+            System.out.println("IOException: " + e);
+            JOptionPane.showMessageDialog(null, "No hostel room found.");
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "ClassNotFoundException: " +e);
+            System.out.println("ClassNotFoundException: " + e);
+            JOptionPane.showMessageDialog(null, "No hostel room found.");
         }
     }//GEN-LAST:event_viewHostel_BtnActionPerformed
 
@@ -826,9 +830,11 @@ public class RoomGUI extends javax.swing.JFrame {
             }
             oStream.close();
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "IOException: " + e);
+            System.out.println("IOException: " + e);
+            JOptionPane.showMessageDialog(null, "No hotel room found.");
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "ClassNotFoundException: " +e);
+            System.out.println("ClassNotFoundException: " + e);
+            JOptionPane.showMessageDialog(null, "No hotel room found.");
         }
     }//GEN-LAST:event_viewHotel_BtnActionPerformed
 
