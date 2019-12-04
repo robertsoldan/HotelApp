@@ -5,6 +5,7 @@
  */
 package hotelapp;
 
+// imports for different reading and writing from file, calendar, array lists and GUI items like JOptionPane
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -22,7 +23,7 @@ import org.jdatepicker.impl.UtilDateModel;
 
 /**
  *
- * @author robert
+ * @author dejan
  */
 public class BookingsGUI extends javax.swing.JFrame {
 
@@ -52,6 +53,8 @@ public class BookingsGUI extends javax.swing.JFrame {
         totalPrice = 0.0;
         roomID = new String();
         count = 0;
+
+        // setting up calendar for picking dates when changing previous booking
         model = new UtilDateModel();
         checkInDatePicker = new DatePicker();
         checkOutDatePicker = new DatePicker();
@@ -493,6 +496,7 @@ public class BookingsGUI extends javax.swing.JFrame {
 
     private void manageRoomBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageRoomBtnMouseClicked
 
+        //switch to the Manage Rooms tab
         RoomGUI r = new RoomGUI();
 
         // Get the size of the active window
@@ -522,6 +526,7 @@ public class BookingsGUI extends javax.swing.JFrame {
 
     private void searchBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchBtnMouseClicked
 
+        // switches to the search tab
         SearchGUI s = new SearchGUI();
 
         // Get the size of the active window
@@ -550,10 +555,13 @@ public class BookingsGUI extends javax.swing.JFrame {
 
     private void BookBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookBtnActionPerformed
 
+        // checks that the user does not submit and empty form
         if (fNameTf.getText().equals("") || lNameTf.getText().equals("") || checkInDateInputLbl.getText().equals("") || checkOutDateInputLbl.getText().equals("")
                 || hotelInputLbl.getText().equals("") || peopleInputLbl.getText().equals("") || nightsInputLbl.getText().equals("") || priceInputLbl.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "You need to enter all the details in order to confirm booking");
         } else {
+
+            // gets the text from the text fields (for the first and last name) and labels for the items passed from the search part of the app
             bookingID = Integer.toString((int) (Math.random() * 1000000));
             fName = fNameTf.getText();
             lName = lNameTf.getText();
@@ -565,6 +573,7 @@ public class BookingsGUI extends javax.swing.JFrame {
             totalPrice = Double.parseDouble(priceInputLbl.getText());
             roomID = Integer.toString((int) (Math.random() * 1000000));
 
+            // sets up the array and saves the information into an array list
             ManageBooking mb = new ManageBooking();
 
             mb.setBookingID(bookingID);
@@ -578,6 +587,7 @@ public class BookingsGUI extends javax.swing.JFrame {
             mb.setTotalPrice(totalPrice);
             mb.setRoomID(roomID);
 
+            // passing the booking information into the file - booking.data
             File outFile;
             FileOutputStream fStream;
             ObjectOutputStream oStream;
@@ -604,13 +614,16 @@ public class BookingsGUI extends javax.swing.JFrame {
     }
     private void getBookingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getBookingBtnActionPerformed
 
+        // checks that the user submits both last name and the booking ID
         if (bookingIDTf.getText().equals("") || checkLastNameTf.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "You need to enter booking ID and last name to get the result");
         } else {
 
+            // placing the information from the text box into variables
             String checkBookingID = bookingIDTf.getText();
             String checkLastName = checkLastNameTf.getText();
 
+            // fetching the information from the file
             File inFile;
             FileInputStream fStream;
             ObjectInputStream oStream;
@@ -620,12 +633,15 @@ public class BookingsGUI extends javax.swing.JFrame {
                 fStream = new FileInputStream(inFile);
                 oStream = new ObjectInputStream(fStream);
 
+                // setting up array list so it can be looped through
                 ArrayList<ManageBooking> xList;
 
                 xList = (ArrayList<ManageBooking>) oStream.readObject();
 
+                // setting up boolean to check for false / true values
                 boolean found = false;
-                // 
+
+                // looping through the list to match booking id and last name and setting the values found in the file to show in text fields
                 for (ManageBooking x : xList) {
                     for (int i = 0; i < xList.size(); i++) {
                         if (checkBookingID.equalsIgnoreCase(x.getBookingID()) && checkLastName.equalsIgnoreCase(x.getlName())) {
@@ -643,6 +659,8 @@ public class BookingsGUI extends javax.swing.JFrame {
                         }
                     }
                 }
+
+                // in case there are no matching details, this message displays
                 if (!found) {
 
                     JOptionPane.showMessageDialog(null, "Booking not found.");
@@ -664,12 +682,16 @@ public class BookingsGUI extends javax.swing.JFrame {
 
         ArrayList<ManageBooking> aList = new ArrayList<>();
 
+        // placing the information from the text box into variables
         String checkBookingID = bookingIDTf.getText();
         String checkLastName = checkLastNameTf.getText();
 
+        // checks that the user submits both last name and the booking ID
         if (bookingIDTf.getText().equals("") || checkLastNameTf.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "You need to enter booking ID and last name to get the result");
         } else {
+
+            //reads from the file 
             File inFile;
             FileInputStream fStream;
             ObjectInputStream oStream;
@@ -681,10 +703,14 @@ public class BookingsGUI extends javax.swing.JFrame {
 
                 aList = (ArrayList<ManageBooking>) oStream.readObject();
 
+                // loops through the array in order to match the booking according to booking id and last name
                 for (int i = 0; i < aList.size(); i++) {
                     if (checkBookingID.equalsIgnoreCase(aList.get(i).getBookingID()) && checkLastName.equalsIgnoreCase(aList.get(i).getlName())) {
 
+                        // once booking found, that booking is deleted from the system
                         aList.remove(i);
+
+                        // new booking information generated by pulling information from the text fields
                         fName = fName2Tf.getText();
                         lName = checkLastNameTf.getText();
                         checkInDate = checkInDateTf.getText();
@@ -694,6 +720,7 @@ public class BookingsGUI extends javax.swing.JFrame {
                         nights = Integer.parseInt(nightsTf.getText());
                         bookingID = Integer.toString((int) (Math.random() * 1000000));
 
+                        // sets up the array and saves the information into an array list
                         ManageBooking mb = new ManageBooking();
                         mb.setfName(fName);
                         mb.setlName(lName);
@@ -704,7 +731,7 @@ public class BookingsGUI extends javax.swing.JFrame {
                         mb.setNights(nights);
                         mb.setBookingID(bookingID);
                         aList.add(mb);
-                        JOptionPane.showMessageDialog(null, "Your booking was amended. Your new booking ID is: " + bookingID);
+                        JOptionPane.showMessageDialog(null, "Your booking was amended. Refunds or additional payments are made whecn checking in. Your new booking ID is: " + bookingID);
 
                     }
 
@@ -714,6 +741,8 @@ public class BookingsGUI extends javax.swing.JFrame {
             } catch (ClassNotFoundException x) {
                 System.out.println(x);
             }
+
+            // passing the new booking information into the file - booking.data
             File outFile;
             FileOutputStream ffStream;
             ObjectOutputStream ooStream;
@@ -735,14 +764,18 @@ public class BookingsGUI extends javax.swing.JFrame {
     }
     private void delBookingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBookingBtnActionPerformed
 
+        // checks that the user submits both last name and the booking ID
         if (bookingIDTf.getText().equals("") || checkLastNameTf.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "You need to enter booking ID and last name to get the result");
         } else {
             ArrayList<ManageBooking> aList = new ArrayList<>();
 
+            // placing the information from the text box into variables
             String checkBookingID = bookingIDTf.getText();
             String checkLastName = checkLastNameTf.getText();
-
+            
+            //reading from the file
+            
             File inFile;
             FileInputStream fStream;
             ObjectInputStream oStream;
@@ -751,7 +784,9 @@ public class BookingsGUI extends javax.swing.JFrame {
                 inFile = new File("booking.data");
                 fStream = new FileInputStream(inFile);
                 oStream = new ObjectInputStream(fStream);
-
+                
+                // looping through the array and removing the targetted item
+                
                 aList = (ArrayList<ManageBooking>) oStream.readObject();
 
                 for (int i = 0; i < aList.size(); i++) {
@@ -768,7 +803,9 @@ public class BookingsGUI extends javax.swing.JFrame {
             } catch (ClassNotFoundException x) {
                 System.out.println(x);
             }
-
+            
+            // saving changes to the file
+            
             File outFile;
             FileOutputStream ffStream;
             ObjectOutputStream ooStream;
