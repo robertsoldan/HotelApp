@@ -614,12 +614,12 @@ public class SearchGUI extends javax.swing.JFrame {
         for (String[] r : results) {
 
             //yLoc = i * (resultPanelHeight + resultPanelMargin); // 70 pixels distance between each point - each panel is 50 pixels tall, so that will leave 20 pixels between panels
-            yLoc = yLoc + 150;
+            
             searchPanelYSize = yLoc + 70; // Total height will make sure to leave 20 pixels margin between the last element and the bottom edge of the window
 
             // Setup the result panel
             JPanel resultPanel = new JPanel();
-            resultPanel.setBounds(50, yLoc, backgroundPanelWidth / 2, resultPanelHeight);
+            resultPanel.setBounds(50, yLoc, 650, resultPanelHeight);
             resultPanel.setLayout(null); // Set resultPanel to null to allow the labels to be placed with relative positioning.
 
             resultPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR)); // Set the cursor on mouse over
@@ -635,24 +635,175 @@ public class SearchGUI extends javax.swing.JFrame {
             });
 
             // Setup the result label
-            String resultString = "";
+            String[] resultString = new String[30];
             for (int i = 0; i < r.length; i++) {
                 if (r[i].equals("true")) {
-                    resultString = resultString + " " + "✓";
+                    resultString[i] ="✓";
                 } else if (r[i].equals("false")) {
-                    resultString = resultString + " " + "x";
+                    resultString[i] = "x";
                 } else {
-                    resultString = resultString + " " + r[i];
+                    resultString[i] = r[i];
                 }
             }
-            System.out.println(resultString);
-            JLabel resultLabel = new JLabel(resultString);
-            resultLabel.setForeground(new Color(255, 255, 204)); // Result Label font color
-            resultLabel.setBounds(20, 15, 200, 20); // Position and width of the text within the resultPanel
-
-            // Add result label to the result panel, add the result panel to the search panel
-            resultPanel.add(resultLabel);
+            // Adding labels to the results cards
+            JLabel roomNameLabel = new JLabel(resultString[1]);
+            roomNameLabel.setForeground(new Color(255, 255, 204)); //  Label font color
+            roomNameLabel.setBounds(15, 10, 100, 20); // Position and width of the text within the resultPanel
+            // Add label to the result panel, add the result panel to the search panel
+            resultPanel.add(roomNameLabel);
+            
+            JLabel cityNameLabel = new JLabel(resultString[2]);
+            cityNameLabel.setForeground(new Color(255, 255, 204)); //  Label font color
+            cityNameLabel.setBounds(15, 30, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(cityNameLabel);
+            
+            JLabel roomAddressLabel = new JLabel(resultString[3]);
+            roomAddressLabel.setForeground(new Color(255, 255, 204)); //  Label font color
+            roomAddressLabel.setBounds(15, 50, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(roomAddressLabel);
+            
+            JLabel pricePerNightLabel = new JLabel(resultString[4]);
+            pricePerNightLabel.setForeground(new Color(255, 255, 204)); //  Label font color
+            pricePerNightLabel.setBounds(15, 70, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(pricePerNightLabel);
+            
+            JLabel priceLabel = new JLabel("€" + resultString[5]);
+            priceLabel.setForeground(new Color(255, 255, 204)); //  Label font color
+            priceLabel.setBounds(115, 70, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(priceLabel);
+            
+            JPanel separatorPanel = new JPanel();
+            separatorPanel.setBackground(new Color(255, 255, 204)); 
+            separatorPanel.setBounds(215, 5, 3, 90);
+            resultPanel.add(separatorPanel);
+            
+            JLabel kmFromCityCentreLabel = new JLabel(resultString[7] + " KM from city centre");
+            kmFromCityCentreLabel.setForeground(new Color(255, 255, 204)); //  Label font color
+            kmFromCityCentreLabel.setBounds(230, 10, 150, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(kmFromCityCentreLabel);
+            
+            JLabel maxGuestsLabel = new JLabel(resultString[9] + " Max guests");
+            maxGuestsLabel.setForeground(new Color(255, 255, 204)); //  Label font color
+            maxGuestsLabel.setBounds(230, 30, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(maxGuestsLabel);
+            
+            JLabel parkingLabel = new JLabel(resultString[11] + " Parking");
+            parkingLabel.setForeground(new Color(255, 255, 204)); //  Label font color
+            parkingLabel.setBounds(230, 50, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(parkingLabel);
+            
+            JLabel breakfastLabel = new JLabel(resultString[13] + " Breakfast");
+            breakfastLabel.setForeground(new Color(255, 255, 204)); //  Label font color
+            breakfastLabel.setBounds(230, 70, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(breakfastLabel);
+            
+            JLabel index15Label = new JLabel(resultString[15]);
+            index15Label.setForeground(new Color(255, 255, 204)); //  Label font color
+            index15Label.setBounds(380, 10, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(index15Label);
+            
+            JLabel index14Label = new JLabel(resultString[14]);
+            index14Label.setForeground(new Color(255, 255, 204)); //  Label font color
+            index14Label.setBounds(395, 10, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(index14Label);
+            
+            JLabel index17Label = new JLabel(resultString[17]);
+            index17Label.setForeground(new Color(255, 255, 204)); //  Label font color
+            index17Label.setBounds(380, 30, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(index17Label);
+            
+            JLabel index16Label = new JLabel(resultString[16]);
+            index16Label.setForeground(new Color(255, 255, 204)); //  Label font color
+            index16Label.setBounds(395, 30, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(index16Label);
+            
+            JLabel index19Label = new JLabel(resultString[19]);
+            index19Label.setForeground(new Color(255, 255, 204)); //  Label font color
+            index19Label.setBounds(380, 50, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(index19Label);
+            
+            JLabel index18Label = new JLabel(resultString[18]);
+            index18Label.setForeground(new Color(255, 255, 204)); //  Label font color
+            index18Label.setBounds(395, 50, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(index18Label);
+            
+            JLabel index21Label = new JLabel(resultString[21]);
+            index21Label.setForeground(new Color(255, 255, 204)); //  Label font color
+            index21Label.setBounds(380, 70, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(index21Label);
+            
+            JLabel index20Label = new JLabel(resultString[20]);
+            index20Label.setForeground(new Color(255, 255, 204)); //  Label font color
+            index20Label.setBounds(395, 70, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(index20Label);
+            
+            JLabel index23Label = new JLabel(resultString[23]);
+            index23Label.setForeground(new Color(255, 255, 204)); //  Label font color
+            index23Label.setBounds(530, 10, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(index23Label);
+            
+            JLabel index22Label = new JLabel(resultString[22]);
+            index22Label.setForeground(new Color(255, 255, 204)); //  Label font color
+            index22Label.setBounds(545, 10, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(index22Label);
+            
+            JLabel index25Label = new JLabel(resultString[25]);
+            index25Label.setForeground(new Color(255, 255, 204)); //  Label font color
+            index25Label.setBounds(530, 30, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(index25Label);
+            
+            JLabel index24Label = new JLabel(resultString[24]);
+            index24Label.setForeground(new Color(255, 255, 204)); //  Label font color
+            index24Label.setBounds(545, 30, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(index24Label);
+            
+            JLabel index27Label = new JLabel(resultString[27]);
+            index27Label.setForeground(new Color(255, 255, 204)); //  Label font color
+            index27Label.setBounds(530, 50, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(index27Label);
+            
+            JLabel index26Label = new JLabel(resultString[26]);
+            index26Label.setForeground(new Color(255, 255, 204)); //  Label font color
+            index26Label.setBounds(545, 50, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(index26Label);
+            
+            JLabel index29Label = new JLabel(resultString[29]);
+            index29Label.setForeground(new Color(255, 255, 204)); //  Label font color
+            index29Label.setBounds(530, 70, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(index29Label);
+            
+            JLabel index28Label = new JLabel(resultString[28]);
+            index28Label.setForeground(new Color(255, 255, 204)); //  Label font color
+            index28Label.setBounds(545, 70, 100, 20); // Position and width of the text within the resultPanel
+            // Add  label to the result panel, add the result panel to the search panel
+            resultPanel.add(index28Label);
+            
+            
             searchPanel.add(resultPanel);
+            yLoc = yLoc + 150;
 
             searchPanel.setPreferredSize(new Dimension(600, searchPanelYSize + resultPanelHeight));
             searchPanel.revalidate();
