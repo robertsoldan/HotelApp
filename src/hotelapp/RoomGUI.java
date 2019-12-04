@@ -623,7 +623,7 @@ public class RoomGUI extends javax.swing.JFrame {
 
     private void save_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_BtnActionPerformed
         if (hotelList.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No hotel room found.");
+            JOptionPane.showMessageDialog(null, "No Hotel room found.");
         } else {
             try {
                 File outFile = new File("hotels.data");
@@ -638,7 +638,7 @@ public class RoomGUI extends javax.swing.JFrame {
         }
 
         if (hostelList.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No hostel room found.");
+            JOptionPane.showMessageDialog(null, "No Hostel room found.");
         } else {
             try {
                 File outFile = new File("hostels.data");
@@ -694,17 +694,24 @@ public class RoomGUI extends javax.swing.JFrame {
                         option6_Check.setSelected(h.hasRestaurant());
                         option7_Check.setSelected(h.hasPool());
                         option8_Check.setSelected(h.hasGym());
-                        //optionRadio1_Rb.setText("Simple");
-                        //optionRadio2_Rb.setText("Double");
-                        //optionRadio3_Rb.setText("King Size");
+                        if (h.getBedType().equals("Single")) {
+                            optionRadio1_Rb.setSelected(true);
+                        } else if (h.getBedType().equals("Double")) {
+                            optionRadio2_Rb.setSelected(true);
+                        } else {
+                            optionRadio3_Rb.setSelected(true);
+                        }
                         break;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Room not found.");
+                        clearForm();
                     }
                 }
                 oStream.close();
             } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, e);
+                System.out.println("IOException" + e);
             } catch (ClassNotFoundException e) {
-                JOptionPane.showMessageDialog(null, "ClassNotFoundException: " +e);
+                System.out.println("ClassNotFoundException: " + e);
             }
         } else if (roomType_Combo.getSelectedItem().toString().equals("Hostel Room")) {
             try {
@@ -729,17 +736,24 @@ public class RoomGUI extends javax.swing.JFrame {
                         option6_Check.setSelected(h.hasSharedKitchen());
                         option7_Check.setSelected(h.hasWashingMachine());
                         option8_Check.setSelected(h.hasLongStayOption());
-                        //optionRadio1_Rb.setText("Simple");
-                        //optionRadio2_Rb.setText("Double");
-                        //optionRadio3_Rb.setText("King Size");
+                        if (h.getDormType().equals("Female")) {
+                            optionRadio1_Rb.setSelected(true);
+                        } else if (h.getDormType().equals("Male")) {
+                            optionRadio2_Rb.setSelected(true);
+                        } else {
+                            optionRadio3_Rb.setSelected(true);
+                        }
                         break;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Room not found.");
+                        clearForm();
                     }
                 }
                 oStream.close();
             } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, e);
+                System.out.println("IOException" + e);
             } catch (ClassNotFoundException e) {
-                JOptionPane.showMessageDialog(null, "ClassNotFoundException: " +e);
+                System.out.println("ClassNotFoundException: " + e);
             }
         } else if (roomType_Combo.getSelectedItem().toString().equals("Bed And Breakfast")) {
             try {
@@ -764,20 +778,25 @@ public class RoomGUI extends javax.swing.JFrame {
                         option6_Check.setSelected(bb.hasLinen());
                         option7_Check.setSelected(bb.hasWashingMachine());
                         option8_Check.setSelected(bb.hasGarden());
-                        //optionRadio1_Rb.setText("Simple");
-                        //optionRadio2_Rb.setText("Double");
-                        //optionRadio3_Rb.setText("King Size");
+                        if (bb.getNumberBedrooms() == 1) {
+                            optionRadio1_Rb.setSelected(true);
+                        } else if (bb.getNumberBedrooms() == 2) {
+                            optionRadio2_Rb.setSelected(true);
+                        } else {
+                            optionRadio3_Rb.setSelected(true);
+                        }
                         break;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Room not found.");
+                        clearForm();
                     }
                 }
                 oStream.close();
             } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, e);
+                System.out.println("IOException" + e);
             } catch (ClassNotFoundException e) {
-                JOptionPane.showMessageDialog(null, "ClassNotFoundException: " +e);
+                System.out.println("ClassNotFoundException: " + e);
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Room not found.");
         }
     }//GEN-LAST:event_search_BtnActionPerformed
 
@@ -812,10 +831,10 @@ public class RoomGUI extends javax.swing.JFrame {
             oStream.close();
         } catch (IOException e) {
             System.out.println("IOException: " + e);
-            JOptionPane.showMessageDialog(null, "No hostel room found.");
+            JOptionPane.showMessageDialog(null, "No Hostel room found.");
         } catch (ClassNotFoundException e) {
             System.out.println("ClassNotFoundException: " + e);
-            JOptionPane.showMessageDialog(null, "No hostel room found.");
+            JOptionPane.showMessageDialog(null, "No Hostel room found.");
         }
     }//GEN-LAST:event_viewHostel_BtnActionPerformed
 
@@ -831,10 +850,10 @@ public class RoomGUI extends javax.swing.JFrame {
             oStream.close();
         } catch (IOException e) {
             System.out.println("IOException: " + e);
-            JOptionPane.showMessageDialog(null, "No hotel room found.");
+            JOptionPane.showMessageDialog(null, "No Hotel room found.");
         } catch (ClassNotFoundException e) {
             System.out.println("ClassNotFoundException: " + e);
-            JOptionPane.showMessageDialog(null, "No hotel room found.");
+            JOptionPane.showMessageDialog(null, "No Hotel room found.");
         }
     }//GEN-LAST:event_viewHotel_BtnActionPerformed
 
