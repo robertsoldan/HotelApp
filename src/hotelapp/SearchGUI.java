@@ -569,7 +569,7 @@ public class SearchGUI extends javax.swing.JFrame {
             ArrayList<BedAndBreakfast> bAndB = new ArrayList<>();
 
             try {
-                fName = new File("bedandbreakfast.data");
+                fName = new File("bedandbreakfasts.data");
                 fStream = new FileInputStream(fName);
                 oStream = new ObjectInputStream(fStream);
                 bAndB = (ArrayList<BedAndBreakfast>) oStream.readObject();
@@ -646,7 +646,7 @@ public class SearchGUI extends javax.swing.JFrame {
                 }
             }
             System.out.println(resultString);
-            JLabel resultLabel = new JLabel(r[0] + " " + r[1] + " " + r[2] + " " + r[3] + " " + r[4] + " " + r[5] + " " + r[6] + " " + r[7] + " " + r[8]);
+            JLabel resultLabel = new JLabel(resultString);
             resultLabel.setForeground(new Color(255, 255, 204)); // Result Label font color
             resultLabel.setBounds(20, 15, 200, 20); // Position and width of the text within the resultPanel
 
