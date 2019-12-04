@@ -569,7 +569,7 @@ public class SearchGUI extends javax.swing.JFrame {
             ArrayList<BedAndBreakfast> bAndB = new ArrayList<>();
 
             try {
-                fName = new File("bedandbreakfast.data");
+                fName = new File("bedandbreakfasts.data");
                 fStream = new FileInputStream(fName);
                 oStream = new ObjectInputStream(fStream);
                 bAndB = (ArrayList<BedAndBreakfast>) oStream.readObject();
@@ -589,14 +589,14 @@ public class SearchGUI extends javax.swing.JFrame {
                             "Max number of guests", String.valueOf(x.getMaxNumberGuests()), // 8 - 9
                             "Parking", String.valueOf(x.hasParkingSpace()), // 10 - 11 
                             "Breakfast", String.valueOf(x.hasBreakfastIncl()), // 12 - 13
-                            "24h Reception", String.valueOf(x.has24HReception()), // 14 - 15
-                            "Lockers", String.valueOf(x.hasLockers()), // 16 - 17
-                            "Private bathroom", String.valueOf(x.hasPrivateBathroom()), // 18 - 19
+                            "Owner occupied", String.valueOf(x.isOwnerOccupied()), // 14 - 15
+                            "Kitchen", String.valueOf(x.hasKitchen()), // 16 - 17
+                            "Towels", String.valueOf(x.hasTowels()), // 18 - 19
                             "Washing machine", String.valueOf(x.hasWashingMachine()), // 20 - 21
-                            "Private rooms", String.valueOf(x.hasPrivateRooms()), // 22 - 23 
-                            "Bar", String.valueOf(x.hasBar()), // 24 - 25
-                            "Shared kitchen", String.valueOf(x.hasSharedKitchen()), // 26 - 27
-                            "Long stay", String.valueOf(x.hasLongStayOption())}; // 28 - 29
+                            "Pet Friendly", String.valueOf(x.isPetFriendly()), // 22 - 23 
+                            "Cleaning", String.valueOf(x.hasCleaningOption()), // 24 - 25
+                            "Linen", String.valueOf(x.hasLinen()), // 26 - 27
+                            "Garden", String.valueOf(x.hasGarden())}; // 28 - 29
                         results.add(result); // Storing the results as arrays within the results array list
                     }
                 }
@@ -646,7 +646,7 @@ public class SearchGUI extends javax.swing.JFrame {
                 }
             }
             System.out.println(resultString);
-            JLabel resultLabel = new JLabel(r[0] + " " + r[1] + " " + r[2] + " " + r[3] + " " + r[4] + " " + r[5] + " " + r[6] + " " + r[7] + " " + r[8]);
+            JLabel resultLabel = new JLabel(resultString);
             resultLabel.setForeground(new Color(255, 255, 204)); // Result Label font color
             resultLabel.setBounds(20, 15, 200, 20); // Position and width of the text within the resultPanel
 

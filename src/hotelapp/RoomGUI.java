@@ -86,7 +86,7 @@ public class RoomGUI extends javax.swing.JFrame {
             File inFile = new File("bedandbreakfasts.data");
             FileInputStream fStream = new FileInputStream(inFile);
             ObjectInputStream oStream = new ObjectInputStream(fStream);
-            hotelList = (ArrayList<Hotel>)oStream.readObject();
+            bbList = (ArrayList<BedAndBreakfast>)oStream.readObject();
             oStream.close();
         } catch (IOException e) {
             System.out.println("IOException: " + e);
