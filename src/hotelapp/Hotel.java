@@ -12,7 +12,8 @@ import java.io.Serializable;
  * @author robert
  */
 public class Hotel extends Room implements Serializable {
-     
+    
+    // Declare variables
     private String bedType;
     private boolean has24HReception;
     private boolean hasRoomService;
@@ -23,6 +24,7 @@ public class Hotel extends Room implements Serializable {
     private boolean hasPool;
     private boolean hasGym;
 
+    // Constructor using superclass Room
     public Hotel(String bedType, boolean has24HReception, boolean hasRoomService, boolean hasBalcony, boolean hasMinibar, boolean hasBathtub, boolean hasRestaurant, boolean hasPool, 
             boolean hasGym, String roomName, String roomID, String roomType, String roomAddress, String roomCity, double roomPricePerNight, int maxNumberGuests, boolean hasBreakfastIncl, 
             boolean hasParkingSpace, int kmFromCityCentre) {
@@ -38,6 +40,8 @@ public class Hotel extends Room implements Serializable {
         this.hasGym = hasGym;
     }
 
+    // Getters and Setters
+    
     public void setBedType(String bedType) {
         this.bedType = bedType;
     }
@@ -110,7 +114,7 @@ public class Hotel extends Room implements Serializable {
         return hasGym;
     }
 
-
+    // Method partially inherited from superclass Room
     @Override
     public String getDetails() {
         return super.getDetails() + "\nDetails:" + 

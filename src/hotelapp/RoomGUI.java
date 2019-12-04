@@ -20,16 +20,18 @@ import javax.swing.JOptionPane;
  * @author robert
  */
 public class RoomGUI extends javax.swing.JFrame {
-
+    
+    // Declare array lists to store Room objects
     private ArrayList<Hotel> hotelList = new ArrayList<>(); 
     private ArrayList<Hostel> hostelList = new ArrayList<>();
     private ArrayList<BedAndBreakfast> bbList = new ArrayList<>();
-        
+
     public RoomGUI() {
         initLists();
         initComponents();
     }
     
+    // Clear all fields in the form
     private void clearForm() {
         roomID_Tf.setText("");
         name_Tf.setText("");
@@ -51,6 +53,7 @@ public class RoomGUI extends javax.swing.JFrame {
         option8_Check.setSelected(false);
     }
     
+    // Fetch Hotel objects from hotels.data file and store them into an array list
     private ArrayList<Hotel> generateHotelList() {
         try {
             File inFile = new File("hotels.data");
@@ -66,6 +69,7 @@ public class RoomGUI extends javax.swing.JFrame {
         return hotelList;
     }
 
+    // Fetch Hostel objects from hostels.data file and store them into an array list
     private ArrayList<Hostel> generateHostelList() {
         try {
             File inFile = new File("hostels.data");
@@ -81,6 +85,7 @@ public class RoomGUI extends javax.swing.JFrame {
         return hostelList;
     }
 
+    // Fetch BedAndBreakfast objects from bedandbreakfasts.data file and store them into an array list
     private ArrayList<BedAndBreakfast> generateBBList() {
         try {
             File inFile = new File("bedandbreakfasts.data");
@@ -96,12 +101,15 @@ public class RoomGUI extends javax.swing.JFrame {
         return bbList;
     }
     
+    // Initialize the 3 array lists using the 3 previous methodes
     private void initLists() {
         hotelList = generateHotelList();
         hostelList = generateHostelList();
         bbList = generateBBList();
     }
     
+    // Create object of type Hotel from the input form
+    // Radio buttons must be specifically set up
     private Hotel createHotel() {
         optionRadio1_Rb.setActionCommand("Single");
         optionRadio2_Rb.setActionCommand("Double");
@@ -113,6 +121,8 @@ public class RoomGUI extends javax.swing.JFrame {
         return hotel;
     }
     
+    // Create object of type Hostel from the input form
+    // Radio buttons must be specifically set up
     private Hostel createHostel() {
         optionRadio1_Rb.setActionCommand("Female");
         optionRadio2_Rb.setActionCommand("Male");
@@ -124,6 +134,8 @@ public class RoomGUI extends javax.swing.JFrame {
         return hostel;
     }
     
+    // Create object of type BedAndBreakfast from the input form
+    // Radio buttons must be specifically set up
     private BedAndBreakfast createBB() {
         optionRadio1_Rb.setActionCommand("1");
         optionRadio2_Rb.setActionCommand("2");
@@ -713,18 +725,22 @@ public class RoomGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void amend_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amend_BtnActionPerformed
+        // Verify the ID field is not empty
         int count = 0;
         if (roomID_Tf.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Please select type and enter ID.");
+        // If type = hotel room, loop through hotel array list to find matching ID
         } else if (roomType_Combo.getSelectedItem().toString().equals("Hotel Room")) {
             for (Hotel h : hotelList) {
+                // Match found: delete object from array, create a new object from the input form and add the array, confirm with message dialog and exit loop
                 if (roomID_Tf.getText().equalsIgnoreCase(h.getRoomID())) {
+                    hotelList.remove(h);
                     Hotel hotel = createHotel();
                     hotelList.add(hotel);
-                    hotelList.remove(h);
                     JOptionPane.showMessageDialog(null, hotel.getRoomType() + " #" + hotel.getRoomID() + " successfully updated.");
                     clearForm();
                     break;
+                // No match found: message dialog displays after the last object in the array is evaluated
                 } else {
                     count++;
                     if (count == hotelList.size()) {
@@ -733,8 +749,10 @@ public class RoomGUI extends javax.swing.JFrame {
                     }
                 }
             }
+        // If type = hostel room, loop through hostel array list to find matching ID
         } else if (roomType_Combo.getSelectedItem().toString().equals("Hostel Room")) {
             for (Hostel h : hostelList) {
+                // Match found: delete object from array, create a new object from the input form and add the array, confirm with message dialog and exit loop
                 if (roomID_Tf.getText().equalsIgnoreCase(h.getRoomID())) {
                     Hostel hostel = createHostel();
                     hostelList.add(hostel);
@@ -742,6 +760,7 @@ public class RoomGUI extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, hostel.getRoomType() + " #" + hostel.getRoomID() + " successfully deleted.");
                     clearForm();
                     break;
+                // No match found: message dialog displays after the last object in the array is evaluated
                 } else {
                     count++;
                     if (count == hostelList.size()) {
@@ -750,8 +769,10 @@ public class RoomGUI extends javax.swing.JFrame {
                     }
                 }
             }
+        // If type = B&B room, loop through B&B array list to find matching ID
         } else {
             for (BedAndBreakfast bb : bbList) {
+                // Match found: delete object from array, create a new object from the input form and add the array, confirm with message dialog and exit loop
                 if (roomID_Tf.getText().equalsIgnoreCase(bb.getRoomID())) {
                     BedAndBreakfast bAndB = createBB();
                     bbList.add(bAndB);
@@ -759,6 +780,7 @@ public class RoomGUI extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, bAndB.getRoomType() + " #" + bAndB.getRoomID() + " successfully deleted.");
                     clearForm();
                     break;
+                // No match found: message dialog displays after the last object in the array is evaluated
                 } else {
                     count++;
                     if (count == bbList.size()) {
@@ -771,11 +793,14 @@ public class RoomGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_amend_BtnActionPerformed
 
     private void delete_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_BtnActionPerformed
+        // Set count to 0 and verify ID field is not empty
         int count = 0;
         if (roomID_Tf.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Please select type and enter ID.");
+        // If type = hotel room, loop through hotel array list to find matching ID
         } else if (roomType_Combo.getSelectedItem().toString().equals("Hotel Room")) {
             for (Hotel h : hotelList) {
+                // Match found: fill form with remaining details, delete object from array, confirm with message dialog and exit loop
                 if (roomID_Tf.getText().equalsIgnoreCase(h.getRoomID())) {
                     name_Tf.setText(h.getRoomName());
                     address_Tf.setText(h.getRoomAddress());
@@ -793,6 +818,7 @@ public class RoomGUI extends javax.swing.JFrame {
                     option6_Check.setSelected(h.hasRestaurant());
                     option7_Check.setSelected(h.hasPool());
                     option8_Check.setSelected(h.hasGym());
+                    // Select one radio button based on the option value from getter
                     if (h.getBedType().equals("Single")) {
                         optionRadio1_Rb.setSelected(true);
                     } else if (h.getBedType().equals("Double")) {
@@ -804,6 +830,7 @@ public class RoomGUI extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, h.getRoomType() + " #" + h.getRoomID() + " successfully deleted.");
                     clearForm();
                     break;
+                // No match found: message dialog displays after the last object in the array is evaluated
                 } else {
                     count++;
                     if (count == hotelList.size()) {
@@ -812,8 +839,10 @@ public class RoomGUI extends javax.swing.JFrame {
                     }
                 }
             }
+        // If type = hostel room, loop through hostel array list to find matching ID
         } else if (roomType_Combo.getSelectedItem().toString().equals("Hostel Room")) {
             for (Hostel h : hostelList) {
+                // Match found: fill form with remaining details, delete object from array, confirm with message dialog and exit loop
                 if (roomID_Tf.getText().equalsIgnoreCase(h.getRoomID())) {
                     name_Tf.setText(h.getRoomName());
                     address_Tf.setText(h.getRoomAddress());
@@ -831,6 +860,7 @@ public class RoomGUI extends javax.swing.JFrame {
                     option6_Check.setSelected(h.hasSharedKitchen());
                     option7_Check.setSelected(h.hasWashingMachine());
                     option8_Check.setSelected(h.hasLongStayOption());
+                    // Select one radio button based on the option value from getter
                     if (h.getDormType().equals("Female")) {
                         optionRadio1_Rb.setSelected(true);
                     } else if (h.getDormType().equals("Male")) {
@@ -842,6 +872,7 @@ public class RoomGUI extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, h.getRoomType() + " #" + h.getRoomID() + " successfully deleted.");
                     clearForm();
                     break;
+                // No match found: message dialog displays after the last object in the array is evaluated
                 } else {
                     count++;
                     if (count == hostelList.size()) {
@@ -850,8 +881,10 @@ public class RoomGUI extends javax.swing.JFrame {
                     }
                 }
             }
+        // If type = B&B room, loop through B&B array list to find matching ID
         } else {
             for (BedAndBreakfast bb : bbList) {
+                // Match found: fill form with remaining details, delete object from array, confirm with message dialog and exit loop
                 if (roomID_Tf.getText().equalsIgnoreCase(bb.getRoomID())) {
                     name_Tf.setText(bb.getRoomName());
                     address_Tf.setText(bb.getRoomAddress());
@@ -869,6 +902,7 @@ public class RoomGUI extends javax.swing.JFrame {
                     option6_Check.setSelected(bb.hasLinen());
                     option7_Check.setSelected(bb.hasWashingMachine());
                     option8_Check.setSelected(bb.hasGarden());
+                    // Select one radio button based on the option value from getter
                     if (bb.getNumberBedrooms() == 1) {
                         optionRadio1_Rb.setSelected(true);
                     } else if (bb.getNumberBedrooms() == 2) {
@@ -880,6 +914,7 @@ public class RoomGUI extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, bb.getRoomType() + " #" + bb.getRoomID() + " successfully deleted.");
                     clearForm();
                     break;
+                // No match found: message dialog displays after the last object in the array is evaluated
                 } else {
                     count++;
                     if (count == bbList.size()) {
@@ -892,9 +927,11 @@ public class RoomGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_delete_BtnActionPerformed
 
     private void save_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_BtnActionPerformed
+        // Verify the array list of objects Hotel is not empty
         if (hotelList.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No Hotel room found.");
         } else {
+            // Write Hotel objects to hotels.data file and confirm to user
             try {
                 File outFile = new File("hotels.data");
                 FileOutputStream fStream = new FileOutputStream(outFile);
@@ -907,9 +944,11 @@ public class RoomGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Hotel rooms saved successfully.");
         }
 
+        // Verify the array list of objects Hostel is not empty
         if (hostelList.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No Hostel room found.");
         } else {
+            // Write Hostel objects to hostels.data file and confirm to user
             try {
                 File outFile = new File("hostels.data");
                 FileOutputStream fStream = new FileOutputStream(outFile);
@@ -922,9 +961,11 @@ public class RoomGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Hostel rooms saved successfully.");
         }
 
+        // Verify the array list of objects B&B is not empty
         if (bbList.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No Bed & Breakfast room found.");
         } else {
+            // Write B&B objects to bedandbreakfasts.data file and confirm to user
             try {
                 File outFile = new File("bedandbreakfasts.data");
                 FileOutputStream fStream = new FileOutputStream(outFile);
@@ -939,11 +980,14 @@ public class RoomGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_save_BtnActionPerformed
 
     private void search_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_BtnActionPerformed
+        // Set count to 0 and verify ID field is not empty
         int count = 0;
         if (roomID_Tf.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Please select type and enter ID.");
+        // If type = Hotel room, loop through Hotel array list to find matching ID  
         } else if (roomType_Combo.getSelectedItem().toString().equals("Hotel Room")) {
             for (Hotel h : hotelList) {
+                // Match found: fill form with Hotel details from stored object and exit loop
                 if (roomID_Tf.getText().equalsIgnoreCase(h.getRoomID())) {
                     name_Tf.setText(h.getRoomName());
                     address_Tf.setText(h.getRoomAddress());
@@ -969,6 +1013,7 @@ public class RoomGUI extends javax.swing.JFrame {
                         optionRadio3_Rb.setSelected(true);
                     }
                     break;
+                // No match found: message dialog displays after the last object in the array is evaluated
                 } else {
                     count++;
                     if (count == hotelList.size()) {
@@ -977,8 +1022,10 @@ public class RoomGUI extends javax.swing.JFrame {
                     }
                 }
             }
+        // If type = Hostel room, loop through Hostel array list to find matching ID  
         } else if (roomType_Combo.getSelectedItem().toString().equals("Hostel Room")) {
             for (Hostel h : hostelList) {
+                // Match found: fill form with Hostel details from stored object and exit loop
                 if (roomID_Tf.getText().equalsIgnoreCase(h.getRoomID())) {
                     name_Tf.setText(h.getRoomName());
                     address_Tf.setText(h.getRoomAddress());
@@ -1004,6 +1051,7 @@ public class RoomGUI extends javax.swing.JFrame {
                         optionRadio3_Rb.setSelected(true);
                     }
                     break;
+                // No match found: message dialog displays after the last object in the array is evaluated
                 } else {
                     count++;
                     if (count == hostelList.size()) {
@@ -1012,8 +1060,10 @@ public class RoomGUI extends javax.swing.JFrame {
                     }
                 }
             }
+        // If type = B&B room, loop through B&B array list to find matching ID  
         } else {
             for (BedAndBreakfast bb : bbList) {
+                // Match found: fill form with B&B details from stored object and exit loop
                 if (roomID_Tf.getText().equalsIgnoreCase(bb.getRoomID())) {
                     name_Tf.setText(bb.getRoomName());
                     address_Tf.setText(bb.getRoomAddress());
@@ -1039,6 +1089,7 @@ public class RoomGUI extends javax.swing.JFrame {
                         optionRadio3_Rb.setSelected(true);
                     }
                     break;
+                // No match found: message dialog displays after the last object in the array is evaluated
                 } else {
                     count++;
                     if (count == bbList.size()) {
@@ -1051,6 +1102,7 @@ public class RoomGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_search_BtnActionPerformed
 
     private void viewBB_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBB_BtnActionPerformed
+        // Verify that the array list is not empty and display object details for each B&B in the array list
         if (bbList.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No Bed & Breakfast room recorded.");
         } else {
@@ -1061,6 +1113,7 @@ public class RoomGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_viewBB_BtnActionPerformed
 
     private void viewHostel_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewHostel_BtnActionPerformed
+        // Verify that the array list is not empty and display object details for each Hostel in the array list
         if (hostelList.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No Hostel room recorded.");
         } else {
@@ -1071,6 +1124,7 @@ public class RoomGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_viewHostel_BtnActionPerformed
 
     private void viewHotel_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewHotel_BtnActionPerformed
+        // Verify that the array list is not empty and display object details for each Hotel in the array list
         if (hotelList.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No Hotel room recorded.");
         } else {
@@ -1081,19 +1135,23 @@ public class RoomGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_viewHotel_BtnActionPerformed
 
     private void add_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_BtnActionPerformed
+        // Verify that all mandatory fields have been filled
         if (roomID_Tf.getText().equals("") || address_Tf.getText().equals("") || city_Tf.getText().equals("") || price_Tf.getText().equals("") || maxGuests_Tf.getText().equals("") ||
             (optionRadio1_Rb.isSelected() == false && optionRadio2_Rb.isSelected() == false && optionRadio3_Rb.isSelected() == false)) {
             JOptionPane.showMessageDialog(null, "All fields must be filled.");
+        // If type = Hotel room, create new object of type Hotel, add it to the array, confirm and clear form
         } else if (roomType_Combo.getSelectedItem().toString().equals("Hotel Room")) {
             Hotel hotel = createHotel();
             JOptionPane.showMessageDialog(null, "***NEW HOTEL ROOM ADDED***\n" + hotel.getDetails());
             hotelList.add(hotel);
             clearForm();
+        // If type = Hostel room, create new object of type Hostel, add it to the array, confirm and clear form
         } else if (roomType_Combo.getSelectedItem().toString().equals("Hostel Room")) {
             Hostel hostel = createHostel();
             JOptionPane.showMessageDialog(null, "***NEW HOSTEL ROOM ADDED***\n" + hostel.getDetails());
             hostelList.add(hostel);
             clearForm();
+        // If type = B&B room, create new object of type B&B, add it to the array, confirm and clear form
         } else {
             BedAndBreakfast bb = createBB();
             JOptionPane.showMessageDialog(null, "***NEW BED AND BREAKFAST ROOM ADDED***\n" + bb.getDetails());
@@ -1127,6 +1185,7 @@ public class RoomGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_roomID_TfActionPerformed
 
     private void roomType_ComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomType_ComboActionPerformed
+        // Set up all form labels if Hotel is selected from combo box
         if (roomType_Combo.getSelectedItem().equals("Hotel Room")) {
             facilitiesHeader_Lbl.setText("Options - Hotel");
             option1_Check.setText("24/7 Reception");
@@ -1141,6 +1200,7 @@ public class RoomGUI extends javax.swing.JFrame {
             optionRadio1_Rb.setText("Simple");
             optionRadio2_Rb.setText("Double");
             optionRadio3_Rb.setText("King Size");
+        // Set up all form labels if Hostel is selected from combo box
         } else if (roomType_Combo.getSelectedItem().equals("Hostel Room")){
             facilitiesHeader_Lbl.setText("Options - Hostel");
             option1_Check.setText("24/7 Reception");
@@ -1155,6 +1215,7 @@ public class RoomGUI extends javax.swing.JFrame {
             optionRadio1_Rb.setText("Female");
             optionRadio2_Rb.setText("Male");
             optionRadio3_Rb.setText("Mixed");
+        // Set up all form labels if B&B is selected from combo box
         } else {
             facilitiesHeader_Lbl.setText("Options - Bed & Breakfast");
             option1_Check.setText("Owner Occupied");

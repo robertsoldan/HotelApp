@@ -13,6 +13,7 @@ import java.io.Serializable;
  */
 public class Room implements Serializable {
 
+    // Declare variables
     private String roomName;
     private String roomID;
     private String roomType;
@@ -24,6 +25,7 @@ public class Room implements Serializable {
     private boolean hasParkingSpace;
     private int kmFromCityCentre;
 
+    // Superclass constructor
     public Room(String roomName, String roomID, String roomType, String roomAddress, String roomCity, double roomPricePerNight, int maxNumberGuests, boolean hasBreakfastIncl, 
             boolean hasParkingSpace, int kmFromCityCentre) {
         this.roomName = roomName;
@@ -37,7 +39,9 @@ public class Room implements Serializable {
         this.hasParkingSpace = hasParkingSpace;
         this.kmFromCityCentre = kmFromCityCentre;
     }
-
+    
+    // Superclass getters and setters
+    
     public String getRoomName() {
         return roomName;
     }
@@ -118,9 +122,7 @@ public class Room implements Serializable {
         this.kmFromCityCentre = kmFromCityCentre;
     }
 
-
-    
-
+    // Method to get all of Room details
     public String getDetails() {
         return "Name: " + this.roomName + 
         "\nType: " + this.roomType +        
