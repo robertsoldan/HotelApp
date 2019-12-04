@@ -9,6 +9,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.util.Properties;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -33,6 +38,8 @@ public class SearchGUI extends javax.swing.JFrame {
 
     public SearchGUI() {
         initComponents();
+        hostelCmb.setVisible(false);
+        bbCmb.setVisible(false);
         checkInCalendarState = false;
         checkOutCalendarState = false;
         checkInDate = "";
@@ -64,6 +71,7 @@ public class SearchGUI extends javax.swing.JFrame {
 
             }
         });
+
     }
 
     /**
@@ -85,16 +93,23 @@ public class SearchGUI extends javax.swing.JFrame {
         splitter2 = new javax.swing.JLabel();
         searchBtn = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        searchLbl = new javax.swing.JLabel();
         searchTfBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         searchPanel = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        hotelCmb = new javax.swing.JComboBox<>();
+        roomsCmb = new javax.swing.JComboBox<>();
         checkIn = new javax.swing.JButton();
         checkOut = new javax.swing.JButton();
         checkInDateLbl = new javax.swing.JLabel();
         checkOutDateLbl = new javax.swing.JLabel();
+        accTypeCmb = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        roomsLbl = new javax.swing.JLabel();
+        hostelCmb = new javax.swing.JComboBox<>();
+        bbCmb = new javax.swing.JComboBox<>();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -120,7 +135,6 @@ public class SearchGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setPreferredSize(new java.awt.Dimension(1100, 750));
 
         backgroundPanel.setBackground(new java.awt.Color(255, 255, 204));
 
@@ -204,11 +218,6 @@ public class SearchGUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        searchLbl.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
-        searchLbl.setForeground(new java.awt.Color(19, 19, 19));
-        searchLbl.setText("Search by hotel name or city");
-        searchLbl.setPreferredSize(new java.awt.Dimension(158, 17));
-
         searchTfBtn.setText("Search");
         searchTfBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,14 +238,26 @@ public class SearchGUI extends javax.swing.JFrame {
         );
         searchPanelLayout.setVerticalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 545, Short.MAX_VALUE)
+            .addGap(0, 529, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(searchPanel);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        hotelCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Simple", "Double", "King size" }));
+        hotelCmb.setMinimumSize(new java.awt.Dimension(70, 20));
+        hotelCmb.setPreferredSize(new java.awt.Dimension(70, 20));
+        hotelCmb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hotelCmbActionPerformed(evt);
+            }
+        });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        roomsCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
+        roomsCmb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                roomsCmbActionPerformed(evt);
+            }
+        });
 
         checkIn.setText("From");
         checkIn.addActionListener(new java.awt.event.ActionListener() {
@@ -254,14 +275,44 @@ public class SearchGUI extends javax.swing.JFrame {
 
         checkInDateLbl.setText("Check in date");
         checkInDateLbl.setMaximumSize(new java.awt.Dimension(200, 15));
-        checkInDateLbl.setMinimumSize(new java.awt.Dimension(150, 15));
-        checkInDateLbl.setPreferredSize(new java.awt.Dimension(150, 15));
+        checkInDateLbl.setMinimumSize(new java.awt.Dimension(90, 15));
+        checkInDateLbl.setPreferredSize(new java.awt.Dimension(90, 15));
 
         checkOutDateLbl.setBackground(new java.awt.Color(255, 255, 255));
         checkOutDateLbl.setText("Check out date");
         checkOutDateLbl.setMaximumSize(new java.awt.Dimension(200, 15));
-        checkOutDateLbl.setMinimumSize(new java.awt.Dimension(150, 15));
-        checkOutDateLbl.setPreferredSize(new java.awt.Dimension(150, 15));
+        checkOutDateLbl.setMinimumSize(new java.awt.Dimension(90, 15));
+        checkOutDateLbl.setPreferredSize(new java.awt.Dimension(90, 15));
+
+        accTypeCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hotel", "Hostel", "B&B" }));
+        accTypeCmb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                accTypeCmbActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Accomodation type:");
+
+        jLabel3.setText("Room type:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("City");
+
+        roomsLbl.setText("Rooms");
+
+        hostelCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Female", "Male", "Mixed" }));
+        hostelCmb.setMinimumSize(new java.awt.Dimension(70, 20));
+        hostelCmb.setPreferredSize(new java.awt.Dimension(70, 20));
+
+        bbCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 guest", "2 guests", "3 guests" }));
+        bbCmb.setMinimumSize(new java.awt.Dimension(70, 20));
+        bbCmb.setPreferredSize(new java.awt.Dimension(70, 20));
 
         javax.swing.GroupLayout backgroundPanelLayout = new javax.swing.GroupLayout(backgroundPanel);
         backgroundPanel.setLayout(backgroundPanelLayout);
@@ -270,43 +321,68 @@ public class SearchGUI extends javax.swing.JFrame {
             .addComponent(heaherPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(backgroundPanelLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(searchLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(150, 150, 150)
                         .addComponent(checkIn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(checkInDateLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(checkOut)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(checkOutDateLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(searchTfBtn))
-                    .addComponent(jScrollPane1))
-                .addContainerGap(269, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
+                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(accTypeCmb, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(roomsLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                            .addComponent(roomsCmb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addGroup(backgroundPanelLayout.createSequentialGroup()
+                                .addComponent(bbCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(hotelCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(hostelCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(searchTfBtn)))
+                        .addGap(69, 69, 69))
+                    .addGroup(backgroundPanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 808, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(328, Short.MAX_VALUE))))
         );
         backgroundPanelLayout.setVerticalGroup(
             backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgroundPanelLayout.createSequentialGroup()
                 .addComponent(heaherPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(searchLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(roomsLbl)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(searchTfBtn)
-                    .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(checkIn)
-                        .addComponent(checkOut)
-                        .addComponent(checkInDateLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(checkOutDateLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE))
+                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(accTypeCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bbCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hotelCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hostelCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(roomsCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkIn)
+                    .addComponent(checkInDateLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkOut)
+                    .addComponent(checkOutDateLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchTfBtn))
+                .addGap(54, 54, 54)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -387,16 +463,158 @@ public class SearchGUI extends javax.swing.JFrame {
         int yLoc; // Will the Y position of each generated panel
         int searchPanelYSize; // Will dynamically adjust the total height of the main search panel to accomodate for all the elements
         int resultPanelHeight = 100;
-        int resultPanelMargin = 20;
+        int resultPanelMargin = 20; // To be taken out
         int backgroundPanelWidth = backgroundPanel.getSize().width;
 
-        searchPanel.removeAll();
+        searchPanel.removeAll(); // Resetting the search results on every search
         searchPanel.revalidate();
         searchPanel.repaint();
 
-        for (int i = 0; i < 40; i++) {
+        ArrayList<String[]> results = new ArrayList<String[]>(); // This array list will store the results
 
-            yLoc = i * (resultPanelHeight + resultPanelMargin); // 70 pixels distance between each point - each panel is 50 pixels tall, so that will leave 20 pixels between panels
+        if (accTypeCmb.getSelectedItem().toString().equals("Hotel")) { // If searching for a hotel room ...
+
+            // Initiating the file stream for reading from the hotels.data file inside the hotels array list
+            File fName;
+            FileInputStream fStream;
+            ObjectInputStream oStream;
+            ArrayList<Hotel> hotels = new ArrayList<>();
+
+            try {
+                fName = new File("hotels.data");
+                fStream = new FileInputStream(fName);
+                oStream = new ObjectInputStream(fStream);
+                hotels = (ArrayList<Hotel>) oStream.readObject();
+
+                // Looping through the hotels arraylist
+                for (Hotel x : hotels) {
+                    // Finding the match within the hotels arraylist
+                    if (x.getBedType().equals(hotelCmb.getSelectedItem().toString())) {
+                        String[] result = {x.getRoomID(), x.getRoomName(), x.getRoomCity(), x.getRoomAddress(), // 0 - 3
+                            "Price per night", String.valueOf(x.getRoomPricePerNight()), // 4 - 5
+                            "KM from city centre", String.valueOf(x.getKmFromCityCentre()), // 6 - 7
+                            "Max number of guests", String.valueOf(x.getMaxNumberGuests()), // 8 - 9
+                            "Parking", String.valueOf(x.hasParkingSpace()), // 10 - 11 
+                            "Breakfast", String.valueOf(x.hasBreakfastIncl()), // 12 - 13
+                            "24h Reception", String.valueOf(x.has24HReception()), // 14 - 15
+                            "Balcony", String.valueOf(x.hasBalcony()), // 16 - 17
+                            "Bathtub", String.valueOf(x.hasBathtub()), // 18 - 19
+                            "Pool", String.valueOf(x.hasPool()), // 20 - 21
+                            "Room service", String.valueOf(x.hasRoomService()), // 22 - 23 
+                            "Minibar", String.valueOf(x.hasMinibar()), // 24 - 25
+                            "Restaurant", String.valueOf(x.hasRestaurant()), // 26 - 27
+                            "Gym", String.valueOf(x.hasGym())}; // 28 - 29
+                        results.add(result); // Storing the results as arrays within the results array list
+                    }
+                }
+            } catch (IOException e) {
+                System.out.println(e);
+            } catch (ClassNotFoundException x) {
+                System.out.println(x);
+            }
+
+            System.out.println(results.get(0));
+        }
+
+        if (accTypeCmb.getSelectedItem().toString().equals("Hostel")) { // If searching for a hostel room ...
+
+            // Initiating the file stream for reading from the hostels.data file inside the hostels array list
+            File fName;
+            FileInputStream fStream;
+            ObjectInputStream oStream;
+            ArrayList<Hostel> hostels = new ArrayList<>();
+
+            try {
+                fName = new File("hostels.data");
+                fStream = new FileInputStream(fName);
+                oStream = new ObjectInputStream(fStream);
+                hostels = (ArrayList<Hostel>) oStream.readObject();
+
+                // Looping through the hotels arraylist
+                for (Hostel x : hostels) {
+                    // Finding the match within the hotels arraylist
+                    if (x.getDormType().equals(hostelCmb.getSelectedItem().toString())) {
+                        String[] result = {x.getRoomID(), x.getRoomName(), x.getRoomCity(), x.getRoomAddress(), // 0 - 3
+                            "Price per night", String.valueOf(x.getRoomPricePerNight()), // 4 - 5
+                            "KM from city centre", String.valueOf(x.getKmFromCityCentre()), // 6 - 7
+                            "Max number of guests", String.valueOf(x.getMaxNumberGuests()), // 8 - 9
+                            "Parking", String.valueOf(x.hasParkingSpace()), // 10 - 11 
+                            "Breakfast", String.valueOf(x.hasBreakfastIncl()), // 12 - 13
+                            "24h Reception", String.valueOf(x.has24HReception()), // 14 - 15
+                            "Lockers", String.valueOf(x.hasLockers()), // 16 - 17
+                            "Private bathroom", String.valueOf(x.hasPrivateBathroom()), // 18 - 19
+                            "Washing machine", String.valueOf(x.hasWashingMachine()), // 20 - 21
+                            "Private rooms", String.valueOf(x.hasPrivateRooms()), // 22 - 23 
+                            "Bar", String.valueOf(x.hasBar()), // 24 - 25
+                            "Shared kitchen", String.valueOf(x.hasSharedKitchen()), // 26 - 27
+                            "Long stay", String.valueOf(x.hasLongStayOption())}; // 28 - 29
+                        results.add(result); // Storing the results as arrays within the results array list
+                    }
+                }
+            } catch (IOException e) {
+                System.out.println(e);
+            } catch (ClassNotFoundException x) {
+                System.out.println(x);
+            }
+
+            System.out.println(results.get(0));
+        }
+        
+        if (accTypeCmb.getSelectedItem().toString().equals("B&B")) { // If searching for a hostel room ...
+
+            // Initiating the file stream for reading from the hostels.data file inside the hostels array list
+            File fName;
+            FileInputStream fStream;
+            ObjectInputStream oStream;
+            ArrayList<BedAndBreakfast> bAndB = new ArrayList<>();
+
+            try {
+                fName = new File("bedandbreakfast.data");
+                fStream = new FileInputStream(fName);
+                oStream = new ObjectInputStream(fStream);
+                bAndB = (ArrayList<BedAndBreakfast>) oStream.readObject();
+
+                // Looping through the hotels arraylist
+                String[] parts;
+                // Get just the number for the bedNo, not the whole string
+                parts = bbCmb.getSelectedItem().toString().split(" ");
+                String bedNo = parts[0];
+                
+                for (BedAndBreakfast x : bAndB) {
+                    // Finding the match within the hotels arraylist
+                    if (String.valueOf(x.getNumberBedrooms()).equals(bedNo)) {
+                        String[] result = {x.getRoomID(), x.getRoomName(), x.getRoomCity(), x.getRoomAddress(), // 0 - 3
+                            "Price per night", String.valueOf(x.getRoomPricePerNight()), // 4 - 5
+                            "KM from city centre", String.valueOf(x.getKmFromCityCentre()), // 6 - 7
+                            "Max number of guests", String.valueOf(x.getMaxNumberGuests()), // 8 - 9
+                            "Parking", String.valueOf(x.hasParkingSpace()), // 10 - 11 
+                            "Breakfast", String.valueOf(x.hasBreakfastIncl()), // 12 - 13
+                            "24h Reception", String.valueOf(x.has24HReception()), // 14 - 15
+                            "Lockers", String.valueOf(x.hasLockers()), // 16 - 17
+                            "Private bathroom", String.valueOf(x.hasPrivateBathroom()), // 18 - 19
+                            "Washing machine", String.valueOf(x.hasWashingMachine()), // 20 - 21
+                            "Private rooms", String.valueOf(x.hasPrivateRooms()), // 22 - 23 
+                            "Bar", String.valueOf(x.hasBar()), // 24 - 25
+                            "Shared kitchen", String.valueOf(x.hasSharedKitchen()), // 26 - 27
+                            "Long stay", String.valueOf(x.hasLongStayOption())}; // 28 - 29
+                        results.add(result); // Storing the results as arrays within the results array list
+                    }
+                }
+            } catch (IOException e) {
+                System.out.println(e);
+            } catch (ClassNotFoundException x) {
+                System.out.println(x);
+            }
+
+            System.out.println(results.get(0));
+        }
+
+
+        yLoc = 20;
+        for (String[] r : results) {
+
+            //yLoc = i * (resultPanelHeight + resultPanelMargin); // 70 pixels distance between each point - each panel is 50 pixels tall, so that will leave 20 pixels between panels
+            yLoc = yLoc + 150;
             searchPanelYSize = yLoc + 70; // Total height will make sure to leave 20 pixels margin between the last element and the bottom edge of the window
 
             // Setup the result panel
@@ -408,17 +626,27 @@ public class SearchGUI extends javax.swing.JFrame {
             resultPanel.setBackground(new Color(153, 0, 51)); // Search panel result background
 
             // Next block will make the result panels clickable, with a variable passed to them
-            final int resultNo = i; // In order to pass a variable to a class, it has to be first converted to a final
-
+            //final int resultNo = i; // In order to pass a variable to a class, it has to be first converted to a final
             // Adding the mouse event listener to the generated panel
             resultPanel.addMouseListener(new MouseAdapter() {
                 public void mousePressed(MouseEvent e) {
-                    System.out.println("This is entry " + searchTerm + " " + resultNo);
+                    System.out.println("This is entry " + searchTerm + " " + r[0]);
                 }
             });
 
             // Setup the result label
-            JLabel resultLabel = new JLabel(Integer.toString(i));
+            String resultString = "";
+            for (int i = 0; i < r.length; i++) {
+                if (r[i].equals("true")) {
+                    resultString = resultString + " " + "✓";
+                } else if (r[i].equals("false")) {
+                    resultString = resultString + " " + "x";
+                } else {
+                    resultString = resultString + " " + r[i];
+                }
+            }
+            System.out.println(resultString);
+            JLabel resultLabel = new JLabel(r[0] + " " + r[1] + " " + r[2] + " " + r[3] + " " + r[4] + " " + r[5] + " " + r[6] + " " + r[7] + " " + r[8]);
             resultLabel.setForeground(new Color(255, 255, 204)); // Result Label font color
             resultLabel.setBounds(20, 15, 200, 20); // Position and width of the text within the resultPanel
 
@@ -428,6 +656,7 @@ public class SearchGUI extends javax.swing.JFrame {
 
             searchPanel.setPreferredSize(new Dimension(600, searchPanelYSize + resultPanelHeight));
             searchPanel.revalidate();
+
         }
 
         checkInCalendarState = false;
@@ -486,6 +715,40 @@ public class SearchGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_checkOutActionPerformed
 
+    private void roomsCmbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomsCmbActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_roomsCmbActionPerformed
+
+    private void accTypeCmbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accTypeCmbActionPerformed
+        // TODO add your handling code here:
+        switch (accTypeCmb.getSelectedItem().toString()) {
+            case "Hotel":
+                hotelCmb.setVisible(true);
+                hostelCmb.setVisible(false);
+                bbCmb.setVisible(false);
+                break;
+            case "Hostel":
+                hotelCmb.setVisible(false);
+                hostelCmb.setVisible(true);
+                bbCmb.setVisible(false);
+                break;
+            default:
+                hotelCmb.setVisible(false);
+                hostelCmb.setVisible(false);
+                bbCmb.setVisible(true);
+                break;
+        }
+
+    }//GEN-LAST:event_accTypeCmbActionPerformed
+
+    private void hotelCmbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hotelCmbActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hotelCmbActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -502,25 +765,33 @@ public class SearchGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> accTypeCmb;
     private javax.swing.JPanel backgroundPanel;
+    private javax.swing.JComboBox<String> bbCmb;
     private javax.swing.JLabel bookingsBtn;
     private javax.swing.JButton checkIn;
     private javax.swing.JLabel checkInDateLbl;
     private javax.swing.JButton checkOut;
     private javax.swing.JLabel checkOutDateLbl;
     private javax.swing.JPanel heaherPanel;
+    private javax.swing.JComboBox<String> hostelCmb;
+    private javax.swing.JComboBox<String> hotelCmb;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel manageRoomBtn;
+    private javax.swing.JComboBox<String> roomsCmb;
+    private javax.swing.JLabel roomsLbl;
     private javax.swing.JLabel searchBtn;
-    private javax.swing.JLabel searchLbl;
     private javax.swing.JPanel searchPanel;
     private javax.swing.JButton searchTfBtn;
     private javax.swing.JLabel splitter1;
     private javax.swing.JLabel splitter2;
     // End of variables declaration//GEN-END:variables
 }
+
