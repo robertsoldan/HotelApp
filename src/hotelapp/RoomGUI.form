@@ -181,7 +181,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="add_Btn" max="32767" attributes="0"/>
-                                  <Component id="remove_Btn" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="delete_Btn" alignment="0" max="32767" attributes="0"/>
                                   <Component id="amend_Btn" alignment="1" max="32767" attributes="0"/>
                                   <Component id="manageHeader_Lbl" alignment="0" max="32767" attributes="0"/>
                                   <Component id="search_Btn" alignment="0" max="32767" attributes="0"/>
@@ -253,7 +253,7 @@
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="remove_Btn" min="-2" max="-2" attributes="0"/>
+                          <Component id="delete_Btn" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="17" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="viewHeader_Lbl" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
@@ -795,12 +795,12 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="remove_Btn">
+        <Component class="javax.swing.JButton" name="delete_Btn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Remove Room"/>
+            <Property name="text" type="java.lang.String" value="Delete Room"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="remove_BtnActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delete_BtnActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="amend_Btn">

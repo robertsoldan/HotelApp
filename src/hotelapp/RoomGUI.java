@@ -21,11 +21,12 @@ import javax.swing.JOptionPane;
  */
 public class RoomGUI extends javax.swing.JFrame {
 
-    private ArrayList<Hotel> hotelList = new ArrayList<>();
+    private ArrayList<Hotel> hotelList = new ArrayList<>(); 
     private ArrayList<Hostel> hostelList = new ArrayList<>();
     private ArrayList<BedAndBreakfast> bbList = new ArrayList<>();
-    
+        
     public RoomGUI() {
+        initLists();
         initComponents();
     }
     
@@ -48,7 +49,58 @@ public class RoomGUI extends javax.swing.JFrame {
         option7_Check.setSelected(false);
         option8_Check.setSelected(false);
     }
+    
+    private ArrayList<Hotel> generateHotelList() {
+        try {
+            File inFile = new File("hotels.data");
+            FileInputStream fStream = new FileInputStream(inFile);
+            ObjectInputStream oStream = new ObjectInputStream(fStream);
+            hotelList = (ArrayList<Hotel>)oStream.readObject();
+            oStream.close();
+        } catch (IOException e) {
+            System.out.println("IOException: " + e);
+        } catch (ClassNotFoundException e) {
+            System.out.println("ClassNotFoundException: " + e);
+        }
+        return hotelList;
+    }
 
+    private ArrayList<Hostel> generateHostelList() {
+        try {
+            File inFile = new File("hostels.data");
+            FileInputStream fStream = new FileInputStream(inFile);
+            ObjectInputStream oStream = new ObjectInputStream(fStream);
+            hostelList = (ArrayList<Hostel>)oStream.readObject();
+            oStream.close();
+        } catch (IOException e) {
+            System.out.println("IOException: " + e);
+        } catch (ClassNotFoundException e) {
+            System.out.println("ClassNotFoundException: " + e);
+        }
+        return hostelList;
+    }
+
+    private ArrayList<BedAndBreakfast> generateBBList() {
+        try {
+            File inFile = new File("bedandbreakfasts.data");
+            FileInputStream fStream = new FileInputStream(inFile);
+            ObjectInputStream oStream = new ObjectInputStream(fStream);
+            hotelList = (ArrayList<Hotel>)oStream.readObject();
+            oStream.close();
+        } catch (IOException e) {
+            System.out.println("IOException: " + e);
+        } catch (ClassNotFoundException e) {
+            System.out.println("ClassNotFoundException: " + e);
+        }
+        return bbList;
+    }
+    
+    private void initLists() {
+        hotelList = generateHotelList();
+        hostelList = generateHostelList();
+        bbList = generateBBList();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -109,7 +161,7 @@ public class RoomGUI extends javax.swing.JFrame {
         createHeader_Lbl = new javax.swing.JLabel();
         save_Btn = new javax.swing.JButton();
         viewHeader_Lbl = new javax.swing.JLabel();
-        remove_Btn = new javax.swing.JButton();
+        delete_Btn = new javax.swing.JButton();
         amend_Btn = new javax.swing.JButton();
         manageHeader_Lbl = new javax.swing.JLabel();
         clear_Btn = new javax.swing.JButton();
@@ -393,10 +445,10 @@ public class RoomGUI extends javax.swing.JFrame {
         viewHeader_Lbl.setText("View");
         viewHeader_Lbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 51)));
 
-        remove_Btn.setText("Remove Room");
-        remove_Btn.addActionListener(new java.awt.event.ActionListener() {
+        delete_Btn.setText("Delete Room");
+        delete_Btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                remove_BtnActionPerformed(evt);
+                delete_BtnActionPerformed(evt);
             }
         });
 
@@ -508,7 +560,7 @@ public class RoomGUI extends javax.swing.JFrame {
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(add_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(remove_Btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(delete_Btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(amend_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(manageHeader_Lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(search_Btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -565,7 +617,7 @@ public class RoomGUI extends javax.swing.JFrame {
                                 .addComponent(kmCityCentre_Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
-                        .addComponent(remove_Btn)
+                        .addComponent(delete_Btn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(viewHeader_Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -617,9 +669,123 @@ public class RoomGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_amend_BtnActionPerformed
 
-    private void remove_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remove_BtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_remove_BtnActionPerformed
+    private void delete_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_BtnActionPerformed
+        int count = 0;
+        if (roomID_Tf.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Please select type and enter ID.");
+        } else if (roomType_Combo.getSelectedItem().toString().equals("Hotel Room")) {
+            for (Hotel h : hotelList) {
+                if (roomID_Tf.getText().equalsIgnoreCase(h.getRoomID())) {
+                    address_Tf.setText(h.getRoomAddress());
+                    city_Tf.setText(h.getRoomCity());
+                    breakfast_Check.setSelected(h.hasBreakfastIncl());
+                    parking_Check.setSelected(h.hasParkingSpace());
+                    price_Tf.setText(Double.toString(h.getRoomPricePerNight()));
+                    maxGuests_Tf.setText(Integer.toString(h.getMaxNumberGuests()));
+                    kmCityCentre_Tf.setText(Integer.toString(h.getKmFromCityCentre()));
+                    option1_Check.setSelected(h.has24HReception());
+                    option2_Check.setSelected(h.hasRoomService());
+                    option3_Check.setSelected(h.hasBalcony());
+                    option4_Check.setSelected(h.hasMinibar());
+                    option5_Check.setSelected(h.hasBathtub());
+                    option6_Check.setSelected(h.hasRestaurant());
+                    option7_Check.setSelected(h.hasPool());
+                    option8_Check.setSelected(h.hasGym());
+                    if (h.getBedType().equals("Single")) {
+                        optionRadio1_Rb.setSelected(true);
+                    } else if (h.getBedType().equals("Double")) {
+                        optionRadio2_Rb.setSelected(true);
+                    } else {
+                        optionRadio3_Rb.setSelected(true);
+                    }
+                    hotelList.remove(h);
+                    JOptionPane.showMessageDialog(null, h.getRoomType() + " #" + h.getRoomID() + " successfully deleted.");
+                    clearForm();
+                    break;
+                } else {
+                    count++;
+                    if (count == hotelList.size()) {
+                        JOptionPane.showMessageDialog(null, h.getRoomType() + " does not exist.");
+                        clearForm();
+                    }
+                }
+            }
+        } else if (roomType_Combo.getSelectedItem().toString().equals("Hostel Room")) {
+            for (Hostel h : hostelList) {
+                if (roomID_Tf.getText().equalsIgnoreCase(h.getRoomID())) {
+                    address_Tf.setText(h.getRoomAddress());
+                    city_Tf.setText(h.getRoomCity());
+                    breakfast_Check.setSelected(h.hasBreakfastIncl());
+                    parking_Check.setSelected(h.hasParkingSpace());
+                    price_Tf.setText(Double.toString(h.getRoomPricePerNight()));
+                    maxGuests_Tf.setText(Integer.toString(h.getMaxNumberGuests()));
+                    kmCityCentre_Tf.setText(Integer.toString(h.getKmFromCityCentre()));
+                    option1_Check.setSelected(h.has24HReception());
+                    option2_Check.setSelected(h.hasPrivateRooms());
+                    option3_Check.setSelected(h.hasLockers());
+                    option4_Check.setSelected(h.hasBar());
+                    option5_Check.setSelected(h.hasPrivateBathroom());
+                    option6_Check.setSelected(h.hasSharedKitchen());
+                    option7_Check.setSelected(h.hasWashingMachine());
+                    option8_Check.setSelected(h.hasLongStayOption());
+                    if (h.getDormType().equals("Female")) {
+                        optionRadio1_Rb.setSelected(true);
+                    } else if (h.getDormType().equals("Male")) {
+                        optionRadio2_Rb.setSelected(true);
+                    } else {
+                        optionRadio3_Rb.setSelected(true);
+                    }
+                    hostelList.remove(h);
+                    JOptionPane.showMessageDialog(null, h.getRoomType() + " #" + h.getRoomID() + " successfully deleted.");
+                    clearForm();
+                    break;
+                } else {
+                    count++;
+                    if (count == hostelList.size()) {
+                        JOptionPane.showMessageDialog(null, h.getRoomType() + " does not exist.");
+                        clearForm();
+                    }
+                }
+            }
+        } else {
+            for (BedAndBreakfast bb : bbList) {
+                if (roomID_Tf.getText().equalsIgnoreCase(bb.getRoomID())) {
+                    address_Tf.setText(bb.getRoomAddress());
+                    city_Tf.setText(bb.getRoomCity());
+                    breakfast_Check.setSelected(bb.hasBreakfastIncl());
+                    parking_Check.setSelected(bb.hasParkingSpace());
+                    price_Tf.setText(Double.toString(bb.getRoomPricePerNight()));
+                    maxGuests_Tf.setText(Integer.toString(bb.getMaxNumberGuests()));
+                    kmCityCentre_Tf.setText(Integer.toString(bb.getKmFromCityCentre()));
+                    option1_Check.setSelected(bb.isOwnerOccupied());
+                    option2_Check.setSelected(bb.isPetFriendly());
+                    option3_Check.setSelected(bb.hasKitchen());
+                    option4_Check.setSelected(bb.hasCleaningOption());
+                    option5_Check.setSelected(bb.hasTowels());
+                    option6_Check.setSelected(bb.hasLinen());
+                    option7_Check.setSelected(bb.hasWashingMachine());
+                    option8_Check.setSelected(bb.hasGarden());
+                    if (bb.getNumberBedrooms() == 1) {
+                        optionRadio1_Rb.setSelected(true);
+                    } else if (bb.getNumberBedrooms() == 2) {
+                        optionRadio2_Rb.setSelected(true);
+                    } else {
+                        optionRadio3_Rb.setSelected(true);
+                    }
+                    bbList.remove(bb);
+                    JOptionPane.showMessageDialog(null, bb.getRoomType() + " #" + bb.getRoomID() + " successfully deleted.");
+                    clearForm();
+                    break;
+                } else {
+                    count++;
+                    if (count == bbList.size()) {
+                        JOptionPane.showMessageDialog(null, bb.getRoomType() + " does not exist.");
+                        clearForm();
+                    }
+                }
+            }
+        }        
+    }//GEN-LAST:event_delete_BtnActionPerformed
 
     private void save_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_BtnActionPerformed
         if (hotelList.isEmpty()) {
@@ -669,191 +835,141 @@ public class RoomGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_save_BtnActionPerformed
 
     private void search_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_BtnActionPerformed
+        int count = 0;
         if (roomID_Tf.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Please select type and enter ID.");
         } else if (roomType_Combo.getSelectedItem().toString().equals("Hotel Room")) {
-            try {
-                File inFile = new File("hotels.data");
-                FileInputStream fStream = new FileInputStream(inFile);
-                ObjectInputStream oStream = new ObjectInputStream(fStream);
-                ArrayList<Hotel> hotelList = (ArrayList<Hotel>)oStream.readObject();
-                for (Hotel h : hotelList) {
-                    if (roomID_Tf.getText().equalsIgnoreCase(h.getRoomID())) {
-                        address_Tf.setText(h.getRoomAddress());
-                        city_Tf.setText(h.getRoomCity());
-                        breakfast_Check.setSelected(h.hasBreakfastIncl());
-                        parking_Check.setSelected(h.hasParkingSpace());
-                        price_Tf.setText(Double.toString(h.getRoomPricePerNight()));
-                        maxGuests_Tf.setText(Integer.toString(h.getMaxNumberGuests()));
-                        kmCityCentre_Tf.setText(Integer.toString(h.getKmFromCityCentre()));
-                        option1_Check.setSelected(h.has24HReception());
-                        option2_Check.setSelected(h.hasRoomService());
-                        option3_Check.setSelected(h.hasBalcony());
-                        option4_Check.setSelected(h.hasMinibar());
-                        option5_Check.setSelected(h.hasBathtub());
-                        option6_Check.setSelected(h.hasRestaurant());
-                        option7_Check.setSelected(h.hasPool());
-                        option8_Check.setSelected(h.hasGym());
-                        if (h.getBedType().equals("Single")) {
-                            optionRadio1_Rb.setSelected(true);
-                        } else if (h.getBedType().equals("Double")) {
-                            optionRadio2_Rb.setSelected(true);
-                        } else {
-                            optionRadio3_Rb.setSelected(true);
-                        }
-                        break;
+            for (Hotel h : hotelList) {
+                if (roomID_Tf.getText().equalsIgnoreCase(h.getRoomID())) {
+                    address_Tf.setText(h.getRoomAddress());
+                    city_Tf.setText(h.getRoomCity());
+                    breakfast_Check.setSelected(h.hasBreakfastIncl());
+                    parking_Check.setSelected(h.hasParkingSpace());
+                    price_Tf.setText(Double.toString(h.getRoomPricePerNight()));
+                    maxGuests_Tf.setText(Integer.toString(h.getMaxNumberGuests()));
+                    kmCityCentre_Tf.setText(Integer.toString(h.getKmFromCityCentre()));
+                    option1_Check.setSelected(h.has24HReception());
+                    option2_Check.setSelected(h.hasRoomService());
+                    option3_Check.setSelected(h.hasBalcony());
+                    option4_Check.setSelected(h.hasMinibar());
+                    option5_Check.setSelected(h.hasBathtub());
+                    option6_Check.setSelected(h.hasRestaurant());
+                    option7_Check.setSelected(h.hasPool());
+                    option8_Check.setSelected(h.hasGym());
+                    if (h.getBedType().equals("Single")) {
+                        optionRadio1_Rb.setSelected(true);
+                    } else if (h.getBedType().equals("Double")) {
+                        optionRadio2_Rb.setSelected(true);
                     } else {
-                        JOptionPane.showMessageDialog(null, "Room not found.");
+                        optionRadio3_Rb.setSelected(true);
+                    }
+                    break;
+                } else {
+                    count++;
+                    if (count == hotelList.size()) {
+                        JOptionPane.showMessageDialog(null, h.getRoomType() + " does not exist.");
                         clearForm();
                     }
                 }
-                oStream.close();
-            } catch (IOException e) {
-                System.out.println("IOException" + e);
-            } catch (ClassNotFoundException e) {
-                System.out.println("ClassNotFoundException: " + e);
             }
         } else if (roomType_Combo.getSelectedItem().toString().equals("Hostel Room")) {
-            try {
-                File inFile = new File("hostels.data");
-                FileInputStream fStream = new FileInputStream(inFile);
-                ObjectInputStream oStream = new ObjectInputStream(fStream);
-                ArrayList<Hostel> hostelList = (ArrayList<Hostel>)oStream.readObject();
-                for (Hostel h : hostelList) {
-                    if (roomID_Tf.getText().equalsIgnoreCase(h.getRoomID())) {
-                        address_Tf.setText(h.getRoomAddress());
-                        city_Tf.setText(h.getRoomCity());
-                        breakfast_Check.setSelected(h.hasBreakfastIncl());
-                        parking_Check.setSelected(h.hasParkingSpace());
-                        price_Tf.setText(Double.toString(h.getRoomPricePerNight()));
-                        maxGuests_Tf.setText(Integer.toString(h.getMaxNumberGuests()));
-                        kmCityCentre_Tf.setText(Integer.toString(h.getKmFromCityCentre()));
-                        option1_Check.setSelected(h.has24HReception());
-                        option2_Check.setSelected(h.hasPrivateRooms());
-                        option3_Check.setSelected(h.hasLockers());
-                        option4_Check.setSelected(h.hasBar());
-                        option5_Check.setSelected(h.hasPrivateBathroom());
-                        option6_Check.setSelected(h.hasSharedKitchen());
-                        option7_Check.setSelected(h.hasWashingMachine());
-                        option8_Check.setSelected(h.hasLongStayOption());
-                        if (h.getDormType().equals("Female")) {
-                            optionRadio1_Rb.setSelected(true);
-                        } else if (h.getDormType().equals("Male")) {
-                            optionRadio2_Rb.setSelected(true);
-                        } else {
-                            optionRadio3_Rb.setSelected(true);
-                        }
-                        break;
+            for (Hostel h : hostelList) {
+                if (roomID_Tf.getText().equalsIgnoreCase(h.getRoomID())) {
+                    address_Tf.setText(h.getRoomAddress());
+                    city_Tf.setText(h.getRoomCity());
+                    breakfast_Check.setSelected(h.hasBreakfastIncl());
+                    parking_Check.setSelected(h.hasParkingSpace());
+                    price_Tf.setText(Double.toString(h.getRoomPricePerNight()));
+                    maxGuests_Tf.setText(Integer.toString(h.getMaxNumberGuests()));
+                    kmCityCentre_Tf.setText(Integer.toString(h.getKmFromCityCentre()));
+                    option1_Check.setSelected(h.has24HReception());
+                    option2_Check.setSelected(h.hasPrivateRooms());
+                    option3_Check.setSelected(h.hasLockers());
+                    option4_Check.setSelected(h.hasBar());
+                    option5_Check.setSelected(h.hasPrivateBathroom());
+                    option6_Check.setSelected(h.hasSharedKitchen());
+                    option7_Check.setSelected(h.hasWashingMachine());
+                    option8_Check.setSelected(h.hasLongStayOption());
+                    if (h.getDormType().equals("Female")) {
+                        optionRadio1_Rb.setSelected(true);
+                    } else if (h.getDormType().equals("Male")) {
+                        optionRadio2_Rb.setSelected(true);
                     } else {
-                        JOptionPane.showMessageDialog(null, "Room not found.");
+                        optionRadio3_Rb.setSelected(true);
+                    }
+                    break;
+                } else {
+                    count++;
+                    if (count == hostelList.size()) {
+                        JOptionPane.showMessageDialog(null, h.getRoomType() + " does not exist.");
                         clearForm();
                     }
                 }
-                oStream.close();
-            } catch (IOException e) {
-                System.out.println("IOException" + e);
-            } catch (ClassNotFoundException e) {
-                System.out.println("ClassNotFoundException: " + e);
             }
-        } else if (roomType_Combo.getSelectedItem().toString().equals("Bed And Breakfast")) {
-            try {
-                File inFile = new File("bedandbreakfast.data");
-                FileInputStream fStream = new FileInputStream(inFile);
-                ObjectInputStream oStream = new ObjectInputStream(fStream);
-                ArrayList<BedAndBreakfast> bbList = (ArrayList<BedAndBreakfast>)oStream.readObject();
-                for (BedAndBreakfast bb : bbList) {
-                    if (roomID_Tf.getText().equalsIgnoreCase(bb.getRoomID())) {
-                        address_Tf.setText(bb.getRoomAddress());
-                        city_Tf.setText(bb.getRoomCity());
-                        breakfast_Check.setSelected(bb.hasBreakfastIncl());
-                        parking_Check.setSelected(bb.hasParkingSpace());
-                        price_Tf.setText(Double.toString(bb.getRoomPricePerNight()));
-                        maxGuests_Tf.setText(Integer.toString(bb.getMaxNumberGuests()));
-                        kmCityCentre_Tf.setText(Integer.toString(bb.getKmFromCityCentre()));
-                        option1_Check.setSelected(bb.isOwnerOccupied());
-                        option2_Check.setSelected(bb.isPetFriendly());
-                        option3_Check.setSelected(bb.hasKitchen());
-                        option4_Check.setSelected(bb.hasCleaningOption());
-                        option5_Check.setSelected(bb.hasTowels());
-                        option6_Check.setSelected(bb.hasLinen());
-                        option7_Check.setSelected(bb.hasWashingMachine());
-                        option8_Check.setSelected(bb.hasGarden());
-                        if (bb.getNumberBedrooms() == 1) {
-                            optionRadio1_Rb.setSelected(true);
-                        } else if (bb.getNumberBedrooms() == 2) {
-                            optionRadio2_Rb.setSelected(true);
-                        } else {
-                            optionRadio3_Rb.setSelected(true);
-                        }
-                        break;
+        } else {
+            for (BedAndBreakfast bb : bbList) {
+                if (roomID_Tf.getText().equalsIgnoreCase(bb.getRoomID())) {
+                    address_Tf.setText(bb.getRoomAddress());
+                    city_Tf.setText(bb.getRoomCity());
+                    breakfast_Check.setSelected(bb.hasBreakfastIncl());
+                    parking_Check.setSelected(bb.hasParkingSpace());
+                    price_Tf.setText(Double.toString(bb.getRoomPricePerNight()));
+                    maxGuests_Tf.setText(Integer.toString(bb.getMaxNumberGuests()));
+                    kmCityCentre_Tf.setText(Integer.toString(bb.getKmFromCityCentre()));
+                    option1_Check.setSelected(bb.isOwnerOccupied());
+                    option2_Check.setSelected(bb.isPetFriendly());
+                    option3_Check.setSelected(bb.hasKitchen());
+                    option4_Check.setSelected(bb.hasCleaningOption());
+                    option5_Check.setSelected(bb.hasTowels());
+                    option6_Check.setSelected(bb.hasLinen());
+                    option7_Check.setSelected(bb.hasWashingMachine());
+                    option8_Check.setSelected(bb.hasGarden());
+                    if (bb.getNumberBedrooms() == 1) {
+                        optionRadio1_Rb.setSelected(true);
+                    } else if (bb.getNumberBedrooms() == 2) {
+                        optionRadio2_Rb.setSelected(true);
                     } else {
-                        JOptionPane.showMessageDialog(null, "Room not found.");
+                        optionRadio3_Rb.setSelected(true);
+                    }
+                    break;
+                } else {
+                    count++;
+                    if (count == bbList.size()) {
+                        JOptionPane.showMessageDialog(null, bb.getRoomType() + " does not exist.");
                         clearForm();
                     }
                 }
-                oStream.close();
-            } catch (IOException e) {
-                System.out.println("IOException" + e);
-            } catch (ClassNotFoundException e) {
-                System.out.println("ClassNotFoundException: " + e);
             }
         }
     }//GEN-LAST:event_search_BtnActionPerformed
 
     private void viewBB_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBB_BtnActionPerformed
-        try {
-            File inFile = new File("bedandbreakfasts.data");
-            FileInputStream fStream = new FileInputStream(inFile);
-            ObjectInputStream oStream = new ObjectInputStream(fStream);
-            ArrayList<BedAndBreakfast> bbList = (ArrayList<BedAndBreakfast>)oStream.readObject();
+        if (bbList.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No Bed & Breakfast room recorded.");
+        } else {
             for (BedAndBreakfast bb : bbList) {
                 JOptionPane.showMessageDialog(null, bb.getDetails());
-            }
-            oStream.close();
-        } catch (IOException e) {
-            System.out.println("IOException: " + e);
-            JOptionPane.showMessageDialog(null, "No Bed and Breakfast room found.");
-        } catch (ClassNotFoundException e) {
-            System.out.println("ClassNotFoundException: " + e);
-            JOptionPane.showMessageDialog(null, "No Bed and Breakfast room found.");
+            }            
         }
     }//GEN-LAST:event_viewBB_BtnActionPerformed
 
     private void viewHostel_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewHostel_BtnActionPerformed
-        try {
-            File inFile = new File("hostels.data");
-            FileInputStream fStream = new FileInputStream(inFile);
-            ObjectInputStream oStream = new ObjectInputStream(fStream);
-            ArrayList<Hostel> hostelList = (ArrayList<Hostel>)oStream.readObject();
+        if (hostelList.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No Hostel room recorded.");
+        } else {
             for (Hostel h : hostelList) {
                 JOptionPane.showMessageDialog(null, h.getDetails());
-            }
-            oStream.close();
-        } catch (IOException e) {
-            System.out.println("IOException: " + e);
-            JOptionPane.showMessageDialog(null, "No Hostel room found.");
-        } catch (ClassNotFoundException e) {
-            System.out.println("ClassNotFoundException: " + e);
-            JOptionPane.showMessageDialog(null, "No Hostel room found.");
+            }            
         }
     }//GEN-LAST:event_viewHostel_BtnActionPerformed
 
     private void viewHotel_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewHotel_BtnActionPerformed
-        try {
-            File inFile = new File("hotels.data");
-            FileInputStream fStream = new FileInputStream(inFile);
-            ObjectInputStream oStream = new ObjectInputStream(fStream);
-            ArrayList<Hotel> hotelList = (ArrayList<Hotel>)oStream.readObject();
+        if (hotelList.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No Hotel room recorded.");
+        } else {
             for (Hotel h : hotelList) {
                 JOptionPane.showMessageDialog(null, h.getDetails());
-            }
-            oStream.close();
-        } catch (IOException e) {
-            System.out.println("IOException: " + e);
-            JOptionPane.showMessageDialog(null, "No Hotel room found.");
-        } catch (ClassNotFoundException e) {
-            System.out.println("ClassNotFoundException: " + e);
-            JOptionPane.showMessageDialog(null, "No Hotel room found.");
+            }            
         }
     }//GEN-LAST:event_viewHotel_BtnActionPerformed
 
@@ -888,7 +1004,7 @@ public class RoomGUI extends javax.swing.JFrame {
                 option4_Check.isSelected(), option5_Check.isSelected(), option6_Check.isSelected(), option7_Check.isSelected(), option8_Check.isSelected(), roomID_Tf.getText(),
                 roomType_Combo.getSelectedItem().toString(), address_Tf.getText(), city_Tf.getText(), Double.parseDouble(price_Tf.getText()), Integer.parseInt(maxGuests_Tf.getText()),
                 breakfast_Check.isSelected(), parking_Check.isSelected(), Integer.parseInt(kmCityCentre_Tf.getText()));
-            JOptionPane.showMessageDialog(null, "***NEW BED AND BREAKFAST ADDED***\n" + bb.getDetails());
+            JOptionPane.showMessageDialog(null, "***NEW BED AND BREAKFAST ROOM ADDED***\n" + bb.getDetails());
             bbList.add(bb);
         }
         clearForm();
@@ -1073,6 +1189,7 @@ public class RoomGUI extends javax.swing.JFrame {
     private javax.swing.JTextField city_Tf;
     private javax.swing.JButton clear_Btn;
     private javax.swing.JLabel createHeader_Lbl;
+    private javax.swing.JButton delete_Btn;
     private javax.swing.JLabel euroSymbol_Lbl;
     private javax.swing.JLabel facilitiesHeader_Lbl;
     private javax.swing.JPanel headerPanel;
@@ -1102,7 +1219,6 @@ public class RoomGUI extends javax.swing.JFrame {
     private javax.swing.JLabel parking_Lbl;
     private javax.swing.JLabel price_Lbl;
     private javax.swing.JTextField price_Tf;
-    private javax.swing.JButton remove_Btn;
     private javax.swing.JLabel roomID_Lbl;
     private javax.swing.JTextField roomID_Tf;
     private javax.swing.JComboBox<String> roomType_Combo;
