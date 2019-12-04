@@ -102,6 +102,39 @@ public class RoomGUI extends javax.swing.JFrame {
         bbList = generateBBList();
     }
     
+    private Hotel createHotel() {
+        optionRadio1_Rb.setActionCommand("Single");
+        optionRadio2_Rb.setActionCommand("Double");
+        optionRadio3_Rb.setActionCommand("King Size");
+        Hotel hotel = new Hotel(optionRadio.getSelection().getActionCommand(), option1_Check.isSelected(), option2_Check.isSelected(), option3_Check.isSelected(),
+            option4_Check.isSelected(), option5_Check.isSelected(), option6_Check.isSelected(), option7_Check.isSelected(), option8_Check.isSelected(), name_Tf.getText(),
+            roomID_Tf.getText(), roomType_Combo.getSelectedItem().toString(), address_Tf.getText(), city_Tf.getText(), Double.parseDouble(price_Tf.getText()),
+            Integer.parseInt(maxGuests_Tf.getText()), breakfast_Check.isSelected(), parking_Check.isSelected(), Integer.parseInt(kmCityCentre_Tf.getText()));
+        return hotel;
+    }
+    
+    private Hostel createHostel() {
+        optionRadio1_Rb.setActionCommand("Female");
+        optionRadio2_Rb.setActionCommand("Male");
+        optionRadio3_Rb.setActionCommand("Mixed");
+        Hostel hostel = new Hostel(optionRadio.getSelection().getActionCommand(), option1_Check.isSelected(), option2_Check.isSelected(), option3_Check.isSelected(),
+            option4_Check.isSelected(), option5_Check.isSelected(), option6_Check.isSelected(), option7_Check.isSelected(), option8_Check.isSelected(), name_Tf.getText(), 
+            roomID_Tf.getText(), roomType_Combo.getSelectedItem().toString(), address_Tf.getText(), city_Tf.getText(), Double.parseDouble(price_Tf.getText()),
+            Integer.parseInt(maxGuests_Tf.getText()), breakfast_Check.isSelected(), parking_Check.isSelected(), Integer.parseInt(kmCityCentre_Tf.getText()));
+        return hostel;
+    }
+    
+    private BedAndBreakfast createBB() {
+        optionRadio1_Rb.setActionCommand("1");
+        optionRadio2_Rb.setActionCommand("2");
+        optionRadio3_Rb.setActionCommand("3");
+        BedAndBreakfast bb = new BedAndBreakfast(Integer.parseInt(optionRadio.getSelection().getActionCommand().toString()), option1_Check.isSelected(), option2_Check.isSelected(),
+            option3_Check.isSelected(), option4_Check.isSelected(), option5_Check.isSelected(), option6_Check.isSelected(), option7_Check.isSelected(), option8_Check.isSelected(),
+            name_Tf.getText(), roomID_Tf.getText(), roomType_Combo.getSelectedItem().toString(), address_Tf.getText(), city_Tf.getText(), Double.parseDouble(price_Tf.getText()),
+            Integer.parseInt(maxGuests_Tf.getText()), breakfast_Check.isSelected(), parking_Check.isSelected(), Integer.parseInt(kmCityCentre_Tf.getText()));
+        return bb;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -680,7 +713,61 @@ public class RoomGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void amend_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amend_BtnActionPerformed
-        // TODO add your handling code here:
+        int count = 0;
+        if (roomID_Tf.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Please select type and enter ID.");
+        } else if (roomType_Combo.getSelectedItem().toString().equals("Hotel Room")) {
+            for (Hotel h : hotelList) {
+                if (roomID_Tf.getText().equalsIgnoreCase(h.getRoomID())) {
+                    Hotel hotel = createHotel();
+                    hotelList.add(hotel);
+                    hotelList.remove(h);
+                    JOptionPane.showMessageDialog(null, hotel.getRoomType() + " #" + hotel.getRoomID() + " successfully updated.");
+                    clearForm();
+                    break;
+                } else {
+                    count++;
+                    if (count == hotelList.size()) {
+                        JOptionPane.showMessageDialog(null, h.getRoomType() + " does not exist.");
+                        clearForm();
+                    }
+                }
+            }
+        } else if (roomType_Combo.getSelectedItem().toString().equals("Hostel Room")) {
+            for (Hostel h : hostelList) {
+                if (roomID_Tf.getText().equalsIgnoreCase(h.getRoomID())) {
+                    Hostel hostel = createHostel();
+                    hostelList.add(hostel);
+                    hostelList.remove(h);
+                    JOptionPane.showMessageDialog(null, hostel.getRoomType() + " #" + hostel.getRoomID() + " successfully deleted.");
+                    clearForm();
+                    break;
+                } else {
+                    count++;
+                    if (count == hostelList.size()) {
+                        JOptionPane.showMessageDialog(null, h.getRoomType() + " does not exist.");
+                        clearForm();
+                    }
+                }
+            }
+        } else {
+            for (BedAndBreakfast bb : bbList) {
+                if (roomID_Tf.getText().equalsIgnoreCase(bb.getRoomID())) {
+                    BedAndBreakfast bAndB = createBB();
+                    bbList.add(bAndB);
+                    bbList.remove(bb);
+                    JOptionPane.showMessageDialog(null, bAndB.getRoomType() + " #" + bAndB.getRoomID() + " successfully deleted.");
+                    clearForm();
+                    break;
+                } else {
+                    count++;
+                    if (count == bbList.size()) {
+                        JOptionPane.showMessageDialog(null, bb.getRoomType() + " does not exist.");
+                        clearForm();
+                    }
+                }
+            }
+        }      
     }//GEN-LAST:event_amend_BtnActionPerformed
 
     private void delete_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_BtnActionPerformed
@@ -994,40 +1081,25 @@ public class RoomGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_viewHotel_BtnActionPerformed
 
     private void add_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_BtnActionPerformed
-        if (roomID_Tf.getText().equals("") || address_Tf.getText().equals("") || city_Tf.getText().equals("") || price_Tf.getText().equals("") || maxGuests_Tf.getText().equals("")) {
+        if (roomID_Tf.getText().equals("") || address_Tf.getText().equals("") || city_Tf.getText().equals("") || price_Tf.getText().equals("") || maxGuests_Tf.getText().equals("") ||
+            (optionRadio1_Rb.isSelected() == false && optionRadio2_Rb.isSelected() == false && optionRadio3_Rb.isSelected() == false)) {
             JOptionPane.showMessageDialog(null, "All fields must be filled.");
         } else if (roomType_Combo.getSelectedItem().toString().equals("Hotel Room")) {
-            optionRadio1_Rb.setActionCommand("Single");
-            optionRadio2_Rb.setActionCommand("Double");
-            optionRadio3_Rb.setActionCommand("King Size");
-            Hotel hotel = new Hotel(optionRadio.getSelection().getActionCommand(), option1_Check.isSelected(), option2_Check.isSelected(), option3_Check.isSelected(),
-                option4_Check.isSelected(), option5_Check.isSelected(), option6_Check.isSelected(), option7_Check.isSelected(), option8_Check.isSelected(), name_Tf.getText(),
-                roomID_Tf.getText(), roomType_Combo.getSelectedItem().toString(), address_Tf.getText(), city_Tf.getText(), Double.parseDouble(price_Tf.getText()),
-                Integer.parseInt(maxGuests_Tf.getText()), breakfast_Check.isSelected(), parking_Check.isSelected(), Integer.parseInt(kmCityCentre_Tf.getText()));
+            Hotel hotel = createHotel();
             JOptionPane.showMessageDialog(null, "***NEW HOTEL ROOM ADDED***\n" + hotel.getDetails());
             hotelList.add(hotel);
+            clearForm();
         } else if (roomType_Combo.getSelectedItem().toString().equals("Hostel Room")) {
-            optionRadio1_Rb.setActionCommand("Female");
-            optionRadio2_Rb.setActionCommand("Male");
-            optionRadio3_Rb.setActionCommand("Mixed");
-            Hostel hostel = new Hostel(optionRadio.getSelection().getActionCommand(), option1_Check.isSelected(), option2_Check.isSelected(), option3_Check.isSelected(),
-                option4_Check.isSelected(), option5_Check.isSelected(), option6_Check.isSelected(), option7_Check.isSelected(), option8_Check.isSelected(), name_Tf.getText(), 
-                roomID_Tf.getText(), roomType_Combo.getSelectedItem().toString(), address_Tf.getText(), city_Tf.getText(), Double.parseDouble(price_Tf.getText()),
-                Integer.parseInt(maxGuests_Tf.getText()), breakfast_Check.isSelected(), parking_Check.isSelected(), Integer.parseInt(kmCityCentre_Tf.getText()));
+            Hostel hostel = createHostel();
             JOptionPane.showMessageDialog(null, "***NEW HOSTEL ROOM ADDED***\n" + hostel.getDetails());
             hostelList.add(hostel);
+            clearForm();
         } else {
-            optionRadio1_Rb.setActionCommand("1");
-            optionRadio2_Rb.setActionCommand("2");
-            optionRadio3_Rb.setActionCommand("3");
-            BedAndBreakfast bb = new BedAndBreakfast(Integer.parseInt(optionRadio.getSelection().getActionCommand().toString()), option1_Check.isSelected(), option2_Check.isSelected(),
-                option3_Check.isSelected(), option4_Check.isSelected(), option5_Check.isSelected(), option6_Check.isSelected(), option7_Check.isSelected(), option8_Check.isSelected(),
-                name_Tf.getText(), roomID_Tf.getText(), roomType_Combo.getSelectedItem().toString(), address_Tf.getText(), city_Tf.getText(), Double.parseDouble(price_Tf.getText()),
-                Integer.parseInt(maxGuests_Tf.getText()), breakfast_Check.isSelected(), parking_Check.isSelected(), Integer.parseInt(kmCityCentre_Tf.getText()));
+            BedAndBreakfast bb = createBB();
             JOptionPane.showMessageDialog(null, "***NEW BED AND BREAKFAST ROOM ADDED***\n" + bb.getDetails());
             bbList.add(bb);
+            clearForm();
         }
-        clearForm();
     }//GEN-LAST:event_add_BtnActionPerformed
 
     private void option7_CheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option7_CheckActionPerformed
