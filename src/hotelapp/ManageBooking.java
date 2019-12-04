@@ -4,10 +4,12 @@ import java.io.Serializable;
 
 /**
  *
- * @author robert
+ * @author dejan
  */
 public class ManageBooking implements Serializable {
-
+    
+    // Data Members
+    
     private String bookingID;
     private String fName;
     private String lName;
@@ -18,7 +20,9 @@ public class ManageBooking implements Serializable {
     private int nights;
     private double totalPrice;
     private String roomID;
-
+    
+    // Default constructor
+    
     public ManageBooking() {
 
         bookingID = new String();
@@ -33,7 +37,9 @@ public class ManageBooking implements Serializable {
         roomID = new String();
 
     }
-
+    
+    // Overloaded constructor
+    
     public ManageBooking(String bookingID, String fName, String lName, String checkInDate, String checkOutDate, String hotelName, int peopleNo, int nights, double totalPrice, String roomID) {
 
         this.bookingID = bookingID;
@@ -47,7 +53,9 @@ public class ManageBooking implements Serializable {
         this.totalPrice = totalPrice;
         this.roomID = roomID;
     }
-
+    
+    // Setters and getters
+    
     public String getBookingID() {
         return bookingID;
     }
