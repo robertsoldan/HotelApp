@@ -36,9 +36,7 @@ public class BookingsGUI extends javax.swing.JFrame {
     private DatePicker checkOutDatePicker;
     private boolean checkInCalendarState;
     private boolean checkOutCalendarState;
-    
-    
-    
+
     public BookingsGUI() {
         initComponents();
 
@@ -63,7 +61,7 @@ public class BookingsGUI extends javax.swing.JFrame {
         p.put("text.today", "Today");
         p.put("text.month", "Month");
         p.put("text.year", "Year");
-        JDatePanelImpl datePanel = new JDatePanelImpl (model,p);
+        JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
         backgroundPanel.add(datePanel);
         backgroundPanel.revalidate();
         backgroundPanel.addMouseListener(new MouseAdapter() {
@@ -73,9 +71,10 @@ public class BookingsGUI extends javax.swing.JFrame {
                 checkOutCalendarState = false;
                 checkOutDatePicker.dispose();
             }
-        
-    });
-                }
+
+        });
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -106,11 +105,6 @@ public class BookingsGUI extends javax.swing.JFrame {
         BookBtn = new javax.swing.JButton();
         fNameTf = new javax.swing.JTextField();
         lNameTf = new javax.swing.JTextField();
-        hotelNameTf = new javax.swing.JTextField();
-        peopleNoTf = new javax.swing.JTextField();
-        nightsTf = new javax.swing.JTextField();
-        checkInDateTf = new javax.swing.JTextField();
-        checkOutDateTf = new javax.swing.JTextField();
         retrieveLbl = new javax.swing.JLabel();
         bookingIDLbl = new javax.swing.JLabel();
         bookingIDTf = new javax.swing.JTextField();
@@ -121,23 +115,26 @@ public class BookingsGUI extends javax.swing.JFrame {
         hotelNameLbl2 = new javax.swing.JLabel();
         peopleNo2Lbl = new javax.swing.JLabel();
         nights2Lbl = new javax.swing.JLabel();
-        checkInDate2Lbl = new javax.swing.JLabel();
-        checkOutDate2Tf = new javax.swing.JTextField();
-        checkOutDate2Lbl = new javax.swing.JLabel();
+        checkOutDateTf = new javax.swing.JTextField();
         totalPrice2Lbl = new javax.swing.JLabel();
-        hotelName2Tf = new javax.swing.JTextField();
-        peopleNo2Tf = new javax.swing.JTextField();
-        nights2Tf = new javax.swing.JTextField();
-        checkInDate2Tf = new javax.swing.JTextField();
+        hotelNameTf = new javax.swing.JTextField();
+        peopleNoTf = new javax.swing.JTextField();
+        nightsTf = new javax.swing.JTextField();
+        checkInDateTf = new javax.swing.JTextField();
         getBookingBtn = new javax.swing.JButton();
-        totalPrice2Lbl2 = new javax.swing.JLabel();
         amendBookingBtn = new javax.swing.JButton();
         delBookingBtn = new javax.swing.JButton();
-        totalPriceTf = new javax.swing.JTextField();
         euro1Lbl = new javax.swing.JLabel();
         euro2Lbl = new javax.swing.JLabel();
         date1Btn = new javax.swing.JButton();
         date2Btn = new javax.swing.JButton();
+        hotelInputLbl = new javax.swing.JLabel();
+        peopleInputLbl = new javax.swing.JLabel();
+        nightsInputLbl = new javax.swing.JLabel();
+        checkInDateInputLbl = new javax.swing.JLabel();
+        checkOutDateInputLbl = new javax.swing.JLabel();
+        priceInputLbl = new javax.swing.JLabel();
+        priceInput2Lbl = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -243,7 +240,7 @@ public class BookingsGUI extends javax.swing.JFrame {
 
         lNameLbl.setText("Last name:");
 
-        hotelNameLbl.setText("Accomodation:");
+        hotelNameLbl.setText("Hotel:");
 
         peopleNoLbl.setText("Number of people:");
 
@@ -272,15 +269,11 @@ public class BookingsGUI extends javax.swing.JFrame {
 
         fName2Lbl.setText("First Name:");
 
-        hotelNameLbl2.setText("Accomodation:");
+        hotelNameLbl2.setText("Hotel:");
 
         peopleNo2Lbl.setText("Number of People:");
 
         nights2Lbl.setText("Number of nights:");
-
-        checkInDate2Lbl.setText("Check in date:");
-
-        checkOutDate2Lbl.setText("Check out date:");
 
         totalPrice2Lbl.setText("Price: ");
 
@@ -340,9 +333,9 @@ public class BookingsGUI extends javax.swing.JFrame {
                             .addGroup(backgroundPanelLayout.createSequentialGroup()
                                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(hotelNameLbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                                        .addComponent(hotelNameLbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(lNameLbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(fNameLbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(fNameLbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))
                                     .addComponent(peopleNoLbl)
                                     .addComponent(nightsLbl)
                                     .addComponent(checkInDateLbl)
@@ -352,23 +345,19 @@ public class BookingsGUI extends javax.swing.JFrame {
                                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(fNameTf, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
                                     .addComponent(lNameTf)
-                                    .addComponent(hotelNameTf)
-                                    .addComponent(peopleNoTf)
-                                    .addComponent(nightsTf)
-                                    .addComponent(checkInDateTf)
-                                    .addComponent(checkOutDateTf)
                                     .addGroup(backgroundPanelLayout.createSequentialGroup()
-                                        .addComponent(totalPriceTf, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(euro1Lbl)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
-                                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(date1Btn)
-                                    .addComponent(date2Btn)))))
+                                        .addComponent(priceInputLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(euro1Lbl))
+                                    .addComponent(hotelInputLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(peopleInputLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(nightsInputLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(checkInDateInputLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(checkOutDateInputLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
-                        .addGap(164, 164, 164)
+                        .addGap(165, 165, 165)
                         .addComponent(BookBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(32, 32, 32)
+                .addGap(37, 37, 37)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(retrieveLbl)
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
@@ -376,33 +365,34 @@ public class BookingsGUI extends javax.swing.JFrame {
                             .addComponent(bookingIDLbl)
                             .addComponent(checkLastNameLbl)
                             .addComponent(fName2Lbl)
-                            .addComponent(checkOutDate2Lbl)
                             .addComponent(hotelNameLbl2)
                             .addComponent(peopleNo2Lbl)
-                            .addComponent(nights2Lbl)
-                            .addComponent(checkInDate2Lbl)
-                            .addComponent(totalPrice2Lbl))
-                        .addGap(63, 63, 63)
-                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(bookingIDTf)
+                            .addComponent(nights2Lbl))
+                        .addGap(30, 30, 30)
+                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(checkInDateTf, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                            .addComponent(checkOutDateTf)
+                            .addComponent(nightsTf)
                             .addComponent(checkLastNameTf)
+                            .addComponent(peopleNoTf)
+                            .addComponent(hotelNameTf)
                             .addComponent(fName2Tf)
-                            .addComponent(checkOutDate2Tf)
-                            .addComponent(hotelName2Tf)
-                            .addComponent(peopleNo2Tf)
-                            .addComponent(nights2Tf)
-                            .addComponent(checkInDate2Tf)
-                            .addGroup(backgroundPanelLayout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(euro2Lbl)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(totalPrice2Lbl2, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)))
+                            .addComponent(bookingIDTf)))
+                    .addGroup(backgroundPanelLayout.createSequentialGroup()
+                        .addComponent(totalPrice2Lbl)
+                        .addGap(94, 94, 94)
+                        .addComponent(priceInput2Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(getBookingBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(amendBookingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(delBookingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(90, Short.MAX_VALUE))
+                        .addComponent(euro2Lbl))
+                    .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(date2Btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(date1Btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(28, 28, 28)
+                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(delBookingBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(getBookingBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(amendBookingBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(107, 262, Short.MAX_VALUE))
         );
         backgroundPanelLayout.setVerticalGroup(
             backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -413,12 +403,11 @@ public class BookingsGUI extends javax.swing.JFrame {
                     .addComponent(ManageBookingLbl)
                     .addComponent(retrieveLbl))
                 .addGap(18, 18, 18)
-                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bookingIDLbl)
-                    .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(fNameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(fNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(bookingIDTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fNameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bookingIDTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bookingIDLbl))
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
@@ -430,70 +419,69 @@ public class BookingsGUI extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(hotelNameLbl)
-                            .addComponent(hotelNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fName2Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fName2Lbl)))
+                            .addComponent(fName2Lbl)
+                            .addComponent(hotelInputLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(43, 43, 43)
                         .addComponent(getBookingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(peopleNoLbl)
-                            .addComponent(peopleNoTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(hotelNameLbl2)
-                            .addComponent(hotelName2Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(17, 17, 17)
+                            .addComponent(hotelNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(peopleInputLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nightsLbl)
-                            .addComponent(nightsTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(peopleNo2Lbl)
-                            .addComponent(peopleNo2Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(peopleNoTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nightsInputLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(amendBookingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(38, 38, 38)
+                        .addComponent(delBookingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(checkInDateLbl)
-                            .addComponent(checkInDateTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nights2Lbl)
-                            .addComponent(nights2Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
+                            .addComponent(nightsTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(checkInDateInputLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(checkOutDateLbl)
-                            .addComponent(checkOutDateTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(checkInDate2Lbl)
-                            .addComponent(checkInDate2Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(date1Btn)))
+                            .addComponent(checkInDateTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(date1Btn)
+                            .addComponent(checkOutDateInputLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(delBookingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27)
+                        .addGap(35, 35, 35)
+                        .addComponent(amendBookingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 30, 30)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(totalPriceLbl)
-                    .addComponent(checkOutDate2Tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkOutDate2Lbl)
-                    .addComponent(totalPriceTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkOutDateTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(euro1Lbl)
-                    .addComponent(date2Btn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(date2Btn)
+                    .addComponent(priceInputLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(totalPrice2Lbl)
+                    .addComponent(euro2Lbl)
                     .addComponent(BookBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(totalPrice2Lbl)
-                        .addComponent(totalPrice2Lbl2)
-                        .addComponent(euro2Lbl)))
-                .addGap(46, 46, 46))
+                    .addComponent(priceInput2Lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(backgroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(backgroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -562,19 +550,19 @@ public class BookingsGUI extends javax.swing.JFrame {
 
     private void BookBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookBtnActionPerformed
 
-        if (fNameTf.getText().equals("") || lNameTf.getText().equals("") || checkInDateTf.getText().equals("") || checkOutDateTf.getText().equals("")
-                || hotelNameTf.getText().equals("") || peopleNoTf.getText().equals("") || nightsTf.getText().equals("") || totalPriceTf.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "You need to enter all the details in order to confrim booking");
+        if (fNameTf.getText().equals("") || lNameTf.getText().equals("") || checkInDateInputLbl.getText().equals("") || checkOutDateInputLbl.getText().equals("")
+                || hotelInputLbl.getText().equals("") || peopleInputLbl.getText().equals("") || nightsInputLbl.getText().equals("") || priceInputLbl.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "You need to enter all the details in order to confirm booking");
         } else {
             bookingID = Integer.toString((int) (Math.random() * 1000000));
             fName = fNameTf.getText();
             lName = lNameTf.getText();
-            checkInDate = checkInDateTf.getText();
-            checkOutDate = checkOutDateTf.getText();
-            hotelName = hotelNameTf.getText();
-            peopleNo = Integer.parseInt(peopleNoTf.getText());
-            nights = Integer.parseInt(nightsTf.getText());
-            totalPrice = Double.parseDouble(totalPriceTf.getText());
+            checkInDate = checkInDateInputLbl.getText();
+            checkOutDate = checkOutDateInputLbl.getText();
+            hotelName = hotelInputLbl.getText();
+            peopleNo = Integer.parseInt(peopleInputLbl.getText());
+            nights = Integer.parseInt(nightsInputLbl.getText());
+            totalPrice = Double.parseDouble(priceInputLbl.getText());
             roomID = Integer.toString((int) (Math.random() * 1000000));
 
             ManageBooking mb = new ManageBooking();
@@ -645,12 +633,12 @@ public class BookingsGUI extends javax.swing.JFrame {
                             found = true;
 
                             fName2Tf.setText(x.getfName());
-                            checkInDate2Tf.setText(x.getCheckInDate());
-                            checkOutDate2Tf.setText(x.getCheckOutDate());
-                            hotelName2Tf.setText(x.getHotelName());
-                            peopleNo2Tf.setText(Integer.toString(x.getPeopleNo()));
-                            nights2Tf.setText(Integer.toString(x.getNights()));
-                            totalPrice2Lbl2.setText(Double.toString(x.getTotalPrice()));
+                            checkInDateTf.setText(x.getCheckInDate());
+                            checkOutDateTf.setText(x.getCheckOutDate());
+                            hotelNameTf.setText(x.getHotelName());
+                            peopleNoTf.setText(Integer.toString(x.getPeopleNo()));
+                            nightsTf.setText(Integer.toString(x.getNights()));
+                            priceInput2Lbl.setText(Double.toString(x.getTotalPrice()));
                             break;
                         }
                     }
@@ -674,43 +662,39 @@ public class BookingsGUI extends javax.swing.JFrame {
 
     private void amendBookingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amendBookingBtnActionPerformed
 
+        ArrayList<ManageBooking> aList = new ArrayList<>();
+
         String checkBookingID = bookingIDTf.getText();
         String checkLastName = checkLastNameTf.getText();
 
-        File inFile;
-        FileInputStream fStream;
-        ObjectInputStream oStream;
+        if (bookingIDTf.getText().equals("") || checkLastNameTf.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "You need to enter booking ID and last name to get the result");
+        } else {
+            File inFile;
+            FileInputStream fStream;
+            ObjectInputStream oStream;
 
-        try {
-            inFile = new File("booking.data");
-            fStream = new FileInputStream(inFile);
-            oStream = new ObjectInputStream(fStream);
+            try {
+                inFile = new File("booking.data");
+                fStream = new FileInputStream(inFile);
+                oStream = new ObjectInputStream(fStream);
 
-            ArrayList<ManageBooking> xList;
+                aList = (ArrayList<ManageBooking>) oStream.readObject();
 
-            xList = (ArrayList<ManageBooking>) oStream.readObject();
+                for (int i = 0; i < aList.size(); i++) {
+                    if (checkBookingID.equalsIgnoreCase(aList.get(i).getBookingID()) && checkLastName.equalsIgnoreCase(aList.get(i).getlName())) {
 
-            boolean found1 = false;
-
-            for (ManageBooking x : xList) {
-
-                for (int i = 0; i < xList.size(); i++) {
-                    if (checkBookingID.equalsIgnoreCase(x.getBookingID()) && checkLastName.equalsIgnoreCase(x.getlName())) {
-                        found1 = true;
-
-                        bookingID = Integer.toString((int) (Math.random() * 1000000));
+                        aList.remove(i);
                         fName = fName2Tf.getText();
                         lName = checkLastNameTf.getText();
-                        checkInDate = checkInDate2Tf.getText();
-                        checkOutDate = checkOutDate2Tf.getText();
-                        hotelName = hotelName2Tf.getText();
-                        peopleNo = Integer.parseInt(peopleNo2Tf.getText());
-                        nights = Integer.parseInt(nights2Tf.getText());
-                        totalPrice = Double.parseDouble(totalPrice2Lbl2.getText());
-                        roomID = Integer.toString((int) (Math.random() * 1000000));
+                        checkInDate = checkInDateTf.getText();
+                        checkOutDate = checkOutDateTf.getText();
+                        hotelName = hotelNameTf.getText();
+                        peopleNo = Integer.parseInt(peopleNoTf.getText());
+                        nights = Integer.parseInt(nightsTf.getText());
+                        bookingID = Integer.toString((int) (Math.random() * 1000000));
 
                         ManageBooking mb = new ManageBooking();
-                        mb.setBookingID(bookingID);
                         mb.setfName(fName);
                         mb.setlName(lName);
                         mb.setCheckInDate(checkInDate);
@@ -718,109 +702,145 @@ public class BookingsGUI extends javax.swing.JFrame {
                         mb.setHotelName(hotelName);
                         mb.setPeopleNo(peopleNo);
                         mb.setNights(nights);
-                        mb.setTotalPrice(totalPrice);
-                        mb.setRoomID(roomID);
-
-                        File outFile;
-                        FileOutputStream ffStream;
-                        ObjectOutputStream ooStream;
+                        mb.setBookingID(bookingID);
                         aList.add(mb);
+                        JOptionPane.showMessageDialog(null, "Your booking was amended. Your new booking ID is: " + bookingID);
 
-                        try {
-
-                            outFile = new File("booking.data");
-                            ffStream = new FileOutputStream(outFile);
-                            ooStream = new ObjectOutputStream(ffStream);
-
-                            ooStream.writeObject(aList);
-
-                            ooStream.close();
-
-                        } catch (IOException e) {
-                            System.out.println("Error while amending booking" + e);
-                        }
                     }
 
                 }
-
+            } catch (IOException e) {
+                System.out.println(e);
+            } catch (ClassNotFoundException x) {
+                System.out.println(x);
             }
-            oStream.close();
+            File outFile;
+            FileOutputStream ffStream;
+            ObjectOutputStream ooStream;
 
-            if (!found1) {
+            try {
 
-                JOptionPane.showMessageDialog(null, "Booking not found.");
+                outFile = new File("booking.data");
+                ffStream = new FileOutputStream(outFile);
+                ooStream = new ObjectOutputStream(ffStream);
 
-            } else {
-                JOptionPane.showMessageDialog(null, "Yout booking had been amended. Your new booking ID is " + bookingID);
+                ooStream.writeObject(aList);
 
+                ooStream.close();
+
+            } catch (IOException e) {
+                System.out.println("Error while amending booking" + e);
             }
-
-        } catch (IOException e) {
-            System.out.println(e);
-        } catch (ClassNotFoundException x) {
-            System.out.println(x);
-        }
     }//GEN-LAST:event_amendBookingBtnActionPerformed
-
+    }
     private void delBookingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBookingBtnActionPerformed
 
+        if (bookingIDTf.getText().equals("") || checkLastNameTf.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "You need to enter booking ID and last name to get the result");
+        } else {
+            ArrayList<ManageBooking> aList = new ArrayList<>();
+
+            String checkBookingID = bookingIDTf.getText();
+            String checkLastName = checkLastNameTf.getText();
+
+            File inFile;
+            FileInputStream fStream;
+            ObjectInputStream oStream;
+
+            try {
+                inFile = new File("booking.data");
+                fStream = new FileInputStream(inFile);
+                oStream = new ObjectInputStream(fStream);
+
+                aList = (ArrayList<ManageBooking>) oStream.readObject();
+
+                for (int i = 0; i < aList.size(); i++) {
+                    if (checkBookingID.equalsIgnoreCase(aList.get(i).getBookingID()) && checkLastName.equalsIgnoreCase(aList.get(i).getlName())) {
+
+                        aList.remove(i);
+                        JOptionPane.showMessageDialog(null, "Your booking was deleted");
+
+                    }
+
+                }
+            } catch (IOException e) {
+                System.out.println(e);
+            } catch (ClassNotFoundException x) {
+                System.out.println(x);
+            }
+
+            File outFile;
+            FileOutputStream ffStream;
+            ObjectOutputStream ooStream;
+
+            try {
+
+                outFile = new File("booking.data");
+                ffStream = new FileOutputStream(outFile);
+                ooStream = new ObjectOutputStream(ffStream);
+
+                ooStream.writeObject(aList); //aList for the arraylist
+
+                ooStream.close();
+
+            } catch (IOException e) {
+                System.out.println("Error while amending booking" + e);
+            }
+
+        }
 
     }//GEN-LAST:event_delBookingBtnActionPerformed
 
     private void date1BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_date1BtnActionPerformed
-        
+
         checkInDatePicker.dispose();
         checkOutDatePicker.dispose();
         if (!checkInCalendarState || checkOutCalendarState) {
             checkInCalendarState = true;
             checkOutCalendarState = false;
             checkInDatePicker.setUndecorated(true);
-            checkInDatePicker.setLocation(date1Btn.getLocation().x + this.getLocation().x -250, date1Btn.getLocation().y + this.getLocation().y);
+            checkInDatePicker.setLocation(date1Btn.getLocation().x + this.getLocation().x - 250, date1Btn.getLocation().y + this.getLocation().y);
             checkInDatePicker.setVisible(true);
             checkInDatePicker.addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosed(java.awt.event.WindowEvent windowEvent) {
-                checkInDate2Tf.setText(checkInDatePicker.getSelectedDate());
-                checkInDate2Tf.revalidate();
-            }
-            
-        });
-        }
-        else {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                    checkInDateTf.setText(checkInDatePicker.getSelectedDate());
+                    checkInDateTf.revalidate();
+                }
+
+            });
+        } else {
             checkInCalendarState = false;
             checkInDatePicker.dispose();
         }
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_date1BtnActionPerformed
 
     private void date2BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_date2BtnActionPerformed
-       
+
         checkOutDatePicker.dispose();
         checkInDatePicker.dispose();
         if (checkInCalendarState || !checkOutCalendarState) {
             checkOutCalendarState = true;
             checkInCalendarState = false;
             checkOutDatePicker.setUndecorated(true);
-            checkOutDatePicker.setLocation(date2Btn.getLocation().x + this.getLocation().x -250, date2Btn.getLocation().y + this.getLocation().y);
+            checkOutDatePicker.setLocation(date2Btn.getLocation().x + this.getLocation().x - 250, date2Btn.getLocation().y + this.getLocation().y);
             checkOutDatePicker.setVisible(true);
             checkOutDatePicker.addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosed(java.awt.event.WindowEvent windowEvent) {
-                checkOutDate2Tf.setText(checkOutDatePicker.getSelectedDate());
-                checkOutDate2Tf.revalidate();
-            }
-            
-        });
-        }
-        else {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                    checkOutDateTf.setText(checkOutDatePicker.getSelectedDate());
+                    checkOutDateTf.revalidate();
+                }
+
+            });
+        } else {
             checkOutCalendarState = false;
             checkOutDatePicker.dispose();
         }
-        
-        
+
+
     }//GEN-LAST:event_date2BtnActionPerformed
 
     /**
@@ -867,14 +887,12 @@ public class BookingsGUI extends javax.swing.JFrame {
     private javax.swing.JLabel bookingIDLbl;
     private javax.swing.JTextField bookingIDTf;
     private javax.swing.JLabel bookingsBtn;
-    private javax.swing.JLabel checkInDate2Lbl;
-    private javax.swing.JTextField checkInDate2Tf;
+    private javax.swing.JLabel checkInDateInputLbl;
     private javax.swing.JLabel checkInDateLbl;
     private javax.swing.JTextField checkInDateTf;
     private javax.swing.JLabel checkLastNameLbl;
     private javax.swing.JTextField checkLastNameTf;
-    private javax.swing.JLabel checkOutDate2Lbl;
-    private javax.swing.JTextField checkOutDate2Tf;
+    private javax.swing.JLabel checkOutDateInputLbl;
     private javax.swing.JLabel checkOutDateLbl;
     private javax.swing.JTextField checkOutDateTf;
     private javax.swing.JButton date1Btn;
@@ -888,7 +906,7 @@ public class BookingsGUI extends javax.swing.JFrame {
     private javax.swing.JTextField fNameTf;
     private javax.swing.JButton getBookingBtn;
     private javax.swing.JPanel heaherPanel;
-    private javax.swing.JTextField hotelName2Tf;
+    private javax.swing.JLabel hotelInputLbl;
     private javax.swing.JLabel hotelNameLbl;
     private javax.swing.JLabel hotelNameLbl2;
     private javax.swing.JTextField hotelNameTf;
@@ -898,20 +916,20 @@ public class BookingsGUI extends javax.swing.JFrame {
     private javax.swing.JTextField lNameTf;
     private javax.swing.JLabel manageRoomBtn;
     private javax.swing.JLabel nights2Lbl;
-    private javax.swing.JTextField nights2Tf;
+    private javax.swing.JLabel nightsInputLbl;
     private javax.swing.JLabel nightsLbl;
     private javax.swing.JTextField nightsTf;
+    private javax.swing.JLabel peopleInputLbl;
     private javax.swing.JLabel peopleNo2Lbl;
-    private javax.swing.JTextField peopleNo2Tf;
     private javax.swing.JLabel peopleNoLbl;
     private javax.swing.JTextField peopleNoTf;
+    private javax.swing.JLabel priceInput2Lbl;
+    private javax.swing.JLabel priceInputLbl;
     private javax.swing.JLabel retrieveLbl;
     private javax.swing.JLabel searchBtn;
     private javax.swing.JLabel splitter1;
     private javax.swing.JLabel splitter2;
     private javax.swing.JLabel totalPrice2Lbl;
-    private javax.swing.JLabel totalPrice2Lbl2;
     private javax.swing.JLabel totalPriceLbl;
-    private javax.swing.JTextField totalPriceTf;
     // End of variables declaration//GEN-END:variables
 }
