@@ -23,8 +23,10 @@ public class Hostel extends Room implements Serializable {
     private boolean hasWashingMachine;
     private boolean hasLongStayOption;
 
-    public Hostel(String dormType, boolean has24HReception, boolean hasPrivateRooms, boolean hasLockers, boolean hasBar, boolean hasPrivateBathroom, boolean hasSharedKitchen, boolean hasWashingMachine, boolean hasLongStayOption, String roomID, String roomType, String roomAddress, String roomCity, double roomPricePerNight, int maxNumberGuests, boolean hasBreakfastIncl, boolean hasParkingSpace, int kmFromCityCentre) {
-        super(roomID, roomType, roomAddress, roomCity, roomPricePerNight, maxNumberGuests, hasBreakfastIncl, hasParkingSpace, kmFromCityCentre);
+    public Hostel(String dormType, boolean has24HReception, boolean hasPrivateRooms, boolean hasLockers, boolean hasBar, boolean hasPrivateBathroom, boolean hasSharedKitchen, 
+            boolean hasWashingMachine, boolean hasLongStayOption, String roomName, String roomID, String roomType, String roomAddress, String roomCity, double roomPricePerNight, 
+            int maxNumberGuests, boolean hasBreakfastIncl, boolean hasParkingSpace, int kmFromCityCentre) {
+        super(roomName, roomID, roomType, roomAddress, roomCity, roomPricePerNight, maxNumberGuests, hasBreakfastIncl, hasParkingSpace, kmFromCityCentre);
         this.dormType = dormType;
         this.has24HReception = has24HReception;
         this.hasPrivateRooms = hasPrivateRooms;

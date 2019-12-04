@@ -83,31 +83,40 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="address_Lbl" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                              <Component id="city_Lbl" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                              <Component id="roomType_Lbl" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="roomType_Combo" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="roomID_Lbl" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="roomID_Tf" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="city_Lbl" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                                  <Component id="roomType_Lbl" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                                  <Component id="price_Lbl" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                               </Group>
-                                              <Component id="address_Tf" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                              <Component id="city_Tf" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="roomType_Combo" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                                      <Component id="roomID_Lbl" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="roomID_Tf" min="-2" pref="30" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="city_Tf" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="price_Tf" min="-2" pref="32" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="euroSymbol_Lbl" min="-2" pref="20" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="name_Lbl" min="-2" pref="100" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="name_Tf" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="price_Lbl" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="address_Lbl" min="-2" pref="100" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="price_Tf" min="-2" pref="32" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="euroSymbol_Lbl" min="-2" pref="20" max="-2" attributes="0"/>
+                                          <Component id="address_Tf" min="-2" pref="200" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
@@ -137,10 +146,6 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          <Component id="clear_Btn" min="-2" pref="100" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="option2_Check" min="-2" pref="140" max="-2" attributes="0"/>
                                               <Component id="option1_Check" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
@@ -156,10 +161,11 @@
                                               <Component id="option3_Check" alignment="1" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
+                                      <Component id="clear_Btn" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="optionRadio2_Rb" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
                                               <Component id="option5_Check" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
@@ -172,7 +178,7 @@
                                               <Component id="optionRadio3_Rb" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="save_Btn" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="save_Btn" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               </Group>
@@ -222,52 +228,57 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="breakfast_Check" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="address_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="address_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="breakfast_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="name_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="name_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="search_Btn" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="city_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="city_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="parking_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="parking_Check" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="amend_Btn" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="parking_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="parking_Check" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="amend_Btn" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="address_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="address_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="price_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="price_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="euroSymbol_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="kmCityCentre_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="kmCityCentre_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="kmCityCentre_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="kmCityCentre_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="city_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="city_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="price_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="price_Tf" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="euroSymbol_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="delete_Btn" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="17" max="32767" attributes="0"/>
+                          <EmptySpace pref="20" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="viewHeader_Lbl" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="facilitiesHeader_Lbl" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="facilitiesHeader_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="viewHotel_Btn" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="optionRadio3_Rb" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="optionRadio2_Rb" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="optionRadio1_Rb" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="optionRadio_Lbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="viewHotel_Btn" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -287,12 +298,12 @@
                       </Group>
                       <Component id="option2_Check" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="51" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" pref="27" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="clear_Btn" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="save_Btn" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -834,6 +845,14 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clear_BtnActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="name_Tf">
+        </Component>
+        <Component class="javax.swing.JLabel" name="name_Lbl">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="Name:"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

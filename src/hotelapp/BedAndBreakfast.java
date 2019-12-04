@@ -23,8 +23,10 @@ public class BedAndBreakfast extends Room implements Serializable {
     private boolean hasWashingMachine;
     private boolean hasGarden;
 
-    public BedAndBreakfast(int numberBedrooms, boolean isOwnerOccupied, boolean isPetFriendly, boolean hasKitchen, boolean hasCleaningOption, boolean hasTowels, boolean hasLinen, boolean hasWashingMachine, boolean hasGarden, String roomID, String roomType, String roomAddress, String roomCity, double roomPricePerNight, int maxNumberGuests, boolean hasBreakfastIncl, boolean hasParkingSpace, int kmFromCityCentre) {
-        super(roomID, roomType, roomAddress, roomCity, roomPricePerNight, maxNumberGuests, hasBreakfastIncl, hasParkingSpace, kmFromCityCentre);
+    public BedAndBreakfast(int numberBedrooms, boolean isOwnerOccupied, boolean isPetFriendly, boolean hasKitchen, boolean hasCleaningOption, boolean hasTowels, boolean hasLinen, 
+            boolean hasWashingMachine, boolean hasGarden, String roomName, String roomID, String roomType, String roomAddress, String roomCity, double roomPricePerNight, 
+            int maxNumberGuests, boolean hasBreakfastIncl, boolean hasParkingSpace, int kmFromCityCentre) {
+        super(roomName, roomID, roomType, roomAddress, roomCity, roomPricePerNight, maxNumberGuests, hasBreakfastIncl, hasParkingSpace, kmFromCityCentre);
         this.numberBedrooms = numberBedrooms;
         this.isOwnerOccupied = isOwnerOccupied;
         this.isPetFriendly = isPetFriendly;

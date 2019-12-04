@@ -13,6 +13,7 @@ import java.io.Serializable;
  */
 public class Room implements Serializable {
 
+    private String roomName;
     private String roomID;
     private String roomType;
     private String roomAddress;
@@ -23,8 +24,9 @@ public class Room implements Serializable {
     private boolean hasParkingSpace;
     private int kmFromCityCentre;
 
-    public Room(String roomID, String roomType, String roomAddress, String roomCity, double roomPricePerNight, int maxNumberGuests, 
-            boolean hasBreakfastIncl, boolean hasParkingSpace, int kmFromCityCentre) {
+    public Room(String roomName, String roomID, String roomType, String roomAddress, String roomCity, double roomPricePerNight, int maxNumberGuests, boolean hasBreakfastIncl, 
+            boolean hasParkingSpace, int kmFromCityCentre) {
+        this.roomName = roomName;
         this.roomID = roomID;
         this.roomType = roomType;
         this.roomAddress = roomAddress;
@@ -36,82 +38,92 @@ public class Room implements Serializable {
         this.kmFromCityCentre = kmFromCityCentre;
     }
 
-    public void setRoomID(String roomID) {
-        this.roomID = roomID;
+    public String getRoomName() {
+        return roomName;
     }
 
-    public void setRoomType(String roomType) {
-        this.roomType = roomType;
-    }
-
-    public void setRoomAddress(String roomAddress) {
-        this.roomAddress = roomAddress;
-    }
-
-    public void setRoomCity(String roomCity) {
-        this.roomCity = roomCity;
-    }
-
-    public void setRoomPricePerNight(double roomPricePerNight) {
-        this.roomPricePerNight = roomPricePerNight;
-    }
-
-    public void setMaxNumberGuests(int maxNumberGuests) {
-        this.maxNumberGuests = maxNumberGuests;
-    }
-
-    public void setHasBreakfastIncl(boolean hasBreakfastIncl) {
-        this.hasBreakfastIncl = hasBreakfastIncl;
-    }
-
-    public void setHasParkingSpace(boolean hasParkingSpace) {
-        this.hasParkingSpace = hasParkingSpace;
-    }
-
-    public void setKmFromCityCentre(int kmFromCityCentre) {
-        this.kmFromCityCentre = kmFromCityCentre;
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
     }
 
     public String getRoomID() {
         return roomID;
     }
 
+    public void setRoomID(String roomID) {
+        this.roomID = roomID;
+    }
+
     public String getRoomType() {
         return roomType;
+    }
+
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
     }
 
     public String getRoomAddress() {
         return roomAddress;
     }
 
+    public void setRoomAddress(String roomAddress) {
+        this.roomAddress = roomAddress;
+    }
+
     public String getRoomCity() {
         return roomCity;
+    }
+
+    public void setRoomCity(String roomCity) {
+        this.roomCity = roomCity;
     }
 
     public double getRoomPricePerNight() {
         return roomPricePerNight;
     }
 
+    public void setRoomPricePerNight(double roomPricePerNight) {
+        this.roomPricePerNight = roomPricePerNight;
+    }
+
     public int getMaxNumberGuests() {
         return maxNumberGuests;
+    }
+
+    public void setMaxNumberGuests(int maxNumberGuests) {
+        this.maxNumberGuests = maxNumberGuests;
     }
 
     public boolean hasBreakfastIncl() {
         return hasBreakfastIncl;
     }
 
+    public void setHasBreakfastIncl(boolean hasBreakfastIncl) {
+        this.hasBreakfastIncl = hasBreakfastIncl;
+    }
+
     public boolean hasParkingSpace() {
         return hasParkingSpace;
+    }
+
+    public void setHasParkingSpace(boolean hasParkingSpace) {
+        this.hasParkingSpace = hasParkingSpace;
     }
 
     public int getKmFromCityCentre() {
         return kmFromCityCentre;
     }
 
+    public void setKmFromCityCentre(int kmFromCityCentre) {
+        this.kmFromCityCentre = kmFromCityCentre;
+    }
+
+
     
 
     public String getDetails() {
-        return "Type: " + this.roomType + 
+        return "Name: " + this.roomName + 
+        "\nType: " + this.roomType +        
         "\nID: " + this.roomID + 
         "\nAddress: " + this.roomAddress + 
         "\nCity: " + this.roomCity + 
