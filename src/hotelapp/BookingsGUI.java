@@ -40,7 +40,6 @@ public class BookingsGUI extends javax.swing.JFrame {
 
     public BookingsGUI() {
         initComponents();
-
         aList = new ArrayList<>();
         bookingID = new String();
         fName = new String();
@@ -76,6 +75,23 @@ public class BookingsGUI extends javax.swing.JFrame {
             }
 
         });
+    }
+    
+    public BookingsGUI(String checkInDate, String checkOutDate, String hotelName, int peopleNo, int nights, double totalPrice, String roomID) {
+        this();
+        this.checkInDate = checkInDate;
+        checkInDateInputLbl.setText(checkInDate);
+        checkOutDateInputLbl.setText(checkOutDate);
+        this.checkOutDate = checkOutDate;
+        this.hotelName = hotelName;
+        hotelInputLbl.setText(hotelName);
+        this.peopleNo = peopleNo;
+        peopleInputLbl.setText(String.valueOf(peopleNo));
+        this.nights = nights;
+        nightsInputLbl.setText(String.valueOf(nights));
+        this.totalPrice = totalPrice;
+        euro1Lbl.setText(String.valueOf(totalPrice)); 
+        this.roomID = roomID;
     }
 
     /**
@@ -152,7 +168,6 @@ public class BookingsGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setPreferredSize(new java.awt.Dimension(1100, 750));
 
         backgroundPanel.setBackground(new java.awt.Color(255, 255, 204));
 
@@ -431,17 +446,19 @@ public class BookingsGUI extends javax.swing.JFrame {
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(peopleNoLbl)
-                            .addComponent(hotelNameLbl2)
-                            .addComponent(hotelNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(peopleInputLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(peopleInputLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(peopleNoLbl)
+                                .addComponent(hotelNameLbl2)
+                                .addComponent(hotelNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(30, 30, 30)
-                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nightsLbl)
-                            .addComponent(peopleNo2Lbl)
-                            .addComponent(peopleNoTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nightsInputLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nightsInputLbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(nightsLbl)
+                                .addComponent(peopleNo2Lbl)
+                                .addComponent(peopleNoTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(delBookingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))

@@ -13,10 +13,16 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
+import java.util.Date;
+
 import java.util.Properties;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.UtilDateModel;
@@ -50,10 +56,13 @@ public class SearchGUI extends javax.swing.JFrame {
         p.put("text.today", "Today");
         p.put("text.month", "Month");
         p.put("text.year", "Year");
+
         JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
+
         backgroundPanel.add(datePanel);
         backgroundPanel.revalidate();
         backgroundPanel.addMouseListener(new MouseAdapter() {
+            @Override
             public void mousePressed(MouseEvent e) {
                 checkInCalendarState = false;
                 checkInDatePicker.dispose();
@@ -63,6 +72,7 @@ public class SearchGUI extends javax.swing.JFrame {
             }
         });
         jScrollPane1.addMouseListener(new MouseAdapter() {
+            @Override
             public void mousePressed(MouseEvent e) {
                 checkInCalendarState = false;
                 checkInDatePicker.dispose();
@@ -96,20 +106,22 @@ public class SearchGUI extends javax.swing.JFrame {
         searchTfBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         searchPanel = new javax.swing.JPanel();
+        hostelCmb = new javax.swing.JComboBox<>();
         hotelCmb = new javax.swing.JComboBox<>();
-        roomsCmb = new javax.swing.JComboBox<>();
         checkIn = new javax.swing.JButton();
         checkOut = new javax.swing.JButton();
         checkInDateLbl = new javax.swing.JLabel();
         checkOutDateLbl = new javax.swing.JLabel();
         accTypeCmb = new javax.swing.JComboBox<>();
+        bbCmb = new javax.swing.JComboBox<>();
+        cityCmb = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        roomsLbl = new javax.swing.JLabel();
-        hostelCmb = new javax.swing.JComboBox<>();
-        bbCmb = new javax.swing.JComboBox<>();
+        nightsCmb = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        guestsNoCmb = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -234,30 +246,18 @@ public class SearchGUI extends javax.swing.JFrame {
         searchPanel.setLayout(searchPanelLayout);
         searchPanelLayout.setHorizontalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 808, Short.MAX_VALUE)
+            .addGap(0, 867, Short.MAX_VALUE)
         );
         searchPanelLayout.setVerticalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 529, Short.MAX_VALUE)
+            .addGap(0, 545, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(searchPanel);
 
-        hotelCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Simple", "Double", "King size" }));
-        hotelCmb.setMinimumSize(new java.awt.Dimension(70, 20));
-        hotelCmb.setPreferredSize(new java.awt.Dimension(70, 20));
-        hotelCmb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hotelCmbActionPerformed(evt);
-            }
-        });
+        hostelCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Female", "Male", "Mixed" }));
 
-        roomsCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
-        roomsCmb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roomsCmbActionPerformed(evt);
-            }
-        });
+        hotelCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Simple", "Double", "King" }));
 
         checkIn.setText("From");
         checkIn.addActionListener(new java.awt.event.ActionListener() {
@@ -275,14 +275,14 @@ public class SearchGUI extends javax.swing.JFrame {
 
         checkInDateLbl.setText("Check in date");
         checkInDateLbl.setMaximumSize(new java.awt.Dimension(200, 15));
-        checkInDateLbl.setMinimumSize(new java.awt.Dimension(90, 15));
-        checkInDateLbl.setPreferredSize(new java.awt.Dimension(90, 15));
+        checkInDateLbl.setMinimumSize(new java.awt.Dimension(150, 15));
+        checkInDateLbl.setPreferredSize(new java.awt.Dimension(150, 15));
 
         checkOutDateLbl.setBackground(new java.awt.Color(255, 255, 255));
         checkOutDateLbl.setText("Check out date");
         checkOutDateLbl.setMaximumSize(new java.awt.Dimension(200, 15));
-        checkOutDateLbl.setMinimumSize(new java.awt.Dimension(90, 15));
-        checkOutDateLbl.setPreferredSize(new java.awt.Dimension(90, 15));
+        checkOutDateLbl.setMinimumSize(new java.awt.Dimension(150, 15));
+        checkOutDateLbl.setPreferredSize(new java.awt.Dimension(150, 15));
 
         accTypeCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hotel", "Hostel", "B&B" }));
         accTypeCmb.addActionListener(new java.awt.event.ActionListener() {
@@ -291,28 +291,23 @@ public class SearchGUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Accomodation type:");
-
-        jLabel3.setText("Room type:");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setText("City");
-
-        roomsLbl.setText("Rooms");
-
-        hostelCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Female", "Male", "Mixed" }));
-        hostelCmb.setMinimumSize(new java.awt.Dimension(70, 20));
-        hostelCmb.setPreferredSize(new java.awt.Dimension(70, 20));
-
         bbCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 guest", "2 guests", "3 guests" }));
-        bbCmb.setMinimumSize(new java.awt.Dimension(70, 20));
-        bbCmb.setPreferredSize(new java.awt.Dimension(70, 20));
+
+        cityCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dublin", "Cork", "Waterford", "Paris", "London" }));
+
+        jLabel2.setText("City");
+
+        jLabel3.setText("Type");
+
+        jLabel4.setText("Room type");
+
+        nightsCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
+
+        jLabel5.setText("Nights");
+
+        guestsNoCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6" }));
+
+        jLabel6.setText("Guests");
 
         javax.swing.GroupLayout backgroundPanelLayout = new javax.swing.GroupLayout(backgroundPanel);
         backgroundPanel.setLayout(backgroundPanelLayout);
@@ -322,67 +317,73 @@ public class SearchGUI extends javax.swing.JFrame {
             .addGroup(backgroundPanelLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 867, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(backgroundPanelLayout.createSequentialGroup()
                         .addComponent(checkIn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(checkInDateLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(checkInDateLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(checkOut)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(checkOutDateLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(checkOutDateLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
+                            .addComponent(guestsNoCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGap(27, 27, 27)
+                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nightsCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(28, 28, 28)
+                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cityCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(accTypeCmb, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(accTypeCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
                         .addGap(18, 18, 18)
-                        .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(roomsLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                            .addComponent(roomsCmb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
                             .addGroup(backgroundPanelLayout.createSequentialGroup()
                                 .addComponent(bbCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(hotelCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(hostelCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(hotelCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(searchTfBtn)))
-                        .addGap(69, 69, 69))
-                    .addGroup(backgroundPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 808, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(328, Short.MAX_VALUE))))
+                                .addComponent(searchTfBtn)))))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
         backgroundPanelLayout.setVerticalGroup(
             backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgroundPanelLayout.createSequentialGroup()
                 .addComponent(heaherPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
+                .addGap(18, 18, 18)
                 .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
                     .addComponent(jLabel2)
-                    .addComponent(roomsLbl)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(accTypeCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bbCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hotelCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hostelCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(roomsCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkIn)
-                    .addComponent(checkInDateLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkOut)
-                    .addComponent(checkOutDateLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchTfBtn))
-                .addGap(54, 54, 54)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addGap(9, 9, 9)
+                .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(searchTfBtn)
+                        .addComponent(hotelCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(hostelCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(accTypeCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bbCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cityCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nightsCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(guestsNoCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(checkIn)
+                        .addComponent(checkOut)
+                        .addComponent(checkInDateLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(checkOutDateLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -458,363 +459,405 @@ public class SearchGUI extends javax.swing.JFrame {
 
     private void searchTfBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTfBtnActionPerformed
 
-        String searchTerm = " ";
+        if (checkInDateLbl.getText().equals("Check in date") || checkOutDateLbl.getText().equals("Check out date")) {
+            JOptionPane.showMessageDialog(null, "Please select check in and check out dates!");
+        } else {
 
-        int yLoc; // Will the Y position of each generated panel
-        int searchPanelYSize; // Will dynamically adjust the total height of the main search panel to accomodate for all the elements
-        int resultPanelHeight = 100;
-        int resultPanelMargin = 20; // To be taken out
-        int backgroundPanelWidth = backgroundPanel.getSize().width;
+            int yLoc; // Will the Y position of each generated panel
+            int searchPanelYSize; // Will dynamically adjust the total height of the main search panel to accomodate for all the elements
+            int resultPanelHeight = 100;
 
-        searchPanel.removeAll(); // Resetting the search results on every search
-        searchPanel.revalidate();
-        searchPanel.repaint();
-
-        ArrayList<String[]> results = new ArrayList<String[]>(); // This array list will store the results
-
-        if (accTypeCmb.getSelectedItem().toString().equals("Hotel")) { // If searching for a hotel room ...
-
-            // Initiating the file stream for reading from the hotels.data file inside the hotels array list
-            File fName;
-            FileInputStream fStream;
-            ObjectInputStream oStream;
-            ArrayList<Hotel> hotels = new ArrayList<>();
-
-            try {
-                fName = new File("hotels.data");
-                fStream = new FileInputStream(fName);
-                oStream = new ObjectInputStream(fStream);
-                hotels = (ArrayList<Hotel>) oStream.readObject();
-
-                // Looping through the hotels arraylist
-                for (Hotel x : hotels) {
-                    // Finding the match within the hotels arraylist
-                    if (x.getBedType().equals(hotelCmb.getSelectedItem().toString())) {
-                        String[] result = {x.getRoomID(), x.getRoomName(), x.getRoomCity(), x.getRoomAddress(), // 0 - 3
-                            "Price per night", String.valueOf(x.getRoomPricePerNight()), // 4 - 5
-                            "KM from city centre", String.valueOf(x.getKmFromCityCentre()), // 6 - 7
-                            "Max number of guests", String.valueOf(x.getMaxNumberGuests()), // 8 - 9
-                            "Parking", String.valueOf(x.hasParkingSpace()), // 10 - 11 
-                            "Breakfast", String.valueOf(x.hasBreakfastIncl()), // 12 - 13
-                            "24h Reception", String.valueOf(x.has24HReception()), // 14 - 15
-                            "Balcony", String.valueOf(x.hasBalcony()), // 16 - 17
-                            "Bathtub", String.valueOf(x.hasBathtub()), // 18 - 19
-                            "Pool", String.valueOf(x.hasPool()), // 20 - 21
-                            "Room service", String.valueOf(x.hasRoomService()), // 22 - 23 
-                            "Minibar", String.valueOf(x.hasMinibar()), // 24 - 25
-                            "Restaurant", String.valueOf(x.hasRestaurant()), // 26 - 27
-                            "Gym", String.valueOf(x.hasGym())}; // 28 - 29
-                        results.add(result); // Storing the results as arrays within the results array list
-                    }
-                }
-            } catch (IOException e) {
-                System.out.println(e);
-            } catch (ClassNotFoundException x) {
-                System.out.println(x);
-            }
-
-            System.out.println(results.get(0));
-        }
-
-        if (accTypeCmb.getSelectedItem().toString().equals("Hostel")) { // If searching for a hostel room ...
-
-            // Initiating the file stream for reading from the hostels.data file inside the hostels array list
-            File fName;
-            FileInputStream fStream;
-            ObjectInputStream oStream;
-            ArrayList<Hostel> hostels = new ArrayList<>();
-
-            try {
-                fName = new File("hostels.data");
-                fStream = new FileInputStream(fName);
-                oStream = new ObjectInputStream(fStream);
-                hostels = (ArrayList<Hostel>) oStream.readObject();
-
-                // Looping through the hotels arraylist
-                for (Hostel x : hostels) {
-                    // Finding the match within the hotels arraylist
-                    if (x.getDormType().equals(hostelCmb.getSelectedItem().toString())) {
-                        String[] result = {x.getRoomID(), x.getRoomName(), x.getRoomCity(), x.getRoomAddress(), // 0 - 3
-                            "Price per night", String.valueOf(x.getRoomPricePerNight()), // 4 - 5
-                            "KM from city centre", String.valueOf(x.getKmFromCityCentre()), // 6 - 7
-                            "Max number of guests", String.valueOf(x.getMaxNumberGuests()), // 8 - 9
-                            "Parking", String.valueOf(x.hasParkingSpace()), // 10 - 11 
-                            "Breakfast", String.valueOf(x.hasBreakfastIncl()), // 12 - 13
-                            "24h Reception", String.valueOf(x.has24HReception()), // 14 - 15
-                            "Lockers", String.valueOf(x.hasLockers()), // 16 - 17
-                            "Private bathroom", String.valueOf(x.hasPrivateBathroom()), // 18 - 19
-                            "Washing machine", String.valueOf(x.hasWashingMachine()), // 20 - 21
-                            "Private rooms", String.valueOf(x.hasPrivateRooms()), // 22 - 23 
-                            "Bar", String.valueOf(x.hasBar()), // 24 - 25
-                            "Shared kitchen", String.valueOf(x.hasSharedKitchen()), // 26 - 27
-                            "Long stay", String.valueOf(x.hasLongStayOption())}; // 28 - 29
-                        results.add(result); // Storing the results as arrays within the results array list
-                    }
-                }
-            } catch (IOException e) {
-                System.out.println(e);
-            } catch (ClassNotFoundException x) {
-                System.out.println(x);
-            }
-
-            System.out.println(results.get(0));
-        }
-        
-        if (accTypeCmb.getSelectedItem().toString().equals("B&B")) { // If searching for a hostel room ...
-
-            // Initiating the file stream for reading from the hostels.data file inside the hostels array list
-            File fName;
-            FileInputStream fStream;
-            ObjectInputStream oStream;
-            ArrayList<BedAndBreakfast> bAndB = new ArrayList<>();
-
-            try {
-                fName = new File("bedandbreakfasts.data");
-                fStream = new FileInputStream(fName);
-                oStream = new ObjectInputStream(fStream);
-                bAndB = (ArrayList<BedAndBreakfast>) oStream.readObject();
-
-                // Looping through the hotels arraylist
-                String[] parts;
-                // Get just the number for the bedNo, not the whole string
-                parts = bbCmb.getSelectedItem().toString().split(" ");
-                String bedNo = parts[0];
-                
-                for (BedAndBreakfast x : bAndB) {
-                    // Finding the match within the hotels arraylist
-                    if (String.valueOf(x.getNumberBedrooms()).equals(bedNo)) {
-                        String[] result = {x.getRoomID(), x.getRoomName(), x.getRoomCity(), x.getRoomAddress(), // 0 - 3
-                            "Price per night", String.valueOf(x.getRoomPricePerNight()), // 4 - 5
-                            "KM from city centre", String.valueOf(x.getKmFromCityCentre()), // 6 - 7
-                            "Max number of guests", String.valueOf(x.getMaxNumberGuests()), // 8 - 9
-                            "Parking", String.valueOf(x.hasParkingSpace()), // 10 - 11 
-                            "Breakfast", String.valueOf(x.hasBreakfastIncl()), // 12 - 13
-                            "Owner occupied", String.valueOf(x.isOwnerOccupied()), // 14 - 15
-                            "Kitchen", String.valueOf(x.hasKitchen()), // 16 - 17
-                            "Towels", String.valueOf(x.hasTowels()), // 18 - 19
-                            "Washing machine", String.valueOf(x.hasWashingMachine()), // 20 - 21
-                            "Pet Friendly", String.valueOf(x.isPetFriendly()), // 22 - 23 
-                            "Cleaning", String.valueOf(x.hasCleaningOption()), // 24 - 25
-                            "Linen", String.valueOf(x.hasLinen()), // 26 - 27
-                            "Garden", String.valueOf(x.hasGarden())}; // 28 - 29
-                        results.add(result); // Storing the results as arrays within the results array list
-                    }
-                }
-            } catch (IOException e) {
-                System.out.println(e);
-            } catch (ClassNotFoundException x) {
-                System.out.println(x);
-            }
-
-            System.out.println(results.get(0));
-        }
-
-
-        yLoc = 20;
-        for (String[] r : results) {
-
-            //yLoc = i * (resultPanelHeight + resultPanelMargin); // 70 pixels distance between each point - each panel is 50 pixels tall, so that will leave 20 pixels between panels
-            
-            searchPanelYSize = yLoc + 70; // Total height will make sure to leave 20 pixels margin between the last element and the bottom edge of the window
-
-            // Setup the result panel
-            JPanel resultPanel = new JPanel();
-            resultPanel.setBounds(50, yLoc, 650, resultPanelHeight);
-            resultPanel.setLayout(null); // Set resultPanel to null to allow the labels to be placed with relative positioning.
-
-            resultPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR)); // Set the cursor on mouse over
-            resultPanel.setBackground(new Color(153, 0, 51)); // Search panel result background
-
-            // Next block will make the result panels clickable, with a variable passed to them
-            //final int resultNo = i; // In order to pass a variable to a class, it has to be first converted to a final
-            // Adding the mouse event listener to the generated panel
-            resultPanel.addMouseListener(new MouseAdapter() {
-                public void mousePressed(MouseEvent e) {
-                    System.out.println("This is entry " + searchTerm + " " + r[0]);
-                }
-            });
-
-            // Setup the result label
-            String[] resultString = new String[30];
-            for (int i = 0; i < r.length; i++) {
-                if (r[i].equals("true")) {
-                    resultString[i] ="✓";
-                } else if (r[i].equals("false")) {
-                    resultString[i] = "x";
-                } else {
-                    resultString[i] = r[i];
-                }
-            }
-            // Adding labels to the results cards
-            JLabel roomNameLabel = new JLabel(resultString[1]);
-            roomNameLabel.setForeground(new Color(255, 255, 204)); //  Label font color
-            roomNameLabel.setBounds(15, 10, 100, 20); // Position and width of the text within the resultPanel
-            // Add label to the result panel, add the result panel to the search panel
-            resultPanel.add(roomNameLabel);
-            
-            JLabel cityNameLabel = new JLabel(resultString[2]);
-            cityNameLabel.setForeground(new Color(255, 255, 204)); //  Label font color
-            cityNameLabel.setBounds(15, 30, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(cityNameLabel);
-            
-            JLabel roomAddressLabel = new JLabel(resultString[3]);
-            roomAddressLabel.setForeground(new Color(255, 255, 204)); //  Label font color
-            roomAddressLabel.setBounds(15, 50, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(roomAddressLabel);
-            
-            JLabel pricePerNightLabel = new JLabel(resultString[4]);
-            pricePerNightLabel.setForeground(new Color(255, 255, 204)); //  Label font color
-            pricePerNightLabel.setBounds(15, 70, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(pricePerNightLabel);
-            
-            JLabel priceLabel = new JLabel("€" + resultString[5]);
-            priceLabel.setForeground(new Color(255, 255, 204)); //  Label font color
-            priceLabel.setBounds(115, 70, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(priceLabel);
-            
-            JPanel separatorPanel = new JPanel();
-            separatorPanel.setBackground(new Color(255, 255, 204)); 
-            separatorPanel.setBounds(215, 5, 3, 90);
-            resultPanel.add(separatorPanel);
-            
-            JLabel kmFromCityCentreLabel = new JLabel(resultString[7] + " KM from city centre");
-            kmFromCityCentreLabel.setForeground(new Color(255, 255, 204)); //  Label font color
-            kmFromCityCentreLabel.setBounds(230, 10, 150, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(kmFromCityCentreLabel);
-            
-            JLabel maxGuestsLabel = new JLabel(resultString[9] + " Max guests");
-            maxGuestsLabel.setForeground(new Color(255, 255, 204)); //  Label font color
-            maxGuestsLabel.setBounds(230, 30, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(maxGuestsLabel);
-            
-            JLabel parkingLabel = new JLabel(resultString[11] + " Parking");
-            parkingLabel.setForeground(new Color(255, 255, 204)); //  Label font color
-            parkingLabel.setBounds(230, 50, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(parkingLabel);
-            
-            JLabel breakfastLabel = new JLabel(resultString[13] + " Breakfast");
-            breakfastLabel.setForeground(new Color(255, 255, 204)); //  Label font color
-            breakfastLabel.setBounds(230, 70, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(breakfastLabel);
-            
-            JLabel index15Label = new JLabel(resultString[15]);
-            index15Label.setForeground(new Color(255, 255, 204)); //  Label font color
-            index15Label.setBounds(380, 10, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(index15Label);
-            
-            JLabel index14Label = new JLabel(resultString[14]);
-            index14Label.setForeground(new Color(255, 255, 204)); //  Label font color
-            index14Label.setBounds(395, 10, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(index14Label);
-            
-            JLabel index17Label = new JLabel(resultString[17]);
-            index17Label.setForeground(new Color(255, 255, 204)); //  Label font color
-            index17Label.setBounds(380, 30, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(index17Label);
-            
-            JLabel index16Label = new JLabel(resultString[16]);
-            index16Label.setForeground(new Color(255, 255, 204)); //  Label font color
-            index16Label.setBounds(395, 30, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(index16Label);
-            
-            JLabel index19Label = new JLabel(resultString[19]);
-            index19Label.setForeground(new Color(255, 255, 204)); //  Label font color
-            index19Label.setBounds(380, 50, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(index19Label);
-            
-            JLabel index18Label = new JLabel(resultString[18]);
-            index18Label.setForeground(new Color(255, 255, 204)); //  Label font color
-            index18Label.setBounds(395, 50, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(index18Label);
-            
-            JLabel index21Label = new JLabel(resultString[21]);
-            index21Label.setForeground(new Color(255, 255, 204)); //  Label font color
-            index21Label.setBounds(380, 70, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(index21Label);
-            
-            JLabel index20Label = new JLabel(resultString[20]);
-            index20Label.setForeground(new Color(255, 255, 204)); //  Label font color
-            index20Label.setBounds(395, 70, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(index20Label);
-            
-            JLabel index23Label = new JLabel(resultString[23]);
-            index23Label.setForeground(new Color(255, 255, 204)); //  Label font color
-            index23Label.setBounds(530, 10, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(index23Label);
-            
-            JLabel index22Label = new JLabel(resultString[22]);
-            index22Label.setForeground(new Color(255, 255, 204)); //  Label font color
-            index22Label.setBounds(545, 10, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(index22Label);
-            
-            JLabel index25Label = new JLabel(resultString[25]);
-            index25Label.setForeground(new Color(255, 255, 204)); //  Label font color
-            index25Label.setBounds(530, 30, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(index25Label);
-            
-            JLabel index24Label = new JLabel(resultString[24]);
-            index24Label.setForeground(new Color(255, 255, 204)); //  Label font color
-            index24Label.setBounds(545, 30, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(index24Label);
-            
-            JLabel index27Label = new JLabel(resultString[27]);
-            index27Label.setForeground(new Color(255, 255, 204)); //  Label font color
-            index27Label.setBounds(530, 50, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(index27Label);
-            
-            JLabel index26Label = new JLabel(resultString[26]);
-            index26Label.setForeground(new Color(255, 255, 204)); //  Label font color
-            index26Label.setBounds(545, 50, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(index26Label);
-            
-            JLabel index29Label = new JLabel(resultString[29]);
-            index29Label.setForeground(new Color(255, 255, 204)); //  Label font color
-            index29Label.setBounds(530, 70, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(index29Label);
-            
-            JLabel index28Label = new JLabel(resultString[28]);
-            index28Label.setForeground(new Color(255, 255, 204)); //  Label font color
-            index28Label.setBounds(545, 70, 100, 20); // Position and width of the text within the resultPanel
-            // Add  label to the result panel, add the result panel to the search panel
-            resultPanel.add(index28Label);
-            
-            
-            searchPanel.add(resultPanel);
-            yLoc = yLoc + 150;
-
-            searchPanel.setPreferredSize(new Dimension(600, searchPanelYSize + resultPanelHeight));
+            searchPanel.removeAll(); // Resetting the search results on every search
             searchPanel.revalidate();
+            searchPanel.repaint();
 
+            ArrayList<String[]> results = new ArrayList<>(); // This array list will store the results
+
+            if (accTypeCmb.getSelectedItem().toString().equals("Hotel")) { // If searching for a hotel room ...
+
+                // Initiating the file stream for reading from the hotels.data file inside the hotels array list
+                File fName;
+                FileInputStream fStream;
+                ObjectInputStream oStream;
+                ArrayList<Hotel> hotels = new ArrayList<>();
+
+                try {
+                    fName = new File("hotels.data");
+                    fStream = new FileInputStream(fName);
+                    oStream = new ObjectInputStream(fStream);
+                    hotels = (ArrayList<Hotel>) oStream.readObject();
+
+                    // Looping through the hotels arraylist
+                    for (Hotel x : hotels) {
+                        // Finding the match within the hotels arraylist
+                        int maxGuests = x.getMaxNumberGuests();
+                        int guests = Integer.parseInt(guestsNoCmb.getSelectedItem().toString());
+                        if (x.getBedType().equals(hotelCmb.getSelectedItem().toString())
+                                && x.getRoomCity().equals(cityCmb.getSelectedItem().toString())
+                                && guests <= maxGuests) {
+                            String[] result = {x.getRoomID(), x.getRoomName(), x.getRoomCity(), x.getRoomAddress(), // 0 - 3
+                                "Price per night", String.valueOf(x.getRoomPricePerNight()), // 4 - 5
+                                "KM from city centre", String.valueOf(x.getKmFromCityCentre()), // 6 - 7
+                                "Max number of guests", String.valueOf(x.getMaxNumberGuests()), // 8 - 9
+                                "Parking", String.valueOf(x.hasParkingSpace()), // 10 - 11 
+                                "Breakfast", String.valueOf(x.hasBreakfastIncl()), // 12 - 13
+                                "24h Reception", String.valueOf(x.has24HReception()), // 14 - 15
+                                "Balcony", String.valueOf(x.hasBalcony()), // 16 - 17
+                                "Bathtub", String.valueOf(x.hasBathtub()), // 18 - 19
+                                "Pool", String.valueOf(x.hasPool()), // 20 - 21
+                                "Room service", String.valueOf(x.hasRoomService()), // 22 - 23 
+                                "Minibar", String.valueOf(x.hasMinibar()), // 24 - 25
+                                "Restaurant", String.valueOf(x.hasRestaurant()), // 26 - 27
+                                "Gym", String.valueOf(x.hasGym())}; // 28 - 29
+                            results.add(result); // Storing the results as arrays within the results array list
+                        }
+                    }
+                } catch (IOException e) {
+                    System.out.println(e);
+                } catch (ClassNotFoundException x) {
+                    System.out.println(x);
+                }
+
+                System.out.println(results.get(0));
+            }
+
+            if (accTypeCmb.getSelectedItem().toString().equals("Hostel")) { // If searching for a hostel room ...
+
+                // Initiating the file stream for reading from the hostels.data file inside the hostels array list
+                File fName;
+                FileInputStream fStream;
+                ObjectInputStream oStream;
+                ArrayList<Hostel> hostels = new ArrayList<>();
+
+                try {
+                    fName = new File("hostels.data");
+                    fStream = new FileInputStream(fName);
+                    oStream = new ObjectInputStream(fStream);
+                    hostels = (ArrayList<Hostel>) oStream.readObject();
+
+                    // Looping through the hotels arraylist
+                    for (Hostel x : hostels) {
+                        // Finding the match within the hotels arraylist
+                        int maxGuests = x.getMaxNumberGuests();
+                        int guests = Integer.parseInt(guestsNoCmb.getSelectedItem().toString());
+                        if (x.getDormType().equals(hostelCmb.getSelectedItem().toString())
+                                && x.getRoomCity().equals(cityCmb.getSelectedItem().toString())
+                                && guests <= maxGuests) {
+                            String[] result = {x.getRoomID(), x.getRoomName(), x.getRoomCity(), x.getRoomAddress(), // 0 - 3
+                                "Price per night", String.valueOf(x.getRoomPricePerNight()), // 4 - 5
+                                "KM from city centre", String.valueOf(x.getKmFromCityCentre()), // 6 - 7
+                                "Max number of guests", String.valueOf(x.getMaxNumberGuests()), // 8 - 9
+                                "Parking", String.valueOf(x.hasParkingSpace()), // 10 - 11 
+                                "Breakfast", String.valueOf(x.hasBreakfastIncl()), // 12 - 13
+                                "24h Reception", String.valueOf(x.has24HReception()), // 14 - 15
+                                "Lockers", String.valueOf(x.hasLockers()), // 16 - 17
+                                "Private bathroom", String.valueOf(x.hasPrivateBathroom()), // 18 - 19
+                                "Washing machine", String.valueOf(x.hasWashingMachine()), // 20 - 21
+                                "Private rooms", String.valueOf(x.hasPrivateRooms()), // 22 - 23 
+                                "Bar", String.valueOf(x.hasBar()), // 24 - 25
+                                "Shared kitchen", String.valueOf(x.hasSharedKitchen()), // 26 - 27
+                                "Long stay", String.valueOf(x.hasLongStayOption())}; // 28 - 29
+                            results.add(result); // Storing the results as arrays within the results array list
+                        }
+                    }
+                } catch (IOException e) {
+                    System.out.println(e);
+                } catch (ClassNotFoundException x) {
+                    System.out.println(x);
+                }
+
+                System.out.println(results.get(0));
+            }
+
+            if (accTypeCmb.getSelectedItem().toString().equals("B&B")) { // If searching for a hostel room ...
+
+                // Initiating the file stream for reading from the hostels.data file inside the hostels array list
+                File fName;
+                FileInputStream fStream;
+                ObjectInputStream oStream;
+                ArrayList<BedAndBreakfast> bAndB = new ArrayList<>();
+
+                try {
+                    fName = new File("bedandbreakfasts.data");
+                    fStream = new FileInputStream(fName);
+                    oStream = new ObjectInputStream(fStream);
+                    bAndB = (ArrayList<BedAndBreakfast>) oStream.readObject();
+
+                    // Looping through the hotels arraylist
+                    String[] parts;
+                    // Get just the number for the bedNo, not the whole string
+                    parts = bbCmb.getSelectedItem().toString().split(" ");
+                    String bedNo = parts[0];
+
+                    for (BedAndBreakfast x : bAndB) {
+                        int maxGuests = x.getMaxNumberGuests();
+                        int guests = Integer.parseInt(guestsNoCmb.getSelectedItem().toString());
+                        // Finding the match within the hotels arraylist
+                        if (String.valueOf(x.getNumberBedrooms()).equals(bedNo)
+                                && x.getRoomCity().equals(cityCmb.getSelectedItem().toString())
+                                && guests <= maxGuests) {
+                            String[] result = {x.getRoomID(), x.getRoomName(), x.getRoomCity(), x.getRoomAddress(), // 0 - 3
+                                "Price per night", String.valueOf(x.getRoomPricePerNight()), // 4 - 5
+                                "KM from city centre", String.valueOf(x.getKmFromCityCentre()), // 6 - 7
+                                "Max number of guests", String.valueOf(x.getMaxNumberGuests()), // 8 - 9
+                                "Parking", String.valueOf(x.hasParkingSpace()), // 10 - 11 
+                                "Breakfast", String.valueOf(x.hasBreakfastIncl()), // 12 - 13
+                                "Owner occupied", String.valueOf(x.isOwnerOccupied()), // 14 - 15
+                                "Kitchen", String.valueOf(x.hasKitchen()), // 16 - 17
+                                "Towels", String.valueOf(x.hasTowels()), // 18 - 19
+                                "Washing machine", String.valueOf(x.hasWashingMachine()), // 20 - 21
+                                "Pet Friendly", String.valueOf(x.isPetFriendly()), // 22 - 23 
+                                "Cleaning", String.valueOf(x.hasCleaningOption()), // 24 - 25
+                                "Linen", String.valueOf(x.hasLinen()), // 26 - 27
+                                "Garden", String.valueOf(x.hasGarden())}; // 28 - 29
+                            results.add(result); // Storing the results as arrays within the results array list
+                        }
+                    }
+                } catch (IOException e) {
+                    System.out.println(e);
+                } catch (ClassNotFoundException x) {
+                    System.out.println(x);
+                }
+
+                System.out.println(results.get(0));
+            }
+
+            yLoc = 20;
+            for (String[] r : results) {
+
+                searchPanelYSize = yLoc + 70; // Total height will make sure to leave 20 pixels margin between the last element and the bottom edge of the window
+
+                // Setup the result panel
+                JPanel resultPanel = new JPanel();
+                resultPanel.setBounds(50, yLoc, 650, resultPanelHeight);
+                resultPanel.setLayout(null); // Set resultPanel to null to allow the labels to be placed with relative positioning.
+
+                resultPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR)); // Set the cursor on mouse over
+                resultPanel.setBackground(new Color(153, 0, 51)); // Search panel result background
+
+                // Next block will make the result panels clickable, with a variable passed to them
+                //final int resultNo = i; // In order to pass a variable to a class, it has to be first converted to a final
+                double price = Double.parseDouble(r[5]);
+                int nights = Integer.parseInt(nightsCmb.getSelectedItem().toString());
+                double totalPrice = price * nights;
+                int guestsNo = Integer.parseInt(guestsNoCmb.getSelectedItem().toString());
+
+                // Adding the mouse event listener to the generated panel
+                resultPanel.addMouseListener(new MouseAdapter() {
+                    public void mousePressed(MouseEvent e) {
+                        BookingsGUI b = new BookingsGUI(checkInDateLbl.getText(), checkOutDateLbl.getText(), r[1], guestsNo, nights, totalPrice, r[0]);
+                        // Get the size of the active window
+                        int sizeH = getSize().height;
+                        int sizeW = getSize().width;
+
+                        // Get the location of the active window
+                        int currX = getLocation().x;
+                        int currY = getLocation().y;
+
+                        // Set the size of the new window
+                        b.setSize(sizeW, sizeH);
+
+                        // Set the location of the new window
+                        b.setLocation(currX, currY);
+
+                        // Hide the active window, show the new window
+                        dispose();
+
+                        // Set the window icon
+                        ImageIcon img = new ImageIcon("img/logo.png");
+                        b.setIconImage(img.getImage());
+
+                        b.setVisible(true);
+                    }
+                });
+
+                // Setup the result label
+                String[] resultString = new String[30];
+                for (int i = 0; i < r.length; i++) {
+                    if (r[i].equals("true")) {
+                        resultString[i] = "✓";
+                    } else if (r[i].equals("false")) {
+                        resultString[i] = "x";
+                    } else {
+                        resultString[i] = r[i];
+                    }
+                }
+                // Adding labels to the results cards
+                JLabel roomNameLabel = new JLabel(resultString[1]);
+                roomNameLabel.setForeground(new Color(255, 255, 204)); //  Label font color
+                roomNameLabel.setBounds(15, 10, 100, 20); // Position and width of the text within the resultPanel
+                // Add label to the result panel, add the result panel to the search panel
+                resultPanel.add(roomNameLabel);
+
+                JLabel cityNameLabel = new JLabel(resultString[2]);
+                cityNameLabel.setForeground(new Color(255, 255, 204)); //  Label font color
+                cityNameLabel.setBounds(15, 30, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(cityNameLabel);
+
+                JLabel roomAddressLabel = new JLabel(resultString[3]);
+                roomAddressLabel.setForeground(new Color(255, 255, 204)); //  Label font color
+                roomAddressLabel.setBounds(15, 50, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(roomAddressLabel);
+
+                JLabel pricePerNightLabel = new JLabel(resultString[4]);
+                pricePerNightLabel.setForeground(new Color(255, 255, 204)); //  Label font color
+                pricePerNightLabel.setBounds(15, 70, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(pricePerNightLabel);
+
+                JLabel priceLabel = new JLabel("€" + resultString[5]);
+                priceLabel.setForeground(new Color(255, 255, 204)); //  Label font color
+                priceLabel.setBounds(115, 70, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(priceLabel);
+
+                JPanel separatorPanel = new JPanel();
+                separatorPanel.setBackground(new Color(255, 255, 204));
+                separatorPanel.setBounds(215, 5, 3, 90);
+                resultPanel.add(separatorPanel);
+
+                JLabel kmFromCityCentreLabel = new JLabel(resultString[7] + " KM from city centre");
+                kmFromCityCentreLabel.setForeground(new Color(255, 255, 204)); //  Label font color
+                kmFromCityCentreLabel.setBounds(230, 10, 150, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(kmFromCityCentreLabel);
+
+                JLabel maxGuestsLabel = new JLabel(resultString[9] + " Max guests");
+                maxGuestsLabel.setForeground(new Color(255, 255, 204)); //  Label font color
+                maxGuestsLabel.setBounds(230, 30, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(maxGuestsLabel);
+
+                JLabel parkingLabel = new JLabel(resultString[11] + " Parking");
+                parkingLabel.setForeground(new Color(255, 255, 204)); //  Label font color
+                parkingLabel.setBounds(230, 50, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(parkingLabel);
+
+                JLabel breakfastLabel = new JLabel(resultString[13] + " Breakfast");
+                breakfastLabel.setForeground(new Color(255, 255, 204)); //  Label font color
+                breakfastLabel.setBounds(230, 70, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(breakfastLabel);
+
+                JLabel index15Label = new JLabel(resultString[15]);
+                index15Label.setForeground(new Color(255, 255, 204)); //  Label font color
+                index15Label.setBounds(380, 10, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(index15Label);
+
+                JLabel index14Label = new JLabel(resultString[14]);
+                index14Label.setForeground(new Color(255, 255, 204)); //  Label font color
+                index14Label.setBounds(395, 10, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(index14Label);
+
+                JLabel index17Label = new JLabel(resultString[17]);
+                index17Label.setForeground(new Color(255, 255, 204)); //  Label font color
+                index17Label.setBounds(380, 30, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(index17Label);
+
+                JLabel index16Label = new JLabel(resultString[16]);
+                index16Label.setForeground(new Color(255, 255, 204)); //  Label font color
+                index16Label.setBounds(395, 30, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(index16Label);
+
+                JLabel index19Label = new JLabel(resultString[19]);
+                index19Label.setForeground(new Color(255, 255, 204)); //  Label font color
+                index19Label.setBounds(380, 50, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(index19Label);
+
+                JLabel index18Label = new JLabel(resultString[18]);
+                index18Label.setForeground(new Color(255, 255, 204)); //  Label font color
+                index18Label.setBounds(395, 50, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(index18Label);
+
+                JLabel index21Label = new JLabel(resultString[21]);
+                index21Label.setForeground(new Color(255, 255, 204)); //  Label font color
+                index21Label.setBounds(380, 70, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(index21Label);
+
+                JLabel index20Label = new JLabel(resultString[20]);
+                index20Label.setForeground(new Color(255, 255, 204)); //  Label font color
+                index20Label.setBounds(395, 70, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(index20Label);
+
+                JLabel index23Label = new JLabel(resultString[23]);
+                index23Label.setForeground(new Color(255, 255, 204)); //  Label font color
+                index23Label.setBounds(530, 10, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(index23Label);
+
+                JLabel index22Label = new JLabel(resultString[22]);
+                index22Label.setForeground(new Color(255, 255, 204)); //  Label font color
+                index22Label.setBounds(545, 10, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(index22Label);
+
+                JLabel index25Label = new JLabel(resultString[25]);
+                index25Label.setForeground(new Color(255, 255, 204)); //  Label font color
+                index25Label.setBounds(530, 30, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(index25Label);
+
+                JLabel index24Label = new JLabel(resultString[24]);
+                index24Label.setForeground(new Color(255, 255, 204)); //  Label font color
+                index24Label.setBounds(545, 30, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(index24Label);
+
+                JLabel index27Label = new JLabel(resultString[27]);
+                index27Label.setForeground(new Color(255, 255, 204)); //  Label font color
+                index27Label.setBounds(530, 50, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(index27Label);
+
+                JLabel index26Label = new JLabel(resultString[26]);
+                index26Label.setForeground(new Color(255, 255, 204)); //  Label font color
+                index26Label.setBounds(545, 50, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(index26Label);
+
+                JLabel index29Label = new JLabel(resultString[29]);
+                index29Label.setForeground(new Color(255, 255, 204)); //  Label font color
+                index29Label.setBounds(530, 70, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(index29Label);
+
+                JLabel index28Label = new JLabel(resultString[28]);
+                index28Label.setForeground(new Color(255, 255, 204)); //  Label font color
+                index28Label.setBounds(545, 70, 100, 20); // Position and width of the text within the resultPanel
+                // Add  label to the result panel, add the result panel to the search panel
+                resultPanel.add(index28Label);
+
+                searchPanel.add(resultPanel);
+                yLoc = yLoc + 150;
+
+                searchPanel.setPreferredSize(new Dimension(600, searchPanelYSize + resultPanelHeight));
+                searchPanel.revalidate();
+
+            }
+
+            checkInCalendarState = false;
+            checkInDatePicker.dispose();
+            checkOutCalendarState = false;
+            checkOutDatePicker.dispose();
         }
-
-        checkInCalendarState = false;
-        checkInDatePicker.dispose();
-        checkOutCalendarState = false;
-        checkOutDatePicker.dispose();
     }//GEN-LAST:event_searchTfBtnActionPerformed
+
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+
+    Date dateIn = new Date();
+    Date dateOut = new Date();
+
 
     private void checkInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkInActionPerformed
         // TODO add your handling code here:
@@ -830,8 +873,19 @@ public class SearchGUI extends javax.swing.JFrame {
             checkInDatePicker.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosed(java.awt.event.WindowEvent windowEvent) {
-                    checkInDateLbl.setText(checkInDatePicker.getSelectedDate());
-                    checkInDateLbl.revalidate();
+                    try {
+                        dateIn = sdf.parse(checkInDatePicker.getSelectedDate().toString());
+                    } catch (ParseException p) {
+                        System.out.println(p);
+                    }
+                    System.out.println(checkOutDatePicker.getSelectedDate());
+                    if (dateOut.after(dateIn) || checkOutDatePicker.getSelectedDate() == "" || checkInDatePicker.getSelectedDate() == "") {
+                        checkInDateLbl.setText(checkInDatePicker.getSelectedDate());
+                        checkInDateLbl.revalidate();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Please make sure that your check out date is after the check in date!");
+                    }
+
                 }
             });
         } else {
@@ -855,8 +909,21 @@ public class SearchGUI extends javax.swing.JFrame {
             checkOutDatePicker.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosed(java.awt.event.WindowEvent windowEvent) {
-                    checkOutDateLbl.setText(checkOutDatePicker.getSelectedDate());
-                    checkOutDateLbl.revalidate();
+                    try {
+                        dateOut = sdf.parse(checkOutDatePicker.getSelectedDate().toString());
+                    } catch (ParseException p) {
+                        System.out.println(p);
+                    }
+
+                    if (dateOut.after(dateIn) || checkOutDatePicker.getSelectedDate() == "" || checkInDatePicker.getSelectedDate() == "") {
+                        checkOutDateLbl.setText(checkOutDatePicker.getSelectedDate());
+                        checkOutDateLbl.revalidate();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Please make sure that your check out date is after the check in date!");
+
+                    }
+
+                    System.out.println(dateOut.after(dateIn));
                 }
             });
         } else {
@@ -924,20 +991,22 @@ public class SearchGUI extends javax.swing.JFrame {
     private javax.swing.JLabel checkInDateLbl;
     private javax.swing.JButton checkOut;
     private javax.swing.JLabel checkOutDateLbl;
+    private javax.swing.JComboBox<String> cityCmb;
+    private javax.swing.JComboBox<String> guestsNoCmb;
     private javax.swing.JPanel heaherPanel;
     private javax.swing.JComboBox<String> hostelCmb;
     private javax.swing.JComboBox<String> hotelCmb;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel manageRoomBtn;
-    private javax.swing.JComboBox<String> roomsCmb;
-    private javax.swing.JLabel roomsLbl;
+    private javax.swing.JComboBox<String> nightsCmb;
     private javax.swing.JLabel searchBtn;
     private javax.swing.JPanel searchPanel;
     private javax.swing.JButton searchTfBtn;
@@ -945,4 +1014,3 @@ public class SearchGUI extends javax.swing.JFrame {
     private javax.swing.JLabel splitter2;
     // End of variables declaration//GEN-END:variables
 }
-
