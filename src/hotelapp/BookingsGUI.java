@@ -90,7 +90,7 @@ public class BookingsGUI extends javax.swing.JFrame {
         this.nights = nights;
         nightsInputLbl.setText(String.valueOf(nights));
         this.totalPrice = totalPrice;
-        euro1Lbl.setText(String.valueOf(totalPrice)); 
+        priceInputLbl.setText(String.valueOf(totalPrice)); 
         this.roomID = roomID;
     }
 
@@ -410,7 +410,7 @@ public class BookingsGUI extends javax.swing.JFrame {
                     .addComponent(delBookingBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(getBookingBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(amendBookingBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(107, 262, Short.MAX_VALUE))
+                .addGap(107, 272, Short.MAX_VALUE))
         );
         backgroundPanelLayout.setVerticalGroup(
             backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -499,9 +499,7 @@ public class BookingsGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(backgroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(backgroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -575,6 +573,7 @@ public class BookingsGUI extends javax.swing.JFrame {
         // checks that the user does not submit and empty form
         if (fNameTf.getText().equals("") || lNameTf.getText().equals("") || checkInDateInputLbl.getText().equals("") || checkOutDateInputLbl.getText().equals("")
                 || hotelInputLbl.getText().equals("") || peopleInputLbl.getText().equals("") || nightsInputLbl.getText().equals("") || priceInputLbl.getText().equals("")) {
+            System.out.println(peopleInputLbl.getText().equals(""));
             JOptionPane.showMessageDialog(null, "You need to enter all the details in order to confirm booking");
         } else {
 

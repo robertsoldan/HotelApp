@@ -1,7 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Author: Robert Soldan
+ * Student number: 18107800
+ * Project github link: 
+ * --------------------------------------------------------------------------------------------------------------------------------
+ * The app is using the JDatePicker library for the calendar date picker 
+ * Date, Properties, JDatePanelImpl and UtilDateModel imports are all necesary imports for the library and for functionality
+ * DatePicker class contains all the GUI functionality 
+ * MouseAdapter and MouseEvent imports are used for listening to mouse clicks
+ * We are listening for mouse clicks inside the calendar, mouse clicks on the backgroundPanel -- to close the calendar when that 
+ * happens and set the label to the appropiate value
  */
 package hotelapp;
 
@@ -15,10 +22,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
 import java.util.ArrayList;
 import java.util.Date;
-
 import java.util.Properties;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;

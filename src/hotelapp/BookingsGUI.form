@@ -43,10 +43,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="backgroundPanel" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
+          <Component id="backgroundPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -151,7 +148,7 @@
                       <Component id="getBookingBtn" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
                       <Component id="amendBookingBtn" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="107" pref="262" max="32767" attributes="0"/>
+                  <EmptySpace min="107" pref="272" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
