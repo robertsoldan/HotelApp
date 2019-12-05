@@ -1,3 +1,7 @@
+/* Author: Dejan Mijakovac
+ * Student number: 18144861 
+*/
+
 package hotelapp;
 
 import java.io.Serializable;
