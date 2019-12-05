@@ -1,8 +1,11 @@
 /*
  * Author: Robert Soldan
  * Student number: 18107800
- * Project github link: 
+ * Project github link: https://github.com/robertsoldan/HotelApp
  * --------------------------------------------------------------------------------------------------------------------------------
+ * SearchGUI.java
+ * This is the file for the GUI for the search part of the app
+ *--------------------------------------------------------------------------------------------------------------------------------
  * The app is using the JDatePicker library for the calendar date picker 
  * Date, Properties, JDatePanelImpl and UtilDateModel imports are all necesary imports for the library and for functionality
  * DatePicker class contains all the GUI functionality 
@@ -32,20 +35,15 @@ import javax.swing.JPanel;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
-// comment2
-/**
- *
- * @author robert
- */
+
+
 public class SearchGUI extends javax.swing.JFrame {
 
     private UtilDateModel model;
     private DatePicker checkInDatePicker;
     private DatePicker checkOutDatePicker;
-    private String checkInDate;
     private boolean checkInCalendarState;
     private boolean checkOutCalendarState;
-    private String checkOutDate;
 
     public SearchGUI() {
         initComponents();
@@ -53,7 +51,6 @@ public class SearchGUI extends javax.swing.JFrame {
         bbCmb.setVisible(false);
         checkInCalendarState = false;
         checkOutCalendarState = false;
-        checkInDate = "";
         checkInDatePicker = new DatePicker();
         checkOutDatePicker = new DatePicker();
         model = new UtilDateModel();
@@ -66,7 +63,7 @@ public class SearchGUI extends javax.swing.JFrame {
 
         backgroundPanel.add(datePanel);
         backgroundPanel.revalidate();
-        backgroundPanel.addMouseListener(new MouseAdapter() {
+        backgroundPanel.addMouseListener(new MouseAdapter() { // Mouse listener to close the date picker when clicking on the background panel
             @Override
             public void mousePressed(MouseEvent e) {
                 checkInCalendarState = false;
@@ -76,7 +73,7 @@ public class SearchGUI extends javax.swing.JFrame {
 
             }
         });
-        jScrollPane1.addMouseListener(new MouseAdapter() {
+        jScrollPane1.addMouseListener(new MouseAdapter() { // Mouse listener to close the date picker when clicking on the jscroll panel (where the results show up)
             @Override
             public void mousePressed(MouseEvent e) {
                 checkInCalendarState = false;
@@ -478,8 +475,9 @@ public class SearchGUI extends javax.swing.JFrame {
 
             ArrayList<String[]> results = new ArrayList<>(); // This array list will store the results
 
+            // If hotel selected, searcch through the hotel file
             if (accTypeCmb.getSelectedItem().toString().equals("Hotel")) { // If searching for a hotel room ...
-
+                
                 // Initiating the file stream for reading from the hotels.data file inside the hotels array list
                 File fName;
                 FileInputStream fStream;
@@ -494,13 +492,15 @@ public class SearchGUI extends javax.swing.JFrame {
 
                     // Looping through the hotels arraylist
                     for (Hotel x : hotels) {
+                        
                         // Finding the match within the hotels arraylist
                         int maxGuests = x.getMaxNumberGuests();
                         int guests = Integer.parseInt(guestsNoCmb.getSelectedItem().toString());
                         if (x.getBedType().equals(hotelCmb.getSelectedItem().toString())
                                 && x.getRoomCity().equals(cityCmb.getSelectedItem().toString())
                                 && guests <= maxGuests) {
-                            String[] result = {x.getRoomID(), x.getRoomName(), x.getRoomCity(), x.getRoomAddress(), // 0 - 3
+                            
+                            String[] result = {x.getRoomID(), x.getRoomName(), x.getRoomCity(), x.getRoomAddress(), // 0 - 3  // The numbers are the indexes in the array, easier to work with
                                 "Price per night", String.valueOf(x.getRoomPricePerNight()), // 4 - 5
                                 "KM from city centre", String.valueOf(x.getKmFromCityCentre()), // 6 - 7
                                 "Max number of guests", String.valueOf(x.getMaxNumberGuests()), // 8 - 9
@@ -517,17 +517,20 @@ public class SearchGUI extends javax.swing.JFrame {
                             results.add(result); // Storing the results as arrays within the results array list
                         }
                     }
+                    // If nothing found, display a message
+                    if(results.size() == 0) {
+                        JOptionPane.showMessageDialog(null, "Sorry, we couldn't find what you're looking for");
+                    }
                 } catch (IOException e) {
                     System.out.println(e);
                 } catch (ClassNotFoundException x) {
                     System.out.println(x);
                 }
-
-                System.out.println(results.get(0));
             }
 
+            // If hostel selected, search through the hostel file
             if (accTypeCmb.getSelectedItem().toString().equals("Hostel")) { // If searching for a hostel room ...
-
+                
                 // Initiating the file stream for reading from the hostels.data file inside the hostels array list
                 File fName;
                 FileInputStream fStream;
@@ -548,6 +551,7 @@ public class SearchGUI extends javax.swing.JFrame {
                         if (x.getDormType().equals(hostelCmb.getSelectedItem().toString())
                                 && x.getRoomCity().equals(cityCmb.getSelectedItem().toString())
                                 && guests <= maxGuests) {
+                            
                             String[] result = {x.getRoomID(), x.getRoomName(), x.getRoomCity(), x.getRoomAddress(), // 0 - 3
                                 "Price per night", String.valueOf(x.getRoomPricePerNight()), // 4 - 5
                                 "KM from city centre", String.valueOf(x.getKmFromCityCentre()), // 6 - 7
@@ -565,17 +569,20 @@ public class SearchGUI extends javax.swing.JFrame {
                             results.add(result); // Storing the results as arrays within the results array list
                         }
                     }
+                    // If nothing found, display a message
+                     if(results.size() == 0) {
+                        JOptionPane.showMessageDialog(null, "Sorry, we couldn't find what you're looking for");
+                    }
                 } catch (IOException e) {
                     System.out.println(e);
                 } catch (ClassNotFoundException x) {
                     System.out.println(x);
                 }
-
-                System.out.println(results.get(0));
             }
-
+            
+            // If B&B selected, search through the b&b file
             if (accTypeCmb.getSelectedItem().toString().equals("B&B")) { // If searching for a hostel room ...
-
+                
                 // Initiating the file stream for reading from the hostels.data file inside the hostels array list
                 File fName;
                 FileInputStream fStream;
@@ -601,6 +608,7 @@ public class SearchGUI extends javax.swing.JFrame {
                         if (String.valueOf(x.getNumberBedrooms()).equals(bedNo)
                                 && x.getRoomCity().equals(cityCmb.getSelectedItem().toString())
                                 && guests <= maxGuests) {
+                            
                             String[] result = {x.getRoomID(), x.getRoomName(), x.getRoomCity(), x.getRoomAddress(), // 0 - 3
                                 "Price per night", String.valueOf(x.getRoomPricePerNight()), // 4 - 5
                                 "KM from city centre", String.valueOf(x.getKmFromCityCentre()), // 6 - 7
@@ -618,18 +626,21 @@ public class SearchGUI extends javax.swing.JFrame {
                             results.add(result); // Storing the results as arrays within the results array list
                         }
                     }
+                    // If nothing found, display a message
+                     if(results.size() == 0) {
+                        JOptionPane.showMessageDialog(null, "Sorry, we couldn't find what you're looking for");
+                    }
                 } catch (IOException e) {
                     System.out.println(e);
                 } catch (ClassNotFoundException x) {
                     System.out.println(x);
                 }
-
-                System.out.println(results.get(0));
             }
-
-            yLoc = 20;
-            for (String[] r : results) {
-
+            
+            yLoc = 20; // Initiating so that there will be a top margin of 20 pixels 
+           
+            for (String[] r : results) { // Loop through the results array list and display the results
+                
                 searchPanelYSize = yLoc + 70; // Total height will make sure to leave 20 pixels margin between the last element and the bottom edge of the window
 
                 // Setup the result panel
@@ -842,15 +853,17 @@ public class SearchGUI extends javax.swing.JFrame {
                 index28Label.setBounds(545, 70, 100, 20); // Position and width of the text within the resultPanel
                 // Add  label to the result panel, add the result panel to the search panel
                 resultPanel.add(index28Label);
-
+                
+                
                 searchPanel.add(resultPanel);
-                yLoc = yLoc + 150;
+                yLoc = yLoc + 150; 
 
                 searchPanel.setPreferredSize(new Dimension(600, searchPanelYSize + resultPanelHeight));
                 searchPanel.revalidate();
 
             }
-
+            
+            // Reset calendar states and kill them
             checkInCalendarState = false;
             checkInDatePicker.dispose();
             checkOutCalendarState = false;
@@ -858,17 +871,19 @@ public class SearchGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_searchTfBtnActionPerformed
 
+    // To be used for comparing dates to make sure that check in date is prior to the check out date
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-
     Date dateIn = new Date();
     Date dateOut = new Date();
 
 
     private void checkInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkInActionPerformed
         // TODO add your handling code here:
-
+        // Clearing any date picker windows already open
         checkInDatePicker.dispose();
         checkOutDatePicker.dispose();
+        
+        // Check the current states and open or close, acccording to the current state
         if (!checkInCalendarState || checkOutCalendarState) {
             checkInCalendarState = true;
             checkOutCalendarState = false;
@@ -878,6 +893,8 @@ public class SearchGUI extends javax.swing.JFrame {
             checkInDatePicker.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                    // Listen to when the window is closed. If closed, check that the date is valid 
+                    // Date must be prior to check out if setting the check in / after the check in if setting the check out
                     try {
                         dateIn = sdf.parse(checkInDatePicker.getSelectedDate().toString());
                     } catch (ParseException p) {
@@ -901,6 +918,7 @@ public class SearchGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_checkInActionPerformed
 
+    // Check the current states and open or close, acccording to the current state
     private void checkOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkOutActionPerformed
 
         checkOutDatePicker.dispose();
@@ -914,6 +932,8 @@ public class SearchGUI extends javax.swing.JFrame {
             checkOutDatePicker.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                    // Listen to when the window is closed. If closed, check that the date is valid 
+                    // Date must be prior to check out if setting the check in / after the check in if setting the check out
                     try {
                         dateOut = sdf.parse(checkOutDatePicker.getSelectedDate().toString());
                     } catch (ParseException p) {
@@ -943,7 +963,7 @@ public class SearchGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_roomsCmbActionPerformed
 
     private void accTypeCmbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accTypeCmbActionPerformed
-        // TODO add your handling code here:
+       // Update which combo box is shown when selecting the type of accomodation
         switch (accTypeCmb.getSelectedItem().toString()) {
             case "Hotel":
                 hotelCmb.setVisible(true);

@@ -1,7 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Author: Robert Soldan
+ * Student number: 18107800
+ * Project github link: https://github.com/robertsoldan/HotelApp
+ * --------------------------------------------------------------------------------------------------------------------------------
+ * This is the class for the date picker component
+ * It will be used in the SearchGUI and BookingsGUI classes
  */
 package hotelapp;
 
@@ -42,6 +45,7 @@ public class DatePicker extends javax.swing.JFrame {
         JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
         datePanel.setBounds(0, 0, 250, 180);
         model.addChangeListener(new ChangeListener() {
+            // Setting the return to the string we need 
             public void stateChanged(ChangeEvent e) {
                 int month = model.getMonth() + 1;
                 selectedDate = model.getDay() + "-" + month + "-" + model.getYear();
