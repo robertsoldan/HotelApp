@@ -40,7 +40,6 @@ public class BookingsGUI extends javax.swing.JFrame {
 
     public BookingsGUI() {
         initComponents();
-
         aList = new ArrayList<>();
         bookingID = new String();
         fName = new String();
@@ -79,12 +78,7 @@ public class BookingsGUI extends javax.swing.JFrame {
     }
     
     public BookingsGUI(String checkInDate, String checkOutDate, String hotelName, int peopleNo, int nights, double totalPrice, String roomID) {
-        initComponents();
-
-        aList = new ArrayList<>();
-        bookingID = new String();
-        fName = new String();
-        lName = new String();
+        this();
         this.checkInDate = checkInDate;
         checkInDateInputLbl.setText(checkInDate);
         checkOutDateInputLbl.setText(checkOutDate);
@@ -98,28 +92,6 @@ public class BookingsGUI extends javax.swing.JFrame {
         this.totalPrice = totalPrice;
         euro1Lbl.setText(String.valueOf(totalPrice)); 
         this.roomID = roomID;
-        count = 0;
-        model = new UtilDateModel();
-        checkInDatePicker = new DatePicker();
-        checkOutDatePicker = new DatePicker();
-        checkInCalendarState = false;
-        checkOutCalendarState = false;
-        Properties p = new Properties();
-        p.put("text.today", "Today");
-        p.put("text.month", "Month");
-        p.put("text.year", "Year");
-        JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
-        backgroundPanel.add(datePanel);
-        backgroundPanel.revalidate();
-        backgroundPanel.addMouseListener(new MouseAdapter() {
-            public void mousePressed(MouseEvent e) {
-                checkInCalendarState = false;
-                checkInDatePicker.dispose();
-                checkOutCalendarState = false;
-                checkOutDatePicker.dispose();
-            }
-
-        });
     }
 
     /**

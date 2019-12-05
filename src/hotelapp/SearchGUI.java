@@ -62,6 +62,7 @@ public class SearchGUI extends javax.swing.JFrame {
         backgroundPanel.add(datePanel);
         backgroundPanel.revalidate();
         backgroundPanel.addMouseListener(new MouseAdapter() {
+            @Override
             public void mousePressed(MouseEvent e) {
                 checkInCalendarState = false;
                 checkInDatePicker.dispose();
@@ -71,6 +72,7 @@ public class SearchGUI extends javax.swing.JFrame {
             }
         });
         jScrollPane1.addMouseListener(new MouseAdapter() {
+            @Override
             public void mousePressed(MouseEvent e) {
                 checkInCalendarState = false;
                 checkInDatePicker.dispose();
@@ -469,7 +471,7 @@ public class SearchGUI extends javax.swing.JFrame {
             searchPanel.revalidate();
             searchPanel.repaint();
 
-            ArrayList<String[]> results = new ArrayList<String[]>(); // This array list will store the results
+            ArrayList<String[]> results = new ArrayList<>(); // This array list will store the results
 
             if (accTypeCmb.getSelectedItem().toString().equals("Hotel")) { // If searching for a hotel room ...
 
@@ -644,7 +646,27 @@ public class SearchGUI extends javax.swing.JFrame {
                 resultPanel.addMouseListener(new MouseAdapter() {
                     public void mousePressed(MouseEvent e) {
                         BookingsGUI b = new BookingsGUI(checkInDateLbl.getText(), checkOutDateLbl.getText(), r[1], guestsNo, nights, totalPrice, r[0]);
-                        setVisible(false);
+                        // Get the size of the active window
+                        int sizeH = getSize().height;
+                        int sizeW = getSize().width;
+
+                        // Get the location of the active window
+                        int currX = getLocation().x;
+                        int currY = getLocation().y;
+
+                        // Set the size of the new window
+                        b.setSize(sizeW, sizeH);
+
+                        // Set the location of the new window
+                        b.setLocation(currX, currY);
+
+                        // Hide the active window, show the new window
+                        dispose();
+
+                        // Set the window icon
+                        ImageIcon img = new ImageIcon("img/logo.png");
+                        b.setIconImage(img.getImage());
+
                         b.setVisible(true);
                     }
                 });
@@ -857,13 +879,13 @@ public class SearchGUI extends javax.swing.JFrame {
                         System.out.println(p);
                     }
                     System.out.println(checkOutDatePicker.getSelectedDate());
-                    if(dateOut.after(dateIn) || checkOutDatePicker.getSelectedDate() == "" || checkInDatePicker.getSelectedDate() == "") {
+                    if (dateOut.after(dateIn) || checkOutDatePicker.getSelectedDate() == "" || checkInDatePicker.getSelectedDate() == "") {
                         checkInDateLbl.setText(checkInDatePicker.getSelectedDate());
                         checkInDateLbl.revalidate();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Please make sure that your check out date is after the check in date!");  
+                        JOptionPane.showMessageDialog(null, "Please make sure that your check out date is after the check in date!");
                     }
-                    
+
                 }
             });
         } else {
@@ -892,18 +914,14 @@ public class SearchGUI extends javax.swing.JFrame {
                     } catch (ParseException p) {
                         System.out.println(p);
                     }
-                    
-                    if(dateOut.after(dateIn) || checkOutDatePicker.getSelectedDate() == "" || checkInDatePicker.getSelectedDate() == "") {
+
+                    if (dateOut.after(dateIn) || checkOutDatePicker.getSelectedDate() == "" || checkInDatePicker.getSelectedDate() == "") {
                         checkOutDateLbl.setText(checkOutDatePicker.getSelectedDate());
                         checkOutDateLbl.revalidate();
                     } else {
                         JOptionPane.showMessageDialog(null, "Please make sure that your check out date is after the check in date!");
-                        
-                    }
 
-                    
-                    
-                   
+                    }
 
                     System.out.println(dateOut.after(dateIn));
                 }
